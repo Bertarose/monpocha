@@ -598,7 +598,10 @@ function setNum(id, val, key){
 }
 updateCD(); setInterval(updateCD, 1000);
 
-/* ───────── Mascot tap → squish + candy burst ───────── */
+/* ───────── Mascot tap → squish + candy burst + sound ───────── */
+const mascotAudio = new Audio('audio/pocha.mp3');
+mascotAudio.preload = 'auto';
+mascotAudio.volume = 0.7;
 const mascotWrap = document.getElementById('mascotWrap');
 mascotWrap.addEventListener('click', () => {
   mascotWrap.classList.remove('squish');
@@ -606,6 +609,12 @@ mascotWrap.addEventListener('click', () => {
   mascotWrap.classList.add('squish');
   const r = mascotWrap.getBoundingClientRect();
   burst(r.left + r.width/2, r.top + r.height/2, 22);
+  // play sound (clone so rapid taps overlap cleanly)
+  try{
+    const s = mascotAudio.cloneNode();
+    s.volume = 0.7;
+    s.play().catch(()=>{});
+  }catch(e){}
 });
 
 /* ───────── Parallax for stickers (pointer + tilt) ───────── */
