@@ -6,7 +6,7 @@
 <title>POCHA 2026 — Bientôt</title>
 <meta name="description" content="POCHA 2026 — 11-14 juin, Bassin Peel, Griffintown, Montréal.">
 <meta name="theme-color" content="#0A8FFF">
-<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/img/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 html{scroll-behavior:smooth;}
 body{
   font-family:'Space Grotesk',-apple-system,sans-serif;
-  background:#020E26;color:#fff;
+  background:#0A8FFF;color:#fff;
   min-height:100vh;min-height:100dvh;
   overflow-x:hidden;
 }
@@ -36,10 +36,7 @@ body{
     #020E26;
   animation:aurora 10s ease infinite alternate;
 }
-@keyframes aurora{
-  0%{filter:hue-rotate(0deg) brightness(1);}
-  100%{filter:hue-rotate(15deg) brightness(1.1);}
-}
+
 
 /* Floating orbs */
 .orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.3;animation:drift ease-in-out infinite alternate;}
@@ -54,7 +51,7 @@ body{
   width:120px;height:120px;border-radius:28px;
   object-fit:cover;
   animation:float 4s ease-in-out infinite;
-  box-shadow:0 20px 60px rgba(10,143,255,.4);
+  box-shadow:0 16px 40px rgba(0,0,0,.15);
   margin-bottom:24px;
 }
 @keyframes float{
@@ -97,8 +94,8 @@ body{
 }
 .cd-block{
   width:68px;text-align:center;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.2);
   border-radius:14px;padding:14px 8px 10px;
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
 }
@@ -118,7 +115,7 @@ body{
 .btn:active{transform:scale(.97);}
 .btn-primary{
   background:linear-gradient(135deg,#0A8FFF,#42A5F5);color:#fff;
-  box-shadow:0 8px 30px rgba(10,143,255,.4);
+  box-shadow:0 8px 30px rgba(0,0,0,.15);
 }
 .btn-ghost{
   background:rgba(255,255,255,.06);
@@ -157,7 +154,7 @@ body{
 /* ── Info section ── */
 .info-section{
   padding:40px 20px;
-  background:#0A1628;
+  background:rgba(0,0,0,.15);
   border-top:1px solid rgba(255,255,255,.06);
 }
 .info-grid{
@@ -184,14 +181,15 @@ body{
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
+  
+  
+  
 
   <div class="hero-content">
-    <img class="mascot" src="/mascot.jpg" alt="POCHA 2026" width="120" height="120">
+    <img class="mascot" src="/img/mascot.jpg" alt="POCHA 2026" width="120" height="120">
     <div class="badge"><span class="badge-dot"></span> 11 — 14 juin 2026</div>
-    <div class="name">POCHA</div>
+    <!-- Logo POCHA — remplacer /pocha-logo.png par le bon fichier -->
+    <img src="/img/pocha-logo.png" alt="POCHA" style="width:clamp(200px,55vw,300px);height:auto;filter:invert(1);margin-bottom:8px;animation:float 4s ease-in-out infinite;">
     <div class="year">· · · 2 0 2 6 · · ·</div>
     <div class="info-line">
       <strong>11 — 14 juin</strong> · Bassin Peel<br>
