@@ -15,7 +15,7 @@
 html{scroll-behavior:smooth;}
 body{
   font-family:'Space Grotesk',-apple-system,sans-serif;
-  background:#0A8FFF;color:#fff;
+  background:#1976D2;color:#fff;
   min-height:100vh;min-height:100dvh;
   overflow-x:hidden;
 }
@@ -27,33 +27,36 @@ body{
   position:relative;overflow:hidden;
   padding:20px;
 }
-.hero::before{
-  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:
-    radial-gradient(circle at 50% 30%,#1565C0 0%,transparent 50%),
-    radial-gradient(circle at 20% 70%,#0D47A1 0%,transparent 40%),
-    radial-gradient(circle at 80% 60%,#1E88E5 0%,transparent 40%),
-    #020E26;
-  animation:aurora 10s ease infinite alternate;
-}
+
 
 
 /* Floating orbs */
-.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.3;animation:drift ease-in-out infinite alternate;}
-.orb1{width:300px;height:300px;background:#1E88E5;top:-50px;left:-80px;animation-duration:8s;}
-.orb2{width:250px;height:250px;background:#0A8FFF;bottom:-30px;right:-60px;animation-duration:10s;}
-.orb3{width:180px;height:180px;background:#42A5F5;top:40%;left:60%;animation-duration:7s;}
-@keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(30px,-30px)}}
+
+
+
+
+}
 
 .hero-content{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:440px;width:100%;}
 
 .mascot{
-  width:120px;height:120px;border-radius:28px;
-  object-fit:cover;
+  width:110px;height:110px;border-radius:24px;
+  object-fit:cover;mix-blend-mode:screen;
   animation:float 4s ease-in-out infinite;
   box-shadow:0 16px 40px rgba(0,0,0,.15);
-  margin-bottom:24px;
+  margin-bottom:16px;
 }
+.floater{
+  position:absolute;z-index:5;
+  mix-blend-mode:screen;
+  pointer-events:none;opacity:.7;
+}
+.f1{width:70px;height:70px;top:12%;left:5%;animation:bobA 5s ease-in-out infinite;}
+.f2{width:60px;height:60px;top:25%;right:4%;animation:bobB 6s ease-in-out infinite;}
+.f3{width:65px;height:65px;bottom:18%;left:3%;animation:bobC 7s ease-in-out infinite;}
+@keyframes bobA{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-15px) rotate(5deg)}}
+@keyframes bobB{0%,100%{transform:translateY(0) rotate(3deg)}50%{transform:translateY(-12px) rotate(-4deg)}}
+@keyframes bobC{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-18px) rotate(-6deg)}}
 @keyframes float{
   0%,100%{transform:translateY(0) scale(1);}
   50%{transform:translateY(-14px) scale(1.02);}
@@ -114,7 +117,7 @@ body{
 }
 .btn:active{transform:scale(.97);}
 .btn-primary{
-  background:linear-gradient(135deg,#0A8FFF,#42A5F5);color:#fff;
+  background:#fff;color:#1976D2;
   box-shadow:0 8px 30px rgba(0,0,0,.15);
 }
 .btn-ghost{
@@ -154,7 +157,7 @@ body{
 /* ── Info section ── */
 .info-section{
   padding:40px 20px;
-  background:rgba(0,0,0,.15);
+  background:rgba(0,0,0,.1);
   border-top:1px solid rgba(255,255,255,.06);
 }
 .info-grid{
@@ -181,18 +184,23 @@ body{
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
+  <!-- Floating food characters -->
+  <img src="/img/food-sushi.png" class="floater f1" alt="">
+  <img src="/img/food-corndog.png" class="floater f2" alt="">
+  <img src="/img/food-skewer.png" class="floater f3" alt="">
   
   
   
 
   <div class="hero-content">
-    <img class="mascot" src="/img/mascot.jpg" alt="POCHA 2026" width="120" height="120">
-    <div class="badge"><span class="badge-dot"></span> 11 — 14 juin 2026</div>
-    <!-- Logo POCHA — remplacer /pocha-logo.png par le bon fichier -->
-    <div style="width:clamp(200px,55vw,300px);height:clamp(60px,16vw,90px);overflow:hidden;margin-bottom:8px;">
-      <img src="/img/pocha-logo.png" alt="POCHA" style="width:100%;height:140%;object-fit:cover;object-position:center;filter:invert(1);animation:float 4s ease-in-out infinite;">
+    <!-- Logo POCHA MTL -->
+    <div style="width:clamp(220px,60vw,320px);margin-bottom:12px;">
+      <img src="/img/pocha-logo.png" alt="POCHA MTL" style="width:100%;height:auto;mix-blend-mode:screen;">
     </div>
+    <div class="badge"><span class="badge-dot"></span> 11 — 14 juin 2026</div>
     <div class="year">· · · 2 0 2 6 · · ·</div>
+    <!-- Mascotte principale -->
+    <img class="mascot" src="/img/mascot.jpg" alt="POCHA 2026" width="110" height="110">
     <div class="info-line">
       <strong>11 — 14 juin</strong> · Bassin Peel<br>
       Griffintown · Montréal
