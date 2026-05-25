@@ -1,36 +1,35 @@
-# POCHA 2026 — Page coming soon
+# MONPOCHA — Festival POCHA MTL 2026
 
-Page temporaire pour POCHA MTL 2026 · 11–14 juin · Bassin Peel, Griffintown.
+App de programmation interactive pour le festival POCHA MTL 2026.  
+**11–14 juin 2026 · Bassin Peel · Griffintown · Montréal**
+
+## Déploiement
+
+```bash
+# Vercel
+vercel deploy
+
+# Ou Netlify / GitHub Pages
+# Copiez les fichiers à la racine du site
+```
 
 ## Structure
 
-```
-.
-├── index.html      # la page
-└── img/
-    ├── pocha-logo.png
-    ├── mascot.jpg
-    ├── food-sushi.png
-    ├── food-corndog.png
-    └── food-skewer.png
-```
+- `index.html` — App complète (HTML/CSS/JS fichier unique)
+- `webapp.html` — Copie de travail
+- `manifest.json` — PWA manifest
+- `sw.js` — Service Worker (mode hors-ligne)
+- `vercel.json` — Configuration Vercel
 
-## Déploiement sur GitHub Pages
+## TODO
 
-1. Crée un nouveau repo sur GitHub (ex. `pocha-2026`)
-2. Upload tous les fichiers de ce dossier à la racine du repo
-3. Va dans **Settings → Pages**
-4. Source : **Deploy from a branch** → branche `main` → dossier `/ (root)`
-5. La page sera disponible à `https://<ton-user>.github.io/<nom-du-repo>/` dans ~1 min
+- [ ] Remplacer `icon-192.png` et `icon-512.png` par le logo POCHA
+- [ ] Remplacer `favicon.ico` par le favicon POCHA
+- [ ] Ajouter `/images/pocha.jpg` (image OG 512x512)
+- [ ] Mettre à jour l'ID Google Analytics (G-XXXXXXXXXX)
+- [ ] Mettre à jour le lien Zeffy (billetterie)
+- [ ] Confirmer les coordonnées GPS exactes de la carte
+- [ ] Ajouter les liens sociaux corrects (Instagram/Facebook POCHA)
 
-## Custom domain (optionnel)
-
-- Settings → Pages → Custom domain → entre ton domaine
-- Ajoute un fichier `CNAME` à la racine contenant ton domaine
-- Configure le DNS de ton domaine vers GitHub Pages
-
-## Notes
-
-- Le bouton **Billets** pointe vers `#` — remplace par ton lien de billetterie quand prêt
-- Compte à rebours configuré sur **11 juin 2026 17h00 (heure de Montréal, UTC-4)**
-- Page mobile-first, responsive, animations interactives
+---
+*Créée par Kim Maurice (Bertarose) · Mai 2026 · Pour ASIASIE*
