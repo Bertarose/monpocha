@@ -15,7 +15,7 @@
 -->
 <meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#1976D2">
+<meta name="theme-color" content="#0A8FFF">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -117,31 +117,31 @@ function loadLeaflet(cb) {
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --cream:  #f0f4fa;
+    --cream:  #f0f6ff;
     --header-h: 70px;
     --ticker-h: 36px;
     --top-h: calc(var(--header-h) + var(--ticker-h));
     --beige:  #e8eef8;
-    --orange: #1976D2;
-    --pink: #90CAF9;
-    --brown:  #5C6BC0;
-    --blue:   #B3D4FC;
-    --text:   #0D1B2A;
-    --muted:  #37474F;
+    --orange: #0A8FFF;
+    --pink: #FF3B30;
+    --brown:  #FF3B30;
+    --blue:   #7CC4FF;
+    --text:   #0A1929;
+    --muted:  #3D5A73;
     --border: rgba(13,27,42,0.11);
     --red:    #D32F2F;
-    --heart:  #E91E63;
-    --d0-bg: #BBDEFB; --d0-text: #0D47A1; --d0-bd: #64B5F6;
-    --d1-bg: #C5CAE9; --d1-text: #283593; --d1-bd: #7986CB;
-    --d2-bg: #F8BBD0; --d2-text: #880E4F; --d2-bd: #F06292;
-    --d3-bg: #B2EBF2; --d3-text: #006064; --d3-bd: #4DD0E1;
+    --heart:  #FF3B30;
+    --d0-bg: #D6ECFF; --d0-text: #0057B8; --d0-bd: #7CC4FF;
+    --d1-bg: #FFD6D4; --d1-text: #C62828; --d1-bd: #FF8A80;
+    --d2-bg: #FFE0B2; --d2-text: #E65100; --d2-bd: #FFB74D;
+    --d3-bg: #C8E6C9; --d3-text: #2E7D32; --d3-bd: #81C784;
   }
   html { scroll-behavior: smooth; }
   @font-face { font-display: swap; }
   body { background: var(--cream); color: var(--text); font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif; min-height: 100vh; -webkit-text-size-adjust: 100%; overscroll-behavior: none; padding-top: var(--top-h); }
 
   /* TICKER — fixed at very top */
-  .ticker { background: #1565C0; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 0; white-space: nowrap; overflow: hidden; position: fixed; top: 0; left: 0; right: 0; z-index: 112; }
+  .ticker { background: #0078E6; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 0; white-space: nowrap; overflow: hidden; position: fixed; top: 0; left: 0; right: 0; z-index: 112; }
   .ticker-inner { display: inline-block; animation: scroll 24s linear infinite; }
   .ticker-inner span { margin: 0 24px; }
   @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
@@ -234,8 +234,8 @@ function loadLeaflet(cb) {
   .legend::-webkit-scrollbar { display: none; }
   .legend-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid #B0BEC5; background: #fff; color: #546E7A; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.12s; white-space: nowrap; -webkit-tap-highlight-color: transparent; touch-action: manipulation; flex-shrink: 0; font-family: inherit; }
   .legend-btn.a-all     { background: var(--text); border-color: var(--text); color: var(--cream); }
-  .legend-btn.a-scene   { background: rgba(25,118,210,0.1); border-color: #1976D2; color: #1976D2; }
-  .legend-btn.a-atelier { background: rgba(92,107,192,0.1); border-color: #5C6BC0; color: #5C6BC0; }
+  .legend-btn.a-scene   { background: rgba(10,143,255,0.1); border-color: #0A8FFF; color: #0A8FFF; }
+  .legend-btn.a-atelier { background: rgba(255,59,48,0.1); border-color: #FF3B30; color: #FF3B30; }
   .legend-btn.a-eaton   { background: rgba(144,164,174,0.1); border-color: #90A4AE; color: #37474F; }
   .pip { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
@@ -300,7 +300,7 @@ function loadLeaflet(cb) {
 
   .lieu-badge { font-size: 11px; font-weight: 800; letter-spacing: 0.03em; padding: 5px 11px; border-radius: 10px; border: 1.5px solid; white-space: nowrap; }
   .b-scene { background: rgba(240,97,24,0.1); color: var(--orange); border-color: var(--orange); }
-  .b-atelier { background: rgba(92,107,192,0.1); color: var(--brown); border-color: var(--brown); }
+  .b-atelier { background: rgba(255,59,48,0.1); color: var(--brown); border-color: var(--brown); }
   .b-barvin { background: rgba(120,40,70,0.1); color: #782846; border-color: #782846; }
   .s-barvin { background: #782846; }
   .b-eaton { background: rgba(159,179,212,0.25); color: #4a6090; border-color: #7898c8; }
@@ -346,7 +346,7 @@ function loadLeaflet(cb) {
   .drawer-body { padding: 18px 18px 80px; }
   .drawer-desc { font-size: 16px; color: var(--text); line-height: 1.72; font-weight: 400; }
   .drawer-desc .lineup { margin-top:12px; display:flex; flex-direction:column; gap:6px; }
-  .drawer-desc .lineup-item { display:flex; gap:10px; align-items:baseline; padding:8px 12px; background:rgba(25,118,210,0.06); border-radius:10px; border-left:3px solid #FE9CC3; }
+  .drawer-desc .lineup-item { display:flex; gap:10px; align-items:baseline; padding:8px 12px; background:rgba(10,143,255,0.06); border-radius:10px; border-left:3px solid #FE9CC3; }
   .drawer-desc .lineup-time { font-size:13px; font-weight:800; color:#FE9CC3; white-space:nowrap; min-width:50px; }
   .drawer-desc .lineup-name { font-size:14px; font-weight:600; color:var(--text); }
   .drawer-desc .lineup-song { font-size:13px; color:var(--muted); font-weight:400; }
@@ -430,17 +430,17 @@ function loadLeaflet(cb) {
   /* ── INFO PANEL ── */
   #infoPanel { display:none; position:fixed; top:var(--top-h); left:0; right:0; bottom:60px; background:var(--cream); z-index:80; overflow-y:auto; flex-direction:column; }
   .info-section { margin:0 16px 14px; background:#fff; border:1.5px solid var(--border); border-radius:14px; overflow:hidden; }
-  .info-section-header { background:#e3f2fd; padding:12px 16px; font-size:12px; font-weight:900; color:#1565C0; letter-spacing:.08em; text-transform:uppercase; border-left:3px solid #1565C0; }
+  .info-section-header { background:#e3f2fd; padding:12px 16px; font-size:12px; font-weight:900; color:#0078E6; letter-spacing:.08em; text-transform:uppercase; border-left:3px solid #0078E6; }
   .info-section-body { padding:16px; display:flex; flex-direction:column; gap:10px; }
   .info-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:0.5px solid var(--border); font-size:16px; }
   .info-row:last-child { border-bottom:none; }
   .info-row-label { color:var(--text); font-weight:600; }
   .info-row-value { color:var(--muted); font-size:15px; text-align:right; }
   .price-badge { font-size:13px; font-weight:800; background:rgba(240,97,24,0.1); color:var(--orange); border-radius:20px; padding:5px 13px; }
-  .free-badge { font-size:13px; font-weight:800; background:#E3F2FD; color:#1565C0; border-radius:20px; padding:5px 13px; }
+  .free-badge { font-size:13px; font-weight:800; background:#E3F2FD; color:#0078E6; border-radius:20px; padding:5px 13px; }
   .info-note { font-size:13px; color:var(--muted); font-style:italic; padding:6px 0 0; }
   .social-btns { display:flex; gap:10px; margin-top:4px; }
-  .social-btn { flex:1; padding:16px; border-radius:20px; border:1.5px solid #64B5F6; font-size:14px; font-weight:800; text-align:center; color:#0D47A1; background:#BBDEFB; cursor:pointer; letter-spacing:.04em; text-transform:uppercase; font-family:inherit; -webkit-tap-highlight-color:transparent; }
+  .social-btn { flex:1; padding:16px; border-radius:20px; border:1.5px solid #7CC4FF; font-size:14px; font-weight:800; text-align:center; color:#0057B8; background:#BBDEFB; cursor:pointer; letter-spacing:.04em; text-transform:uppercase; font-family:inherit; -webkit-tap-highlight-color:transparent; }
 
   /* FAQ ACCORDION */
   .faq-cat { background:#fff; border:1.5px solid var(--border); border-radius:14px; overflow:hidden; }
@@ -469,7 +469,7 @@ function loadLeaflet(cb) {
   .share-opt-label { font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); }
   .share-opt-sub { font-size: 12px; color: var(--muted); margin-top: 3px; font-weight: 500; }
   .share-cancel { display: block; width: calc(100% - 32px); margin: 4px 16px 0; padding: 17px; background: var(--text); color: var(--cream); font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; border: none; border-radius: 12px; cursor: pointer; font-family: inherit; }
-  .share-copied { display: none; text-align: center; font-size: 12px; font-weight: 800; color: #1976D2; padding: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .share-copied { display: none; text-align: center; font-size: 12px; font-weight: 800; color: #0A8FFF; padding: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
   .share-copied.show { display: block; }
 
   /* ── MAP FILTER BUTTONS ── */
@@ -493,12 +493,12 @@ function loadLeaflet(cb) {
   /* ── UPDATE BANNER ── */
   #update-bar {
     background: #BBDEFB;
-    color: #0D47A1;
+    color: #0057B8;
     padding: 10px 16px;
     display: none;
     align-items: center;
     gap: 10px;
-    border-bottom: 1.5px solid #64B5F6;
+    border-bottom: 1.5px solid #7CC4FF;
     position: sticky;
     top: 0;
     z-index: 52;
@@ -508,7 +508,7 @@ function loadLeaflet(cb) {
   /* ── SPLASH SCREEN ── */
   #splash {
     position: fixed; top:0; left:0; right:0; bottom:0;
-    background: #1976D2;
+    background: #0A8FFF;
     z-index: 9999;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
@@ -585,9 +585,9 @@ document.addEventListener('touchmove', function(e){
 
 <div id="update-bar">
   <span style="font-size:16px;">🌿</span>
-  <div id="updateText" style="flex:1;font-size:13px;font-weight:600;color:#0D47A1;">Mise à jour disponible</div>
-  <button id="updateBtn" onclick="doUpdate()" style="background:#1565C0;color:#fff;border:none;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:800;letter-spacing:.05em;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex-shrink:0;">Mettre à jour</button>
-  <button onclick="document.getElementById('update-bar').classList.remove('visible')" style="background:none;border:none;font-size:20px;color:#42A5F5;cursor:pointer;padding:0 0 0 4px;line-height:1;flex-shrink:0;" aria-label="Fermer">×</button>
+  <div id="updateText" style="flex:1;font-size:13px;font-weight:600;color:#0057B8;">Mise à jour disponible</div>
+  <button id="updateBtn" onclick="doUpdate()" style="background:#0078E6;color:#fff;border:none;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:800;letter-spacing:.05em;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex-shrink:0;">Mettre à jour</button>
+  <button onclick="document.getElementById('update-bar').classList.remove('visible')" style="background:none;border:none;font-size:20px;color:#3DB4FF;cursor:pointer;padding:0 0 0 4px;line-height:1;flex-shrink:0;" aria-label="Fermer">×</button>
 </div>
 
 <header>
@@ -596,7 +596,7 @@ document.addEventListener('touchmove', function(e){
     <span style="font-size:13px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--text);line-height:1.15;">Festival<br>POCHA MTL</span>
   </a>
   <div class="header-right">
-    <a href="https://www.zeffy.com/fr-CA/ticketing/pocha-mtl-11-14-juin-2026-bassin-peel-griffintown" target="_blank" id="ticketBtn" style="display:flex;align-items:center;gap:5px;background:#BBDEFB;color:#0D47A1;border:1px solid #64B5F6;border-radius:20px;padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;white-space:nowrap;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0D47A1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span id="ticketLabel">Billets</span></a>
+    <a href="https://www.zeffy.com/fr-CA/ticketing/pocha-mtl-11-14-juin-2026-bassin-peel-griffintown" target="_blank" id="ticketBtn" style="display:flex;align-items:center;gap:5px;background:#BBDEFB;color:#0057B8;border:1px solid #7CC4FF;border-radius:20px;padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;white-space:nowrap;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0057B8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span id="ticketLabel">Billets</span></a>
     <button id="langBtn" onclick="toggleLang()" style="background:transparent;border:1px solid rgba(13,27,42,0.15);border-radius:50%;width:32px;height:32px;font-size:11px;font-weight:800;color:var(--muted);cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:0;">EN</button>
   </div>
 </header>
@@ -731,11 +731,11 @@ document.addEventListener('touchmove', function(e){
     touch-action: manipulation;
     transition: background .12s, color .12s, border-color .12s;
   }
-  .map-filter-btn:active { background: rgba(25,118,210,0.15); }
+  .map-filter-btn:active { background: rgba(10,143,255,0.15); }
   .map-filter-btn.active {
-    background: #1976D2;
+    background: #0A8FFF;
     color: #fff;
-    border-color: #1976D2;
+    border-color: #0A8FFF;
   }
 
   /* La carte Leaflet occupe tout l'espace restant sous le header */
@@ -762,7 +762,7 @@ document.addEventListener('touchmove', function(e){
     height: 40px;
     border-radius: 50%;
     background: #f0f4fa;
-    border: 1.5px solid #1976D2;
+    border: 1.5px solid #0A8FFF;
     font-size: 16px;
     cursor: pointer;
     display: flex;
@@ -822,7 +822,7 @@ document.addEventListener('touchmove', function(e){
     height: 46px;
     border-radius: 50%;
     background: #f0f4fa;
-    border: 1.5px solid #1976D2;
+    border: 1.5px solid #0A8FFF;
     font-size: 20px;
     cursor: pointer;
     display: flex;
@@ -965,7 +965,7 @@ document.addEventListener('touchmove', function(e){
     background: #0D1B2A !important;
     color: #f0f4fa !important;
     border-radius: 10px !important;
-    border: 1.5px solid #1976D2 !important;
+    border: 1.5px solid #0A8FFF !important;
     box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
     padding: 0 !important;
   }
@@ -1050,8 +1050,8 @@ document.addEventListener('touchmove', function(e){
     <button class="mfb-btn active" onclick="filterMap('all',this)" data-filter="all">
       <span id="mfTous">Tous</span>
     </button>
-    <button class="mfb-btn" onclick="filterMap('stage',this)" data-filter="stage" data-color="#64B5F6">
-      <div class="mfb-dot" style="background:#64B5F6;"></div>
+    <button class="mfb-btn" onclick="filterMap('stage',this)" data-filter="stage" data-color="#7CC4FF">
+      <div class="mfb-dot" style="background:#7CC4FF;"></div>
       <span id="mfScenes">Scènes</span>
     </button>
     <button class="mfb-btn" onclick="filterMap('food',this)" data-filter="food" data-color="#FFB74D">
@@ -1062,8 +1062,8 @@ document.addEventListener('touchmove', function(e){
       <div class="mfb-dot" style="background:#81C784;"></div>
       <span id="mfAteliers">Ateliers</span>
     </button>
-    <button class="mfb-btn" onclick="filterMap('vendor',this)" data-filter="vendor" data-color="#CE93D8">
-      <div class="mfb-dot" style="background:#CE93D8;"></div>
+    <button class="mfb-btn" onclick="filterMap('vendor',this)" data-filter="vendor" data-color="#FF8A80">
+      <div class="mfb-dot" style="background:#FF8A80;"></div>
       <span id="mfMarchands">Marchands</span>
     </button>
     <button class="mfb-btn" onclick="filterMap('service',this)" data-filter="service" data-color="#90A4AE">
@@ -1075,10 +1075,10 @@ document.addEventListener('touchmove', function(e){
   <!-- Légende collapsible + bouton GPS — coin bas-droit -->
   <div id="mapLegendWrap">
     <div id="mapLegend">
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#64B5F6;"></div><span id="lgScene">Scène</span></div>
+      <div class="map-legend-item"><div class="map-legend-dot" style="background:#7CC4FF;"></div><span id="lgScene">Scène</span></div>
       <div class="map-legend-item"><div class="map-legend-dot" style="background:#FFB74D;"></div><span id="lgFood">Bouffe & Bar</span></div>
       <div class="map-legend-item"><div class="map-legend-dot" style="background:#81C784;"></div><span id="lgAtelier">Ateliers</span></div>
-      <div class="map-legend-item"><div class="map-legend-dot" style="background:#CE93D8;"></div><span id="lgVendor">Marchands</span></div>
+      <div class="map-legend-item"><div class="map-legend-dot" style="background:#FF8A80;"></div><span id="lgVendor">Marchands</span></div>
       <div class="map-legend-item"><div class="map-legend-dot" style="background:#90A4AE;"></div><span id="lgService">Essentiels</span></div>
     </div>
     <button id="mapLegendToggle" onclick="toggleMapLegend()" aria-label="Légende">🗂️</button>
@@ -1122,7 +1122,7 @@ var POCHA_ZONES = [
     cat: 'vendor',
     name: 'Section A — Marchands',
     desc: 'Tentes 10\'×10\' commerçants · Bar AB9 · Entrée/Sortie',
-    color: '#CE93D8',
+    color: '#FF8A80',
     // GeoJSON mis à jour — mai 2026
     coords: [
       [45.4929725, -73.5551284],
@@ -1157,7 +1157,7 @@ var POCHA_ZONES = [
     cat: 'stage',
     name: 'Section C — Scène & Marchands',
     desc: 'Scène 30\'×24\' · Marchands C1–C31 · Bar · Régie',
-    color: '#64B5F6',
+    color: '#7CC4FF',
     coords: [
       [45.4930968, -73.5536107],
       [45.4931263, -73.5533734],
@@ -1215,7 +1215,7 @@ var POCHA_SPOTS = [
   { id:'s1', cat:'stage', lat:45.492566, lng:-73.554195,
     icon:'🎤', name:'Scène principale',
     desc:'Concerts · Cérémonies · Performances',
-    color:'#64B5F6', textColor:'#fff',
+    color:'#7CC4FF', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ ATELIERS (Haleco)
@@ -1229,7 +1229,7 @@ var POCHA_SPOTS = [
   { id:'v1', cat:'vendor', lat:45.492891, lng:-73.554017,
     icon:'🛍️', name:'Marchands',
     desc:'Manga · Anime · Vêtements · Céramique · Artisanat',
-    color:'#CE93D8', textColor:'#fff',
+    color:'#FF8A80', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ BOUFFE
@@ -1319,10 +1319,10 @@ var POCHA_SPOTS = [
 ];
 
 var CAT_LABELS = {
-  stage:   { label:'Scène',     color:'#64B5F6', bg:'rgba(232,160,144,0.12)' },
+  stage:   { label:'Scène',     color:'#7CC4FF', bg:'rgba(232,160,144,0.12)' },
   food:    { label:'Bouffe & Bar',color:'#FFB74D', bg:'rgba(196,168,130,0.12)'  },
   atelier: { label:'Atelier',   color:'#81C784', bg:'rgba(155,176,154,0.12)' },
-  vendor:  { label:'Marchands', color:'#CE93D8', bg:'rgba(212,184,150,0.12)' },
+  vendor:  { label:'Marchands', color:'#FF8A80', bg:'rgba(212,184,150,0.12)' },
   service: { label:'Essentiels',  color:'#90A4AE', bg:'rgba(144,164,174,0.12)'  },
 };
 
@@ -1531,7 +1531,7 @@ function showMapSheet(spot) {
 
   document.getElementById('mapSheetContent').innerHTML =
     '<div class="sheet-icon-row">' +
-      '<div class="sheet-icon-bubble" style="background:' + (spot.color||'#1976D2') + ';display:flex;align-items:center;justify-content:center;">' +
+      '<div class="sheet-icon-bubble" style="background:' + (spot.color||'#0A8FFF') + ';display:flex;align-items:center;justify-content:center;">' +
         (window.ICON_SVGS && window.ICON_SVGS[spot.icon]
           ? window.ICON_SVGS[spot.icon]
           : '<span style="font-size:22px;">' + (spot.icon||'📍') + '</span>'
@@ -1603,7 +1603,7 @@ function locateMe() {
       // Remove old user marker if exists
       if (window._userMarker) { pochaLeafletMap.removeLayer(window._userMarker); }
       window._userMarker = L.circleMarker([lat, lng], {
-        radius: 10, color: '#1976D2', fillColor: '#1976D2', fillOpacity: 0.85, weight: 3,
+        radius: 10, color: '#0A8FFF', fillColor: '#0A8FFF', fillOpacity: 0.85, weight: 3,
       }).addTo(pochaLeafletMap);
       window._userMarker.bindPopup(lang === 'en' ? '📍 You are here!' : '📍 Vous êtes ici !').openPopup();
     },
@@ -1638,8 +1638,8 @@ function locateMe() {
     <div style="background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:10px;overflow:hidden;">
       <div style="padding:16px 18px;border-bottom:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:rgba(25,118,210,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(10,143,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
           <div style="font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--text);" data-fr="Dates & Horaires" data-en="Dates & Hours">Dates & Horaires</div>
         </div>
@@ -1664,8 +1664,8 @@ function locateMe() {
       </div>
       <!-- Lieu -->
       <div style="padding:14px 18px;display:flex;align-items:center;gap:12px;">
-        <div style="width:36px;height:36px;border-radius:10px;background:rgba(25,118,210,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(10,143,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div>
           <div style="font-size:15px;font-weight:700;color:var(--text);">Bassin Peel, Griffintown</div>
@@ -1676,15 +1676,15 @@ function locateMe() {
 
     <!-- Billets -->
     <div onclick="window.open('https://www.zeffy.com/fr-CA/ticketing/pocha-mtl-11-14-juin-2026-bassin-peel-griffintown','_blank')" style="background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:10px;padding:16px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;">
-      <div style="width:36px;height:36px;border-radius:10px;background:rgba(25,118,210,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><path d="M12 6v12"/><path d="M2 12h20"/></svg>
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(10,143,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><path d="M12 6v12"/><path d="M2 12h20"/></svg>
       </div>
       <div style="flex:1;">
         <div style="font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--text);margin-bottom:6px;" data-fr="Billets" data-en="Tickets">Billets</div>
         <div style="display:flex;gap:16px;">
           <div>
             <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);" data-fr="Prévente" data-en="Presale">Prévente</div>
-            <div style="font-size:20px;font-weight:900;color:#1976D2;line-height:1.1;">4$</div>
+            <div style="font-size:20px;font-weight:900;color:#0A8FFF;line-height:1.1;">4$</div>
           </div>
           <div style="width:1px;background:var(--border);"></div>
           <div>
@@ -1704,35 +1704,35 @@ function locateMe() {
     <!-- Transport -->
     <div style="background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:10px;overflow:hidden;">
       <div style="padding:14px 18px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
-        <div style="width:36px;height:36px;border-radius:10px;background:rgba(25,118,210,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/><path d="M5 8h14"/></svg>
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(10,143,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/><path d="M5 8h14"/></svg>
         </div>
         <div style="font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--text);" data-fr="Transport & Accès" data-en="Transport & Access">Transport & Accès</div>
       </div>
       <div style="padding:10px 18px;display:flex;flex-direction:column;gap:0;">
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><line x1="6" y1="17" x2="4" y2="21"/><line x1="18" y1="17" x2="20" y2="21"/><circle cx="9" cy="7" r="1.5" fill="#1976D2"/><circle cx="15" cy="7" r="1.5" fill="#1976D2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><line x1="6" y1="17" x2="4" y2="21"/><line x1="18" y1="17" x2="20" y2="21"/><circle cx="9" cy="7" r="1.5" fill="#0A8FFF"/><circle cx="15" cy="7" r="1.5" fill="#0A8FFF"/></svg>
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:700;color:var(--text);" data-fr="Métro" data-en="Metro">Métro</div>
             <div style="font-size:13px;color:var(--muted);" data-fr="Lucien-L'Allier (ligne verte)" data-en="Lucien-L'Allier (Green Line)">Lucien-L'Allier (ligne verte)</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="15" rx="3"/><path d="M3 10h18"/><circle cx="7.5" cy="15.5" r="1.5" fill="#1976D2"/><circle cx="16.5" cy="15.5" r="1.5" fill="#1976D2"/><line x1="6" y1="18" x2="6" y2="21"/><line x1="18" y1="18" x2="18" y2="21"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="15" rx="3"/><path d="M3 10h18"/><circle cx="7.5" cy="15.5" r="1.5" fill="#0A8FFF"/><circle cx="16.5" cy="15.5" r="1.5" fill="#0A8FFF"/><line x1="6" y1="18" x2="6" y2="21"/><line x1="18" y1="18" x2="18" y2="21"/></svg>
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:700;color:var(--text);" data-fr="Bus" data-en="Bus">Bus</div>
             <div style="font-size:13px;color:var(--muted);" data-fr="Ligne 36" data-en="Line 36">Ligne 36</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l1.5-5a2 2 0 011.9-1.4h7.2A2 2 0 0117.5 6L19 11"/><rect x="3" y="11" width="18" height="7" rx="2"/><circle cx="7" cy="15" r="1" fill="#1976D2"/><circle cx="17" cy="15" r="1" fill="#1976D2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l1.5-5a2 2 0 011.9-1.4h7.2A2 2 0 0117.5 6L19 11"/><rect x="3" y="11" width="18" height="7" rx="2"/><circle cx="7" cy="15" r="1" fill="#0A8FFF"/><circle cx="17" cy="15" r="1" fill="#0A8FFF"/></svg>
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:700;color:var(--text);" data-fr="Voiture" data-en="Car">Voiture</div>
             <div style="font-size:13px;color:var(--muted);" data-fr="Sortie A-10, Rue Peel" data-en="Exit A-10, Peel Street">Sortie A-10, Rue Peel</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5l3-8h5l3 8"/><path d="M8.5 9.5L12 5"/><circle cx="12" cy="4" r="1.5" fill="#1976D2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5l3-8h5l3 8"/><path d="M8.5 9.5L12 5"/><circle cx="12" cy="4" r="1.5" fill="#0A8FFF"/></svg>
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:700;color:var(--text);">BIXI</div>
             <div style="font-size:13px;color:var(--muted);" data-fr="2 stations à l'entrée" data-en="2 stations at the entrance">2 stations à l'entrée</div>
@@ -1745,7 +1745,7 @@ function locateMe() {
 
   <!-- VOIR LE PLAN -->
   <div style="padding:0 20px 16px;">
-    <a href="https://maps.google.com/?q=Bassin+Peel+Griffintown+Montreal" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:#1976D2;border-radius:14px;padding:18px;text-decoration:none;">
+    <a href="https://maps.google.com/?q=Bassin+Peel+Griffintown+Montreal" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:#0A8FFF;border-radius:14px;padding:18px;text-decoration:none;">
       <div style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
       </div>
@@ -1772,7 +1772,7 @@ function locateMe() {
 
       <div class="faq-cat" data-keywords="chiens pluie réentrée objets perdus animaux météo nourriture alcool">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(25,118,210,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><line x1="9" y1="21" x2="9" y2="14"/><line x1="15" y1="21" x2="15" y2="14"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(10,143,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><line x1="9" y1="21" x2="9" y2="14"/><line x1="15" y1="21" x2="15" y2="14"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);">Festival</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Chiens, pluie, réentrée, objets perdus…" data-en="Dogs, rain, re-entry, lost & found…">Chiens, pluie, réentrée, objets perdus…</div></div>
           <span class="faq-plus">+</span>
         </button>
@@ -1788,7 +1788,7 @@ function locateMe() {
 
       <div class="faq-cat" data-keywords="billets prix paiement argent comptant carte gratuit prévente remboursement">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(25,118,210,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(10,143,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Billetterie & Paiement" data-en="Tickets & Payment">Billetterie & Paiement</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Prix, modes de paiement, billets perdus…" data-en="Prices, payment methods, lost tickets…">Prix, modes de paiement, billets perdus…</div></div>
           <span class="faq-plus">+</span>
         </button>
@@ -1802,7 +1802,7 @@ function locateMe() {
 
       <div class="faq-cat" data-keywords="métro bus bixi voiture stationnement vélo transport accès auto">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(25,118,210,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><line x1="6" y1="17" x2="4" y2="21"/><line x1="18" y1="17" x2="20" y2="21"/><circle cx="9" cy="7" r="1.5" fill="#1976D2"/><circle cx="15" cy="7" r="1.5" fill="#1976D2"/></svg></div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(10,143,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><line x1="6" y1="17" x2="4" y2="21"/><line x1="18" y1="17" x2="20" y2="21"/><circle cx="9" cy="7" r="1.5" fill="#0A8FFF"/><circle cx="15" cy="7" r="1.5" fill="#0A8FFF"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Transport & Accès" data-en="Transport & Access">Transport & Accès</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Métro, bus, BIXI, comment se rendre…" data-en="Metro, bus, BIXI, how to get there…">Métro, bus, BIXI, comment se rendre…</div></div>
           <span class="faq-plus">+</span>
         </button>
@@ -1816,7 +1816,7 @@ function locateMe() {
 
       <div class="faq-cat" data-keywords="accessibilité fauteuil roulant poussette mobilité réduite handicap">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(25,118,210,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 7v5"/><path d="M8 22l4-10 4 10"/><path d="M7 12h10"/></svg></div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(10,143,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 7v5"/><path d="M8 22l4-10 4 10"/><path d="M7 12h10"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Accessibilité" data-en="Accessibility">Accessibilité</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Poussettes, personnes à mobilité réduite…" data-en="Strollers, reduced mobility…">Poussettes, personnes à mobilité réduite…</div></div>
           <span class="faq-plus">+</span>
         </button>
@@ -1850,8 +1850,8 @@ function locateMe() {
   </div>
   <div style="padding:8px 20px 24px;">
     <a href="https://www.asiasie.com/fr/pocha-mtl" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:14px 18px;text-decoration:none;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-      <div style="flex:1;"><div style="font-size:13px;font-weight:900;color:#1565C0;letter-spacing:.04em;text-transform:uppercase;">Asiasie.com</div><div style="font-size:11px;color:var(--muted);margin-top:2px;" data-fr="Organization behind POCHA MTL" data-en="Organization behind POCHA MTL">Organization behind POCHA MTL</div></div>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0078E6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      <div style="flex:1;"><div style="font-size:13px;font-weight:900;color:#0078E6;letter-spacing:.04em;text-transform:uppercase;">Asiasie.com</div><div style="font-size:11px;color:var(--muted);margin-top:2px;" data-fr="Organization behind POCHA MTL" data-en="Organization behind POCHA MTL">Organization behind POCHA MTL</div></div>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </a>
   </div>
@@ -1882,7 +1882,7 @@ function locateMe() {
         </div>
       </button>
       <button class="share-opt" onclick="doShare('install')">
-        <div class="share-opt-icon" style="background:#1976D2">
+        <div class="share-opt-icon" style="background:#0A8FFF">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
         <div>
@@ -2085,7 +2085,7 @@ const EVENTS={
   "2026-06-11":[
     {id:"j01",start:"15:00",end:"17:00",lieu:"scene",name:"Open Space Rehearsal",desc:"Répétition ouverte sur scène pour les groupes participants.",tags:["Gratuit","Tout public","Danse","Répétition"]},
     {id:"j02",start:"17:00",end:"18:00",lieu:"scene",name:"Playlist K-pop",desc:"Sélection musicale K-pop pour mettre dans l'ambiance.",tags:["Gratuit","Tout public","Musique","K-pop"]},
-    {id:"j03",start:"18:00",end:"18:30",lieu:"scene",name:"Cérémonie d'ouverture",desc:"Coup d'envoi officiel de POCHA MTL 2026 ! Bienvenue au plus grand festival K-pop de Montréal.",tags:["Gratuit","Tout public","Cérémonie"]},
+    {id:"j03",start:"18:00",end:"18:15",lieu:"scene",name:"Cérémonie d'ouverture",desc:"Coup d'envoi officiel de POCHA MTL 2026 ! Bienvenue au plus grand festival K-pop de Montréal.",tags:["Gratuit","Tout public","Cérémonie"]},
     {id:"j04",start:"18:30",end:"19:30",lieu:"scene",name:"Open Stage — Performances de danse",note:"Dance Quest · GLOW · JELL3S · INFINIT-E-UNIT · KSTEEZ · KSWAN · ONE PULSE · VALKYRIE · BALTERZ · EMØRIA",desc:"Performances de danse par les groupes de la communauté K-pop.\n\n• 18h30 — DANCE QUEST\n• 18h35 — GLOW\n• 18h40 — JELL3S\n• 18h45 — INFINIT-E-UNIT\n• 18h50 — KSTEEZ\n• 18h55 — KSWAN\n• 19h00 — ONE PULSE\n• 19h05 — VALKYRIE\n• 19h20 — BALTERZ\n• 19h25 — EMØRIA",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
     {id:"j05",start:"20:30",end:"21:30",lieu:"scene",name:"K-Pop Random Play Dance",desc:"Danse aléatoire K-pop — connais-tu les chorés ? Monte sur scène et prouve-le ! Des classiques de BTS, BLACKPINK, TWICE, Stray Kids et plus.",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
     {id:"j06",start:"21:30",end:"22:00",lieu:"scene",name:"Open Stage / Playlist",desc:"Scène ouverte et playlist K-pop pour finir la soirée.",tags:["Gratuit","Tout public","Musique","K-pop"]},
@@ -2101,7 +2101,6 @@ const EVENTS={
     {id:"s01",start:"12:00",end:"12:30",lieu:"scene",name:"Playlist K-pop",desc:"Ambiance musicale K-pop pour l'ouverture du samedi.",tags:["Gratuit","Tout public","Musique","K-pop"]},
     {id:"s02",start:"12:30",end:"13:30",lieu:"scene",name:"Open Stage — Danse & Chant",desc:"Performances de danse et de chant K-pop.",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
     {id:"s03",start:"14:00",end:"16:00",lieu:"scene",name:"\u{1F3C6} Compétition de danse K-pop",note:"13 groupes en compétition",desc:"Compétition officielle de danse K-pop POCHA MTL 2026 !\n\n1. AllPodiumCrew — r u ok (ifeye)\n2. New Dawn Fever — Mamma Mia (izna)\n3. Felynz — BANG! (After School)\n4. ECHO — Red Sun (xikers)\n5. BalterZ — FOCUS (Hearts2Hearts)\n6. B-WARE — Road Not Taken (&TEAM)\n7. ATC — Talk Saxy (RIIZE)\n8. IntenCITY — Up (Kep1er)\n9. FourYou — 404 (KiiKii)\n10. XTRADOSE — EXO Mashup\n11. Salja Dance — Go In Blind (&TEAM)\n12. NOVA Dance — RUDE! (Hearts2Hearts)\n13. MOMENTUM — MAVERICK (The Boyz)",tags:["Gratuit","Tout public","Compétition","Danse","K-pop"]},
-    {id:"s03b",start:"14:00",end:"15:00",lieu:"atelier",name:"K-Pop Random Play Dance",desc:"Session de Random Play Dance pendant la compétition.",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
     {id:"s04",start:"18:00",end:"19:00",lieu:"scene",name:"East2West Performances + RPD",desc:"Performances du groupe East2West suivies d'une session Random Play Dance.",tags:["Gratuit","Tout public","Danse","K-pop"]},
     {id:"s05",start:"19:00",end:"20:00",lieu:"scene",name:"BTS 13th Anniversary Workshop",desc:"Atelier spécial pour célébrer le 13e anniversaire de BTS ! Apprenez des chorégraphies iconiques.",tags:["Gratuit","Tout public","BTS","K-pop","Danse","Atelier"]},
     {id:"s06",start:"20:00",end:"21:00",lieu:"scene",name:"K-Pop Dance Roulette & RPD",desc:"Roulette de danse K-pop — tirage au sort des chansons ! Suivi d'une Random Play Dance.",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
@@ -2534,7 +2533,7 @@ function openDrawer(date, evId){
   document.getElementById("drawerBody").innerHTML=`
     <div class="drawer-desc">${formatDesc(ev.desc||"Description à venir.")}</div>
     ${tags?`<div class="drawer-tags">${tags}</div>`:""}
-    <button onclick="addToCalendar('${date}','${ev.id}')" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:16px;margin-bottom:8px;padding:14px;background:rgba(25,118,210,0.08);border:1px solid rgba(25,118,210,0.3);border-radius:10px;font-size:13px;font-weight:700;color:#1976D2;cursor:pointer;font-family:inherit;letter-spacing:.03em;-webkit-tap-highlight-color:transparent;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg> ${lang==='en'?'Add to my calendar':'Ajouter à mon calendrier'}</button>
+    <button onclick="addToCalendar('${date}','${ev.id}')" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:16px;margin-bottom:8px;padding:14px;background:rgba(10,143,255,0.08);border:1px solid rgba(10,143,255,0.3);border-radius:10px;font-size:13px;font-weight:700;color:#0A8FFF;cursor:pointer;font-family:inherit;letter-spacing:.03em;-webkit-tap-highlight-color:transparent;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg> ${lang==='en'?'Add to my calendar':'Ajouter à mon calendrier'}</button>
     ${mapLinkBtn}
     <button class="drawer-close" onclick="closeDrawer()">${t("drawer_close")}</button>
   `;
@@ -2633,20 +2632,20 @@ const EVENTS_EN = {
     {id:"s01",name:"K-pop Playlist",desc:"K-pop ambient music for Saturday opening.",tags:["Free","All ages","Music","K-pop"]},
     {id:"s02",name:"Open Stage — Dance & Vocal",desc:"K-pop dance and vocal performances.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
     {id:"s03",name:"\u{1F3C6} K-pop Dance Competition",note:"13 groups competing",desc:"Official POCHA MTL 2026 K-pop dance competition!",tags:["Free","All ages","Competition","Dance","K-pop"]},
-    {id:"s03b",name:"K-Pop Random Play Dance",desc:"Random Play Dance session during the competition.",tags:["Free","All ages","K-pop","Dance","Participatory"]},
     {id:"s04",name:"East2West Performances + RPD",desc:"East2West group performances followed by Random Play Dance.",tags:["Free","All ages","Dance","K-pop"]},
     {id:"s05",name:"BTS 13th Anniversary Workshop",desc:"Special workshop celebrating BTS's 13th anniversary! Learn iconic Bangtan choreos.",tags:["Free","All ages","BTS","K-pop","Dance","Workshop"]},
     {id:"s06",name:"K-Pop Dance Roulette & RPD",desc:"K-pop dance roulette — random song draw! Followed by Random Play Dance.",tags:["Free","All ages","K-pop","Dance","Participatory"]},
     {id:"s07",name:"Open Stage — Dance & Karaoke",desc:"Open stage — K-pop dance and karaoke to end Saturday night!",tags:["Free","All ages","Dance","Karaoke","K-pop","Open stage"]},
   ],
   "2026-06-14":[
-    {id:"d01",name:"Open Stage — Dance & Vocal",desc:"K-pop dance and vocal performances.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
-    {id:"d02",name:"\u{1F3C6} K-pop Dance Competition (cont.)",note:"Finals and results",desc:"Finals of the official POCHA MTL 2026 K-pop dance competition.",tags:["Free","All ages","Competition","Dance","K-pop"]},
-    {id:"d02b",name:"K-Pop Freestyle Battle",desc:"K-pop freestyle battle! Show your improvised moves.",tags:["Free","All ages","K-pop","Dance","Competition"]},
-    {id:"d03",name:"Dance Workshop",desc:"K-pop dance workshop — learn a full choreography!",tags:["Free","All ages","K-pop","Dance","Workshop"]},
-    {id:"d04",name:"East2West Performances",desc:"East2West group performances.",tags:["Free","All ages","Dance","K-pop"]},
-    {id:"d05",name:"Momentum Performances + RPD",desc:"Momentum performances followed by Random Play Dance.",tags:["Free","All ages","Dance","K-pop"]},
-    {id:"d06",name:"Closing Playlist",desc:"Final K-pop playlist to close POCHA MTL 2026. Thank you and see you next year!",tags:["Free","All ages","Music","K-pop"]},
+    {id:"d01",name:"K-pop Playlist",desc:"K-pop ambient music for Sunday opening.",tags:["Free","All ages","Music","K-pop"]},
+    {id:"d02",name:"Open Stage — Dance & Vocal",desc:"K-pop dance and vocal performances.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
+    {id:"d03",name:"K-Pop Random Play Dance",desc:"Random Play Dance session — do you know the choreos? Get on stage!",tags:["Free","All ages","K-pop","Dance","Participatory"]},
+    {id:"d04",name:"K-Pop Freestyle Battle",desc:"K-pop freestyle battle! Show your improvised moves.",tags:["Free","All ages","K-pop","Dance","Competition"]},
+    {id:"d05",name:"Dance Workshop",desc:"K-pop dance workshop — learn a full choreography!",tags:["Free","All ages","K-pop","Dance","Workshop"]},
+    {id:"d06",name:"East2West Performances",desc:"East2West group performances.",tags:["Free","All ages","Dance","K-pop"]},
+    {id:"d07",name:"Momentum Performances + RPD",note:"TBC",desc:"Momentum performances followed by Random Play Dance.",tags:["Free","All ages","Dance","K-pop"]},
+    {id:"d08",name:"Closing Playlist",desc:"Final K-pop playlist to close POCHA MTL 2026. Thank you and see you next year!",tags:["Free","All ages","Music","K-pop"]},
   ],
 };
 
