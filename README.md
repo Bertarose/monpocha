@@ -1,35 +1,43 @@
 # MONPOCHA — Festival POCHA MTL 2026
 
-App de programmation interactive pour le festival POCHA MTL 2026.  
 **11–14 juin 2026 · Bassin Peel · Griffintown · Montréal**
+
+## Structure
+
+```
+monpocha-main/
+├── index.html              ← Page d'accueil temporaire (countdown)
+├── webapp.html             ← App de programmation interactive
+├── manifest.json           ← PWA manifest
+├── sw.js                   ← Service Worker (mode hors-ligne)
+├── vercel.json             ← Config Vercel
+├── favicon.ico             ← Favicon classique
+├── favicon.svg             ← Favicon SVG
+├── favicon-96x96.png       ← Favicon PNG
+├── apple-touch-icon.png    ← Icône iOS
+├── icon-192.png            ← Icône PWA 192×192
+├── icon-512.png            ← Icône PWA 512×512
+├── img/
+│   ├── mascot.jpg          ← Logo principal / mascotte
+│   ├── pocha-logo.png      ← Logo POCHA MTL
+│   ├── food-corndog.png    ← Floating food (landing)
+│   ├── food-skewer.png     ← Floating food (landing)
+│   └── food-sushi.png      ← Floating food (landing)
+├── audio/
+│   └── pocha.mp3           ← Audio
+└── images/icons/           ← Icônes SVG carte du site
+```
+
+## Pages
+
+- `/` → Page countdown temporaire (index.html)
+- `/webapp.html` → Programmation interactive complète
 
 ## Déploiement
 
 ```bash
-# Vercel
 vercel deploy
-
-# Ou Netlify / GitHub Pages
-# Copiez les fichiers à la racine du site
 ```
-
-## Structure
-
-- `index.html` — App complète (HTML/CSS/JS fichier unique)
-- `webapp.html` — Copie de travail
-- `manifest.json` — PWA manifest
-- `sw.js` — Service Worker (mode hors-ligne)
-- `vercel.json` — Configuration Vercel
-
-## TODO
-
-- [ ] Remplacer `icon-192.png` et `icon-512.png` par le logo POCHA
-- [ ] Remplacer `favicon.ico` par le favicon POCHA
-- [ ] Ajouter `/images/pocha.jpg` (image OG 512x512)
-- [ ] Mettre à jour l'ID Google Analytics (G-XXXXXXXXXX)
-- [ ] Mettre à jour le lien Zeffy (billetterie)
-- [ ] Confirmer les coordonnées GPS exactes de la carte
-- [ ] Ajouter les liens sociaux corrects (Instagram/Facebook POCHA)
 
 ---
 *Créée par Kim Maurice (Bertarose) · Mai 2026 · Pour ASIASIE*

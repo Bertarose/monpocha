@@ -8,7 +8,10 @@ const CACHE_VERSION = 'monpocha-2026-v1';
 const ASSETS = [
   '/',
   '/index.html',
+  '/webapp.html',
   '/manifest.json',
+  '/img/mascot.jpg',
+  '/img/pocha-logo.png',
 ];
 
 const NETWORK_TIMEOUT_MS = 3000;
