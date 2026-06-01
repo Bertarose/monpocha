@@ -1410,7 +1410,7 @@ document.addEventListener('touchmove', function(e){
     </button>
     <button class="mfb-btn" onclick="filterMap('food',this)" data-filter="food" data-color="#C4A882">
       <div class="mfb-dot" style="background:#C4A882;"></div>
-      <span id="mfFood">Bouffe</span>
+      <span id="mfFood">Zone culinaire</span>
     </button>
     <button class="mfb-btn" onclick="filterMap('atelier',this)" data-filter="atelier" data-color="#9BB09A">
       <div class="mfb-dot" style="background:#9BB09A;"></div>
@@ -1418,7 +1418,7 @@ document.addEventListener('touchmove', function(e){
     </button>
     <button class="mfb-btn" onclick="filterMap('vendor',this)" data-filter="vendor" data-color="#D4B896">
       <div class="mfb-dot" style="background:#D4B896;"></div>
-      <span id="mfMarchands">Marchands</span>
+      <span id="mfMarchands">Zone marchande</span>
     </button>
     <button class="mfb-btn" onclick="filterMap('service',this)" data-filter="service" data-color="#8FA3B0">
       <div class="mfb-dot" style="background:#8FA3B0;"></div>
@@ -1464,10 +1464,10 @@ var MAP_CENTER = [45.49280, -73.55420]; // Centre réel du site — mai 2026
 var POCHA_ZONES = [
   {
     id: 'zone-a',
-    cat: 'vendor',
-    name: 'Section A — Marchands',
-    desc: 'Tentes 10\'×10\' commerçants · Bar AB9 · Entrée/Sortie',
-    color: '#D4B896',
+    cat: 'food',
+    name: 'Section A — Zone culinaire', name_en: 'Section A — Food Zone',
+    desc: 'Bouffe · Bar · Entrée/Sortie', desc_en: 'Food · Bar · Entrance/Exit',
+    color: '#C4A882',
     // GeoJSON mis à jour — mai 2026
     coords: [
       [45.4929703, -73.555153],
@@ -1480,10 +1480,10 @@ var POCHA_ZONES = [
   },
   {
     id: 'zone-b',
-    cat: 'service',
-    name: 'Section B — Essentiels',
-    desc: 'Sécurité · Premiers soins · Bénévoles · Production · Toilettes',
-    color: '#8FA3B0',
+    cat: 'vendor',
+    name: 'Section B — Zone marchande', name_en: 'Section B — Vendor Zone',
+    desc: 'Tentes commerçants · Marchands', desc_en: 'Vendor tents · Merchants',
+    color: '#D4B896',
     coords: [
       [45.4930165, -73.5542501],
       [45.49236, -73.5543691],
@@ -1495,8 +1495,8 @@ var POCHA_ZONES = [
   {
     id: 'zone-c',
     cat: 'stage',
-    name: 'Section C — Scène & Marchands',
-    desc: 'Scène 30\'×24\' · Marchands C1–C31 · Bar · Régie',
+    name: 'Section C — Scène & Zone marchande', name_en: 'Section C — Stage & Vendor Zone',
+    desc: 'Scène 30\'×24\' · Marchands C1–C31 · Bar · Régie', desc_en: '30\'×24\' stage · Vendors C1–C31 · Bar · Production',
     color: '#E8A090',
     coords: [
       [45.4930745, -73.5535969],
@@ -1509,8 +1509,8 @@ var POCHA_ZONES = [
   {
     id: 'zone-d',
     cat: 'food',
-    name: 'Section D — Bouffe & Bar',
-    desc: 'Cuisson · Bar · Desserts · Tri · Zone plonge · Toilettes',
+    name: 'Section D — Zone culinaire & Bar', name_en: 'Section D — Food Zone & Bar',
+    desc: 'Cuisson · Bar · Desserts · Tri · Zone plonge · Toilettes', desc_en: 'Cooking · Bar · Desserts · Sorting · Dishwash zone · Washrooms',
     color: '#C4A882',
     coords: [
       [45.4930703, -73.553087],
@@ -1522,8 +1522,8 @@ var POCHA_ZONES = [
     {
     id: 'zone-e',
     cat: 'atelier',
-    name: 'HALECO',
-    desc: 'Ateliers · Bar · Toilettes',
+    name: 'HALECO', name_en: 'HALECO',
+    desc: 'Ateliers · Bar · Toilettes', desc_en: 'Workshops · Bar · Washrooms',
     color: '#9BB09A',
     coords: [
       [45.4936197, -73.5533629],
@@ -1536,51 +1536,52 @@ var POCHA_ZONES = [
 
 // ── MARQUEURS CLÉS ────────────────────────────────────────
 // Coordonnées basées sur le plan BASSIN PEEL 2026
+// Coordonnées basées sur le plan BASSIN PEEL 2026
 // ⚠️  À affiner avec les vraies coords GPS une fois sur place
 var POCHA_SPOTS = [
   // ─ ENTRÉES / SORTIES
   { id:'e1', cat:'service', lat:45.494547, lng:-73.552889,
-    icon:'🟢', name:'Entrée publique',
-    desc:'Accès principal · Filtration',
+    icon:'🟢', name:'Entrée publique', name_en:'Public Entrance',
+    desc:'Accès principal · Filtration', desc_en:'Main access · Security check',
     color:'#7CB08A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'e2', cat:'service', lat:45.492974, lng:-73.555599,
-    icon:'♿', name:'Entrée adaptée / Sortie publique',
-    desc:'Sortie publique · Entrée transport adapté seulement',
+    icon:'♿', name:'Entrée adaptée / Sortie publique', name_en:'Accessible Entrance / Public Exit',
+    desc:'Sortie publique · Entrée transport adapté seulement', desc_en:'Public exit · Adapted transport entrance only',
     color:'#6A9BB0', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'e3', cat:'service', lat:45.493905, lng:-73.553054,
-    icon:'🔴', name:'Sortie publique',
-    desc:'Sortie publique (non adaptée)',
+    icon:'🔴', name:'Sortie publique', name_en:'Public Exit',
+    desc:'Sortie publique (non adaptée)', desc_en:'Public exit (not accessible)',
     color:'#D4908A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ SCÈNE
   { id:'s1', cat:'stage', lat:45.492566, lng:-73.554195,
-    icon:'🎤', name:'Scène principale',
-    desc:'Concerts · Cérémonies · Performances',
+    icon:'🎤', name:'Scène principale', name_en:'Main Stage',
+    desc:'Concerts · Cérémonies · Performances', desc_en:'Concerts · Ceremonies · Performances',
     color:'#E8A090', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ ATELIERS (Haleco)
   { id:'a1', cat:'atelier', lat:45.4936498, lng:-73.5535191,
-    icon:'🚪', name:'Entrée — HALECO',
-    desc:'Origami · Calligraphie · Cérémonie du thé · Saké',
+    icon:'🚪', name:'Entrée — HALECO', name_en:'Entrance — HALECO',
+    desc:'Origami · Calligraphie · Cérémonie du thé · Saké', desc_en:'Origami · Calligraphy · Tea Ceremony · Sake',
     color:'#9BB09A', textColor:'#fff',
     addr:'Entrée Haleco, Bassin Peel' },
   // ─ HALECO — Toilettes
   { id:'hw1', cat:'service', lat:45.4939093, lng:-73.5533855,
-    icon:'🚻', name:'Toilettes — Haleco',
-    desc:'Toilettes intérieures · Accessibles',
+    icon:'🚻', name:'Toilettes — Haleco', name_en:'Washrooms — Haleco',
+    desc:'Toilettes intérieures · Accessibles', desc_en:'Indoor washrooms · Accessible',
     color:'#5A7FA0', textColor:'#fff',
     addr:'Édifice Haleco, Bassin Peel' },
 
   // ─ HALECO — Bar
   { id:'hb1', cat:'bar', lat:45.4938427, lng:-73.5533334,
-    icon:'🍶', name:'Bar — Haleco',
-    desc:'Bar intérieur · Bières · Sakés · Cocktails',
+    icon:'🍶', name:'Bar — Haleco', name_en:'Bar — Haleco',
+    desc:'Bar intérieur · Bières · Sakés · Cocktails', desc_en:'Indoor bar · Beer · Sake · Cocktails',
     color:'#7A4A6A', textColor:'#fff',
     addr:'Édifice Haleco, Bassin Peel' },
 
@@ -1588,104 +1589,105 @@ var POCHA_SPOTS = [
 
   // ─ MARCHANDS
   { id:'v1', cat:'vendor', lat:45.492891, lng:-73.554017,
-    icon:'🛍️', name:'Marchands',
-    desc:'Manga · Anime · Vêtements · Céramique · Artisanat',
+    icon:'🛍️', name:'Zone marchande', name_en:'Vendor Zone',
+    desc:'Manga · Anime · Vêtements · Céramique · Artisanat', desc_en:'Manga · Anime · Clothing · Ceramics · Crafts',
     color:'#D4B896', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ BOUFFE
   { id:'f1', cat:'food', lat:45.492544, lng:-73.555015,
-    icon:'🍜', name:'Bouffe',
-    desc:'Ramen · Sushi · Desserts · Cuisine asiatique',
+    icon:'🍜', name:'Zone culinaire', name_en:'Food Zone',
+    desc:'Ramen · Sushi · Desserts · Cuisine asiatique', desc_en:'Ramen · Sushi · Desserts · Asian cuisine',
     color:'#C4A882', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ BARS
   { id:'b1', cat:'food', lat:45.492521, lng:-73.554801,
-    icon:'🍺', name:'Bar',
-    desc:'Bar principal',
+    icon:'🍺', name:'Bar', name_en:'Bar',
+    desc:'Bar principal', desc_en:'Main bar',
     color:'#C4A882', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'b2', cat:'food', lat:45.491897, lng:-73.555131,
-    icon:'🍺', name:'Bar / Terrasse',
-    desc:'Bar · Terrasse',
+    icon:'🍺', name:'Bar / Terrasse', name_en:'Bar / Patio',
+    desc:'Bar · Terrasse', desc_en:'Bar · Patio',
     color:'#C4A882', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
-  { id:'b3', cat:'food', lat:45.492802, lng:-73.553673,
-    icon:'🍺', name:'Zone Terrasse',
-    desc:'Terrasse · Bar 3',
+  { id:'b3', cat:'food', lat:45.49275600194729, lng:-73.55401234555944,
+    icon:'🍺', name:'Zone Terrasse', name_en:'Patio Area',
+    desc:'Terrasse · Bar', desc_en:'Patio · Bar',
     color:'#C4A882', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ STATION D'EAU
   { id:'h1', cat:'service', lat:45.492983, lng:-73.554227,
-    icon:'💧', name:'Station d\'eau',
-    desc:'Eau potable gratuite',
+    icon:'💧', name:'Station d\'eau', name_en:'Water Station',
+    desc:'Eau potable gratuite', desc_en:'Free drinking water',
     color:'#6A9BB0', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ TOILETTES
   { id:'w1', cat:'service', lat:45.493015, lng:-73.553765,
-    icon:'🚻', name:'Toilettes',
-    desc:'Toilettes',
+    icon:'🚻', name:'Toilettes', name_en:'Washrooms',
+    desc:'Toilettes', desc_en:'Washrooms',
     color:'#8FA3B0', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'w2', cat:'service', lat:45.492893, lng:-73.555134,
-    icon:'🚻', name:'Toilettes',
-    desc:'Toilettes',
+    icon:'🚻', name:'Toilettes', name_en:'Washrooms',
+    desc:'Toilettes', desc_en:'Washrooms',
     color:'#8FA3B0', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ STATIONS DE TRI
   { id:'r1', cat:'service', lat:45.492940, lng:-73.554729,
-    icon:'♻️', name:'Station de tri',
-    desc:'Tri sélectif · Zéro déchet',
+    icon:'♻️', name:'Station de tri', name_en:'Sorting Station',
+    desc:'Tri sélectif · Zéro déchet', desc_en:'Recycling · Zero waste',
     color:'#7AA87A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'r2', cat:'service', lat:45.492048, lng:-73.555134,
-    icon:'♻️', name:'Station de tri',
-    desc:'Tri sélectif · Zéro déchet',
+    icon:'♻️', name:'Station de tri', name_en:'Sorting Station',
+    desc:'Tri sélectif · Zéro déchet', desc_en:'Recycling · Zero waste',
     color:'#7AA87A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
-  { id:'r3', cat:'service', lat:45.492979, lng:-73.553852,
-    icon:'♻️', name:'Station de tri',
-    desc:'Tri sélectif · Zéro déchet',
+  { id:'r3', cat:'service', lat:45.4928862, lng:-73.5534412,
+    icon:'♻️', name:'Station de tri', name_en:'Sorting Station',
+    desc:'Tri sélectif · Zéro déchet', desc_en:'Recycling · Zero waste',
     color:'#7AA87A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ PREMIERS SOINS / BÉNÉVOLES / OBJETS PERDUS
-  { id:'m1', cat:'service', lat:45.4931246, lng:-73.5535257,
-    icon:'🏥', name:'Premiers soins · Bénévoles · Objets perdus',
-    desc:'Infirmière sur place · Bénévoles · Objets trouvés',
+  { id:'m1', cat:'service', lat:45.4930711, lng:-73.5534795,
+    icon:'🏥', name:'Premiers soins · Bénévoles · Objets perdus', name_en:'First Aid · Volunteers · Lost & Found',
+    desc:'Infirmière sur place · Bénévoles · Objets trouvés', desc_en:'On-site nurse · Volunteers · Lost & found',
     color:'#D4908A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ BIXI
   { id:'bx1', cat:'service', lat:45.493548, lng:-73.553360,
-    icon:'🚲', name:'Bixi',
-    desc:'Station Bixi',
+    icon:'🚲', name:'Bixi', name_en:'Bixi',
+    desc:'Station Bixi', desc_en:'Bixi Station',
     color:'#8FA3B0', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'bx2', cat:'service', lat:45.492772, lng:-73.556445,
-    icon:'🚲', name:'Bixi',
-    desc:'Station Bixi',
+    icon:'🚲', name:'Bixi', name_en:'Bixi',
+    desc:'Station Bixi', desc_en:'Bixi Station',
     color:'#8FA3B0', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 ];
+];
 
 var CAT_LABELS = {
-  stage:   { label:'Scène',     color:'#E8A090', bg:'rgba(232,160,144,0.12)' },
-  food:    { label:'Bouffe & Bar',color:'#C4A882', bg:'rgba(196,168,130,0.12)'  },
-  atelier: { label:'HALECO',   color:'#9BB09A', bg:'rgba(155,176,154,0.12)' },
-  vendor:  { label:'Marchands', color:'#D4B896', bg:'rgba(212,184,150,0.12)' },
-  service: { label:'Essentiels',  color:'#8FA3B0', bg:'rgba(143,163,176,0.12)'  },
-  bar:     { label:'Bar',          color:'#7A4A6A', bg:'rgba(122,74,106,0.12)'   },
+  stage:   { label:'Scène', label_en:'Stage', color:'#E8A090', bg:'rgba(232,160,144,0.12)' },
+  food:    { label:'Zone culinaire & Bar', label_en:'Food Zone & Bar', color:'#C4A882', bg:'rgba(196,168,130,0.12)'  },
+  atelier: { label:'HALECO', label_en:'HALECO', color:'#9BB09A', bg:'rgba(155,176,154,0.12)' },
+  vendor:  { label:'Zone marchande', label_en:'Vendor Zone', color:'#D4B896', bg:'rgba(212,184,150,0.12)' },
+  service: { label:'Essentiels', label_en:'Essentials', color:'#8FA3B0', bg:'rgba(143,163,176,0.12)'  },
+  bar:     { label:'Bar', label_en:'Bar', color:'#7A4A6A', bg:'rgba(122,74,106,0.12)'   },
 };
 
 // ── INIT ─────────────────────────────────────────────────
@@ -1738,11 +1740,8 @@ function initpochaMap() {
     // Pas de label de section — les gens n'ont pas besoin de lire ça
     var labelMarker = null;
 
-    poly.zoneData = zone;
-    poly.on('click', function(e) {
-      L.DomEvent.stopPropagation(e);
-      showMapSheet(zone);
-    });
+    // Zones are visual only — not clickable
+    poly.options.interactive = false;
 
     pochaZoneLayers.push({ poly: poly, label: null, zone: zone });
   });
@@ -1880,7 +1879,10 @@ function filterMap(cat, btn) {
 
 // ── BOTTOM SHEET ─────────────────────────────────────────
 function showMapSheet(spot) {
-  var catInfo = CAT_LABELS[spot.cat] || { label: spot.cat, color:'#7a5c3a', bg:'rgba(122,92,58,0.1)' };
+  var catInfo = CAT_LABELS[spot.cat] || { label: spot.cat, label_en: spot.cat, color:'#7a5c3a', bg:'rgba(122,92,58,0.1)' };
+  var spotName = lang==='en' ? (spot.name_en||spot.name) : spot.name;
+  var spotDesc = lang==='en' ? (spot.desc_en||spot.desc) : spot.desc;
+  var catLabel = lang==='en' ? (catInfo.label_en||catInfo.label) : catInfo.label;
 
   var CAT_EMOJIS = { stage:'🎤', food:'🍜', atelier:'🎨', vendor:'🛍️', service:'🛡️' };
   var displayIcon = (spot.icon && spot.icon !== 'undefined') ? spot.icon : (CAT_EMOJIS[spot.cat] || '📍');
@@ -1903,15 +1905,15 @@ function showMapSheet(spot) {
         ) +
       '</div>' +
       '<div class="sheet-info">' +
-        '<div class="sheet-name">' + spot.name + '</div>' +
-        '<div class="sheet-desc">' + spot.desc + '</div>' +
-        '<span class="sheet-cat-badge" style="color:' + catInfo.color + ';background:' + catInfo.bg + ';border-color:' + catInfo.color + ';">' + catInfo.label + '</span>' +
+        '<div class="sheet-name">' + spotName + '</div>' +
+        '<div class="sheet-desc">' + spotDesc + '</div>' +
+        '<span class="sheet-cat-badge" style="color:' + catInfo.color + ';background:' + catInfo.bg + ';border-color:' + catInfo.color + ';">' + catLabel + '</span>' +
       '</div>' +
     '</div>' +
     '<div class="sheet-actions">' +
       '<button class="sheet-btn-maps" onclick="openInMaps(' + lat + ',' + lng + ',\'' + (spot.name||'').replace(/'/g,"\\'") + '\')">' +
         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>' +
-        ' Ouvrir dans Maps' +
+        ' ' + (lang==='en' ? 'Open in Maps' : 'Ouvrir dans Maps') +
       '</button>' +
       '<button class="sheet-btn-close" onclick="closeMapSheet()" aria-label="Fermer">×</button>' +
     '</div>';
@@ -3198,9 +3200,9 @@ function toggleLang() {
   // Map filter labels
   var mfT = document.getElementById('mfTous'); if(mfT) mfT.textContent = lang==='en'?'All':'Tous';
   var mfS = document.getElementById('mfScenes'); if(mfS) mfS.textContent = lang==='en'?'Stage':'Scènes';
-  var mfF = document.getElementById('mfFood'); if(mfF) mfF.textContent = lang==='en'?'Food':'Bouffe';
+  var mfF = document.getElementById('mfFood'); if(mfF) mfF.textContent = lang==='en'?'Food Zone':'Zone culinaire';
   var mfA = document.getElementById('mfAteliers'); if(mfA) mfA.textContent = lang==='en'?'HALECO':'HALECO';
-  var mfM = document.getElementById('mfMarchands'); if(mfM) mfM.textContent = lang==='en'?'Vendors':'Marchands';
+  var mfM = document.getElementById('mfMarchands'); if(mfM) mfM.textContent = lang==='en'?'Vendor Zone':'Zone marchande';
   var mfE = document.getElementById('mfEssentiels'); if(mfE) mfE.textContent = lang==='en'?'Essentials':'Essentiels';
   // Map header
   var mhT = document.getElementById('mapHeaderTitle'); if(mhT) mhT.textContent = lang==='en'?'🗺️ Site map · Bassin Peel':'🗺️ Carte du site · Bassin Peel';
