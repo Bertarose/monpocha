@@ -3,7 +3,7 @@
 //  Stratégie : Network First + Cache Fallback
 // ══════════════════════════════════════════════════════════
 
-const CACHE_VERSION = 'monpocha-2026-v3';
+const CACHE_VERSION = 'monpocha-2026-v4';
 
 const ASSETS = [
   '/',
