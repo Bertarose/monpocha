@@ -9,7 +9,7 @@
   ║  Email : info@kimmaurice.com                            ║
   ║  Développée avec Claude (Anthropic) — Mai 2026          ║
   ║  Première utilisation : POCHA MTL 2026                  ║
-  ║  Montréal, 4-7 Juin 2026 · Montréal    ║
+  ║  Montréal, 11-14 Juin 2026 · Bassin Peel    ║
   ║  © 2026 Kim Maurice — Tous droits réservés              ║
   ╚══════════════════════════════════════════════════════════╝
 -->
@@ -22,8 +22,8 @@
 <meta name="apple-mobile-web-app-title" content="MONPOCHA">
 
 <!-- ══ SEO PRIMAIRE ══ -->
-<meta name="description" content="Programmation officielle du POCHA MTL 2026 — 11 au 14 juin au Montréal, Montréal. Marché japonais, ateliers, performances, scène ouverte et plus.">
-<meta name="keywords" content="POCHA MTL 2026, Montréal, programmation, Montréal, festival coréen, culture coréenne, événements, ateliers, musique japonaise, J-pop, K-pop, festival Montréal, 4 juin, 5 juin, 6 juin, 7 juin">
+<meta name="description" content="Programmation officielle du POCHA MTL 2026 — 11 au 14 juin au Bassin Peel, Griffintown, Montréal. Festival K-pop, compétitions de danse, Random Play Dance, performances et plus.">
+<meta name="keywords" content="POCHA MTL 2026, Montréal, programmation, Bassin Peel, Griffintown, festival K-pop, culture coréenne, dance competition, random play dance, K-pop, culture coréenne, danse K-pop, festival Montréal, 11 juin, 12 juin, 13 juin, 14 juin">
 <meta name="author" content="Festival Asiasie">
 <meta name="robots" content="index, follow">
 <meta name="language" content="French">
@@ -39,7 +39,7 @@
 <meta property="og:type" content="event">
 <meta property="og:site_name" content="MONPOCHA">
 <meta property="og:title" content="POCHA MTL 2026 — Programmation officielle · Montréal">
-<meta property="og:description" content="11–14 juin 2026 · Montréal · Montréal. Marché japonais, ateliers de saké, matcha, daruma · Open Stage · Performances culturelles · DJ Set.">
+<meta property="og:description" content="11–14 juin 2026 · Bassin Peel · Griffintown · Montréal. Festival K-pop & culture coréenne. Compétitions de danse, Random Play Dance, Open Stage, workshops.">
 <meta property="og:url" content="">
 <meta property="og:image" content="https://monpocha.asiasie.com/images/pocha.jpg">
 <meta property="og:image:width" content="512">
@@ -54,7 +54,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@asiasie">
 <meta name="twitter:title" content="POCHA MTL 2026 — Programmation · Montréal">
-<meta name="twitter:description" content="11–14 juin 2026 · Montréal · Marché japonais, ateliers, Open Stage, performances culturelles.">
+<meta name="twitter:description" content="11–14 juin 2026 · Montréal · Festival K-pop, compétitions de danse, Open Stage, Random Play Dance.">
 <meta name="twitter:image" content="https://monpocha.asiasie.com/images/pocha-og.jpg">
 <meta name="twitter:image:alt" content="POCHA MTL 2026 · Bassin Peel, Montréal">
 
@@ -294,14 +294,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* DAY TABS */
   .day-tabs { display: flex; margin-bottom: 14px; border-bottom: 1px solid #D4C8BA; gap: 0; }
-  .day-tab { flex: 1; padding: 12px 4px 10px; background: transparent; color: #8A7A6C; font-size: 13px; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; border: none; border-bottom: 2px solid transparent; border-right: 1px solid #E8E0D6; transition: all 0.15s; text-align: center; line-height: 1.3; -webkit-tap-highlight-color: transparent; touch-action: manipulation; font-family: inherit; }
+  .day-tab { flex: 1; padding: 12px 4px 10px; background: transparent; color: #8A7A6C; font-size: 13px; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; border: none; border-bottom: 3px solid transparent; border-right: 1px solid #E8E0D6; transition: all 0.15s; text-align: center; line-height: 1.3; -webkit-tap-highlight-color: transparent; touch-action: manipulation; font-family: inherit; }
   .day-tab:last-child { border-right: none; }
   .day-tab:last-child { border-right: none; }
-  .day-tab.active { color: var(--text); font-weight: 700; border-bottom: 2px solid var(--orange); }
-  .day-tab.active.d0 { border-bottom-color: var(--d0-bg); }
-  .day-tab.active.d1 { border-bottom-color: var(--d1-bg); }
-  .day-tab.active.d2 { border-bottom-color: var(--d2-bg); }
-  .day-tab.active.d3 { border-bottom-color: var(--d3-bg); }
+  .day-tab.active { color: var(--text); font-weight: 800; border-bottom: 3px solid var(--orange); }
+  .day-tab.active.d0 { background: var(--d0-bg); color: var(--d0-text); border-bottom-color: var(--d0-bd); }
+  .day-tab.active.d1 { background: var(--d1-bg); color: var(--d1-text); border-bottom-color: var(--d1-bd); }
+  .day-tab.active.d2 { background: var(--d2-bg); color: var(--d2-text); border-bottom-color: var(--d2-bd); }
+  .day-tab.active.d3 { background: var(--d3-bg); color: var(--d3-text); border-bottom-color: var(--d3-bd); }
 
   /* LEGEND */
   .legend { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; padding-bottom: 2px; }
@@ -983,7 +983,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="confetti-container" id="confettiBox"></div>
   <img id="splash-cat" src="/icon-512.png" alt="POCHA MTL" width="180" height="180">
   <div id="splash-title">Festival POCHA<br>MTL 2026</div>
-  <div id="splash-sub">11 — 14 juin · Montréal</div>
+  <div id="splash-sub">11 — 14 juin · Bassin Peel · Griffintown</div>
 </div>
 <script>
 // Prevent iOS bounce scroll on the app shell
@@ -1012,7 +1012,7 @@ document.addEventListener('touchmove', function(e){
     <span style="font-size:13px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--text);line-height:1.15;">Festival<br>POCHA MTL</span>
   </a>
   <div class="header-right">
-    <a href="https://www.zeffy.com/fr-CA/ticketing/pocha-mtl-4-7-juin-2026-bassin-peel-griffintown" target="_blank" id="ticketBtn" style="display:flex;align-items:center;gap:5px;background:#d4edd4;color:#1a3d1a;border:1px solid #8fc48f;border-radius:20px;padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;white-space:nowrap;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3d1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span id="ticketLabel">Billets</span></a>
+    <a href="https://www.zeffy.com/fr-CA/ticketing/pocha-mtl-11-14-juin-2026-bassin-peel-griffintown" target="_blank" id="ticketBtn" style="display:flex;align-items:center;gap:5px;background:#d4edd4;color:#1a3d1a;border:1px solid #8fc48f;border-radius:20px;padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;white-space:nowrap;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a3d1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span id="ticketLabel">Billets</span></a>
     <button id="langBtn" onclick="toggleLang()" style="background:transparent;border:1px solid rgba(26,18,8,0.15);border-radius:50%;width:32px;height:32px;font-size:11px;font-weight:800;color:var(--muted);cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:0;">EN</button>
   </div>
 </header>
@@ -1543,26 +1543,26 @@ var POCHA_SPOTS = [
     icon:'🟢', name:'Entrée publique',
     desc:'Accès principal · Filtration',
     color:'#7CB08A', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   { id:'e2', cat:'service', lat:45.492974, lng:-73.555599,
     icon:'♿', name:'Entrée adaptée / Sortie publique',
     desc:'Sortie publique · Entrée transport adapté seulement',
     color:'#6A9BB0', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   { id:'e3', cat:'service', lat:45.493905, lng:-73.553054,
     icon:'🔴', name:'Sortie publique',
     desc:'Sortie publique (non adaptée)',
     color:'#D4908A', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ SCÈNE
   { id:'s1', cat:'stage', lat:45.492566, lng:-73.554195,
     icon:'🎤', name:'Scène principale',
     desc:'Concerts · Cérémonies · Performances',
     color:'#E8A090', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ ATELIERS (Haleco)
   { id:'a1', cat:'atelier', lat:45.4936498, lng:-73.5535191,
@@ -1591,92 +1591,92 @@ var POCHA_SPOTS = [
     icon:'🛍️', name:'Marchands',
     desc:'Manga · Anime · Vêtements · Céramique · Artisanat',
     color:'#D4B896', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ BOUFFE
   { id:'f1', cat:'food', lat:45.492544, lng:-73.555015,
     icon:'🍜', name:'Bouffe',
     desc:'Ramen · Sushi · Desserts · Cuisine asiatique',
     color:'#C4A882', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ BARS
   { id:'b1', cat:'food', lat:45.492521, lng:-73.554801,
     icon:'🍺', name:'Bar',
     desc:'Bar principal',
     color:'#C4A882', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   { id:'b2', cat:'food', lat:45.491897, lng:-73.555131,
     icon:'🍺', name:'Bar / Terrasse',
     desc:'Bar · Terrasse',
     color:'#C4A882', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   { id:'b3', cat:'food', lat:45.492802, lng:-73.553673,
     icon:'🍺', name:'Zone Terrasse',
     desc:'Terrasse · Bar 3',
     color:'#C4A882', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ STATION D'EAU
   { id:'h1', cat:'service', lat:45.492983, lng:-73.554227,
     icon:'💧', name:'Station d\'eau',
     desc:'Eau potable gratuite',
     color:'#6A9BB0', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ TOILETTES
   { id:'w1', cat:'service', lat:45.493015, lng:-73.553765,
     icon:'🚻', name:'Toilettes',
     desc:'Toilettes',
     color:'#8FA3B0', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   { id:'w2', cat:'service', lat:45.492893, lng:-73.555134,
     icon:'🚻', name:'Toilettes',
     desc:'Toilettes',
     color:'#8FA3B0', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ STATIONS DE TRI
   { id:'r1', cat:'service', lat:45.492940, lng:-73.554729,
     icon:'♻️', name:'Station de tri',
     desc:'Tri sélectif · Zéro déchet',
     color:'#7AA87A', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   { id:'r2', cat:'service', lat:45.492048, lng:-73.555134,
     icon:'♻️', name:'Station de tri',
     desc:'Tri sélectif · Zéro déchet',
     color:'#7AA87A', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   { id:'r3', cat:'service', lat:45.492979, lng:-73.553852,
     icon:'♻️', name:'Station de tri',
     desc:'Tri sélectif · Zéro déchet',
     color:'#7AA87A', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ PREMIERS SOINS / BÉNÉVOLES / OBJETS PERDUS
-  { id:'m1', cat:'service', lat:45.493065, lng:-73.553199,
+  { id:'m1', cat:'service', lat:45.4931246, lng:-73.5535257,
     icon:'🏥', name:'Premiers soins · Bénévoles · Objets perdus',
     desc:'Infirmière sur place · Bénévoles · Objets trouvés',
     color:'#D4908A', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   // ─ BIXI
   { id:'bx1', cat:'service', lat:45.493548, lng:-73.553360,
     icon:'🚲', name:'Bixi',
     desc:'Station Bixi',
     color:'#8FA3B0', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 
   { id:'bx2', cat:'service', lat:45.492772, lng:-73.556445,
     icon:'🚲', name:'Bixi',
     desc:'Station Bixi',
     color:'#8FA3B0', textColor:'#fff',
-    addr:'Montréal' },
+    addr:'Bassin Peel, Griffintown' },
 ];
 
 var CAT_LABELS = {
@@ -2002,19 +2002,19 @@ function locateMe() {
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Jeudi 11 juin" data-en="Thursday June 11">Jeudi 4 juin</span>
+            <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Jeudi 11 juin" data-en="Thursday June 11">Jeudi 11 juin</span>
             <span style="font-size:15px;color:var(--muted);">17h – 22h</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Vendredi 12 juin" data-en="Friday June 12">Vendredi 5 juin</span>
+            <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Vendredi 12 juin" data-en="Friday June 12">Vendredi 12 juin</span>
             <span style="font-size:15px;color:var(--muted);">17h – 22h</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Samedi 13 juin" data-en="Saturday June 13">Samedi 6 juin</span>
+            <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Samedi 13 juin" data-en="Saturday June 13">Samedi 13 juin</span>
             <span style="font-size:15px;color:var(--muted);">12h – 22h</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Dimanche 14 juin" data-en="Sunday June 14">Dimanche 7 juin</span>
+            <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Dimanche 14 juin" data-en="Sunday June 14">Dimanche 14 juin</span>
             <span style="font-size:15px;color:var(--muted);">12h – 20h</span>
           </div>
         </div>
@@ -2025,14 +2025,14 @@ function locateMe() {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div>
-          <div style="font-size:15px;font-weight:700;color:var(--text);">Montréal</div>
+          <div style="font-size:15px;font-weight:700;color:var(--text);">Bassin Peel, Griffintown</div>
           <div style="font-size:13px;color:var(--muted);margin-top:1px;">Montréal, Québec</div>
         </div>
       </div>
     </div>
 
     <!-- Billets -->
-    <div onclick="window.open('https://www.zeffy.com/fr-CA/ticketing/pocha-mtl-4-7-juin-2026-bassin-peel-griffintown','_blank')" style="background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:10px;padding:16px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;">
+    <div onclick="window.open('https://www.zeffy.com/fr-CA/ticketing/pocha-mtl-11-14-juin-2026-bassin-peel-griffintown','_blank')" style="background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:10px;padding:16px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;">
       <div style="width:36px;height:36px;border-radius:10px;background:rgba(224,122,95,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><path d="M12 6v12"/><path d="M2 12h20"/></svg>
       </div>
@@ -2113,7 +2113,7 @@ function locateMe() {
 
   <!-- VOIR LE PLAN -->
   <div style="padding:0 20px 16px;">
-    <a href="https://maps.google.com/?q=Bassin+Peel+Montréal+Montreal" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:#E07A5F;border-radius:14px;padding:18px;text-decoration:none;">
+    <a href="https://maps.google.com/?q=Bassin+Peel+Griffintown+Montreal" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:#E07A5F;border-radius:14px;padding:18px;text-decoration:none;">
       <div style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
       </div>
@@ -2166,7 +2166,7 @@ function locateMe() {
           <div class="faq-q" data-fr="Combien coûte l'entrée ?" data-en="How much is admission?">Combien coûte l'entrée ?</div>
           <div class="faq-a" data-fr="Prévente : 4$ · Sur place : 5$ · Enfants 12 ans et moins : gratuit · Personnes de 65 ans et plus : gratuit." data-en="Presale: $4 · On-site: $5 · Children 12 and under: free · Seniors 65 and over: free.">Prévente : 4$ · Sur place : 5$ · Enfants 12 ans et moins : gratuit · Personnes de 65 ans et plus : gratuit.</div>
           <div class="faq-q" data-fr="Quels modes de paiement sont acceptés ?" data-en="What payment methods are accepted?">Quels modes de paiement sont acceptés ?</div>
-          <div class="faq-a" data-fr="Comptant et carte (débit/crédit) sur la majorité des kiosques." data-en="Cash and card (debit/credit) at most vendors.">Comptant et carte (débit/crédit) sur la majorité des kiosques.</div>
+          <div class="faq-a" data-fr="La carte (débit ou crédit) est le seul mode de paiement accepté sur l'ensemble du festival. Seuls les kiosques culinaires acceptent aussi le comptant." data-en="Card (debit or credit) is the only accepted payment method across the entire festival. Only food vendors also accept cash.">La carte (débit ou crédit) est le seul mode de paiement accepté sur l'ensemble du festival. Seuls les kiosques culinaires acceptent aussi le comptant.</div>
         </div>
       </div>
 
@@ -2214,11 +2214,11 @@ function locateMe() {
   <!-- SOCIAL + ASIASIE -->
   <div style="padding:0 20px 8px;">
     <div class="social-btns">
-      <button class="social-btn" onclick="window.open('https://www.instagram.com/pochamtl','_blank')">Instagram</button>
-      <button class="social-btn" onclick="window.open('https://www.facebook.com/pochamtl','_blank')">Facebook</button>
+      <button class="social-btn" onclick="window.open('https://www.instagram.com/pocha_mtl','_blank')">Instagram</button>
+      <button class="social-btn" onclick="window.open('https://www.facebook.com/pochamtll/','_blank')">Facebook</button>
     </div>
   </div>
-  <div style="padding:8px 20px 24px;">
+  <div style="padding:8px 20px 40px;">
     <a href="https://www.asiasie.com/fr/pocha-mtl" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:14px 18px;text-decoration:none;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aa804a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
       <div style="flex:1;"><div style="font-size:13px;font-weight:900;color:#aa804a;letter-spacing:.04em;text-transform:uppercase;">Asiasie.com</div><div style="font-size:11px;color:var(--muted);margin-top:2px;" data-fr="Organisme derrière POCHA MTL" data-en="Organization behind POCHA MTL">Organisme derrière POCHA MTL</div></div>
@@ -2462,25 +2462,20 @@ const FESTIVAL_END   = new Date("2026-06-07T20:00:00");
   setTimeout(updateTickerLive, 30000); // vérifier toutes les 30s
 })();
 const DAYS=[{label:"Jeu 11",date:"2026-06-11"},{label:"Ven 12",date:"2026-06-12"},{label:"Sam 13",date:"2026-06-13"},{label:"Dim 14",date:"2026-06-14"}];
-const LIEUX=[{key:"scene",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg> Scène',full:"Scène principale — Bassin Peel",addr:"Montréal, Montréal"},{key:"atelier",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> HALECO',full:"HALECO — Bassin Peel",addr:"Montréal, Montréal"},{key:"cafe",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> Café',full:"Café des Éclusiers",addr:"1 Canal de Lachine, Montréal"},{key:"evenement",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg> Événement',full:"Café des Éclusiers",addr:"1 Canal de Lachine, Montréal"}];
+const LIEUX=[{key:"scene",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg> Scène',full:"Scène principale — Bassin Peel",addr:"Bassin Peel, Griffintown, Montréal"},{key:"atelier",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> HALECO',full:"HALECO — Bassin Peel",addr:"Bassin Peel, Griffintown, Montréal"},{key:"cafe",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> Café',full:"Café des Éclusiers",addr:"1 Canal de Lachine, Montréal"},{key:"evenement",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg> Événement',full:"Café des Éclusiers",addr:"1 Canal de Lachine, Montréal"}];
 const EVENTS={
   "2026-06-11":[
     {id:"j01",start:"15:00",end:"17:00",lieu:"scene",name:"Open Space Rehearsal",desc:"Répétition ouverte sur scène pour les groupes participants.",tags:["Gratuit","Tout public","Danse","Répétition"]},
-    {id:"j02",start:"17:00",end:"18:00",lieu:"scene",name:"Playlist K-pop",desc:"Sélection musicale K-pop pour mettre dans l'ambiance.",tags:["Gratuit","Tout public","Musique","K-pop"]},
     {id:"j03",start:"18:00",end:"18:15",lieu:"scene",name:"Cérémonie d'ouverture",desc:"Coup d'envoi officiel de POCHA MTL 2026 ! Bienvenue au plus grand festival K-pop de Montréal.",tags:["Gratuit","Tout public","Cérémonie"]},
     {id:"j04",start:"18:30",end:"19:30",lieu:"scene",name:"Open Stage — Performances de danse",note:"Dance Quest · GLOW · JELL3S · INFINIT-E-UNIT · KSTEEZ · KSWAN · ONE PULSE · VALKYRIE · BALTERZ · EMØRIA",desc:"Performances de danse par les groupes de la communauté K-pop.\n\n• 18h30 — DANCE QUEST\n• 18h35 — GLOW\n• 18h40 — JELL3S\n• 18h45 — INFINIT-E-UNIT\n• 18h50 — KSTEEZ\n• 18h55 — KSWAN\n• 19h00 — ONE PULSE\n• 19h05 — VALKYRIE\n• 19h20 — BALTERZ\n• 19h25 — EMØRIA",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
     {id:"j05",start:"20:30",end:"21:30",lieu:"scene",name:"K-Pop Random Play Dance",desc:"Danse aléatoire K-pop — connais-tu les chorés ? Monte sur scène et prouve-le ! Des classiques de BTS, BLACKPINK, TWICE, Stray Kids et plus.",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
-    {id:"j06",start:"21:30",end:"22:00",lieu:"scene",name:"Open Stage / Playlist",desc:"Scène ouverte et playlist K-pop pour finir la soirée.",tags:["Gratuit","Tout public","Musique","K-pop"]},
   ],
   "2026-06-12":[
     {id:"v01",start:"15:00",end:"17:00",lieu:"scene",name:"Open Space Rehearsal",desc:"Répétition ouverte et runthrough de la compétition.",tags:["Gratuit","Tout public","Danse","Répétition"]},
-    {id:"v02",start:"17:00",end:"18:30",lieu:"scene",name:"Playlist K-pop",desc:"Sélection musicale K-pop d'ambiance.",tags:["Gratuit","Tout public","Musique","K-pop"]},
     {id:"v03",start:"18:30",end:"20:00",lieu:"scene",name:"Open Stage — Performances",note:"ZAMERA · ASTERIA · CK3 · K-FLOW · QUEENPIN · REWIND · SYNK · TR8CE · VIxN · STELLARIS · GL!TCH · IntenCITY · 0'CLOCK · NAVYA · TIMELAPSE",desc:"Performances de danse et de chant par les artistes de la communauté.\n\n• 18h30 — ZAMERA (Vocal)\n• 18h35 — ASTERIA : Unique (P1Harmony)\n• 18h40 — CK3 : Fearless (LESSERAFIM)\n• 18h45 — K-FLOW : Focus (H2H) + Killin' it Girl (Jhope) + Save Me (BTS)\n• 18h50 — QUEENPIN\n• 18h55 — OLIVIA ZHANG-XIE\n• 19h00 — REWIND : BREATHE (xikers)\n• 19h05 — SYNK : ROLLIN' (Brave Girls)\n• 19h10 — STUDIO ALORS ON DANSE\n• 19h15 — TR8CE : Swicy (Unis)\n• 19h20 — VIxN\n• 19h25 — STELLARIS : Eve, Psyche (LESSERAFIM)\n• 19h30 — GL!TCH : Oh NaNa (KARD)\n• 19h35 — IntenCITY\n• 19h45 — 0'CLOCK : Cheers (SVT)\n• 19h50 — NAVYA : Back To Life (&TEAM)\n• 19h55 — TIMELAPSE : The Real (ATEEZ)",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
     {id:"v04",start:"20:00",end:"21:00",lieu:"scene",name:"K-Pop Random Play Dance",desc:"Danse aléatoire K-pop — connais-tu les chorés ? Monte sur scène !",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
-    {id:"v05",start:"21:15",end:"22:00",lieu:"scene",name:"Playlist K-pop",desc:"Playlist K-pop pour finir la soirée.",tags:["Gratuit","Tout public","Musique","K-pop"]},
   ],
   "2026-06-13":[
-    {id:"s01",start:"12:00",end:"12:30",lieu:"scene",name:"Playlist K-pop",desc:"Ambiance musicale K-pop pour l'ouverture du samedi.",tags:["Gratuit","Tout public","Musique","K-pop"]},
     {id:"s02",start:"12:30",end:"13:30",lieu:"scene",name:"Open Stage — Danse & Chant",desc:"Performances de danse et de chant K-pop.",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
     {id:"s03",start:"14:00",end:"16:00",lieu:"scene",name:"\u{1F3C6} Compétition de danse K-pop",note:"13 groupes en compétition",desc:"Compétition officielle de danse K-pop POCHA MTL 2026 !\n\n1. AllPodiumCrew — r u ok (ifeye)\n2. New Dawn Fever — Mamma Mia (izna)\n3. Felynz — BANG! (After School)\n4. ECHO — Red Sun (xikers)\n5. BalterZ — FOCUS (Hearts2Hearts)\n6. B-WARE — Road Not Taken (&TEAM)\n7. ATC — Talk Saxy (RIIZE)\n8. IntenCITY — Up (Kep1er)\n9. FourYou — 404 (KiiKii)\n10. XTRADOSE — EXO Mashup\n11. Salja Dance — Go In Blind (&TEAM)\n12. NOVA Dance — RUDE! (Hearts2Hearts)\n13. MOMENTUM — MAVERICK (The Boyz)",tags:["Gratuit","Tout public","Compétition","Danse","K-pop"]},
     {id:"s03b",start:"17:00",end:"17:15",lieu:"scene",name:"Rhythms of Korea — Live Samulnori",desc:"Performance de Samulnori en direct — musique traditionnelle coréenne avec instruments de percussion.",tags:["Gratuit","Tout public","Musique","Culture coréenne","Traditionnel"]},
@@ -2491,12 +2486,11 @@ const EVENTS={
   ],
   "2026-06-14":[
     {id:"d01",start:"12:30",end:"13:30",lieu:"scene",name:"Open Stage — Danse & Chant",desc:"Performances de danse et de chant K-pop.",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
-    {id:"d02",start:"14:00",end:"16:00",lieu:"scene",name:"\u{1F3C6} Compétition de danse K-pop (suite)",note:"Finales et résultats",desc:"Suite et finales de la compétition officielle de danse K-pop.",tags:["Gratuit","Tout public","Compétition","Danse","K-pop"]},
-    {id:"d02b",start:"15:00",end:"16:00",lieu:"atelier",name:"K-Pop Freestyle Battle",desc:"Bataille de freestyle K-pop ! Montrez vos moves improvisés.",tags:["Gratuit","Tout public","K-pop","Danse","Compétition"]},
+    {id:"d02",start:"14:00",end:"15:00",lieu:"scene",name:"K-Pop Random Play Dance",desc:"Session de Random Play Dance — connais-tu les chorés ? Monte sur scène !",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
+    {id:"d02b",start:"15:00",end:"16:00",lieu:"scene",name:"K-Pop Freestyle Battle",desc:"Bataille de freestyle K-pop ! Montrez vos moves improvisés.",tags:["Gratuit","Tout public","K-pop","Danse","Compétition"]},
     {id:"d03",start:"16:30",end:"17:30",lieu:"scene",name:"Dance Workshop",desc:"Atelier de danse K-pop — apprenez une chorégraphie complète !",tags:["Gratuit","Tout public","K-pop","Danse","Atelier"]},
     {id:"d04",start:"17:15",end:"18:00",lieu:"scene",name:"East2West Performances",desc:"Performances du groupe East2West.",tags:["Gratuit","Tout public","Danse","K-pop"]},
     {id:"d05",start:"18:00",end:"19:00",lieu:"scene",name:"Momentum Performances + RPD",desc:"Performances de Momentum suivies d'une Random Play Dance.",tags:["Gratuit","Tout public","Danse","K-pop"]},
-    {id:"d06",start:"19:45",end:"20:00",lieu:"scene",name:"Playlist de clôture",desc:"Dernière playlist K-pop pour clôturer POCHA MTL 2026. Merci et à l'année prochaine !",tags:["Gratuit","Tout public","Musique","K-pop"]},
   ],
 };
 
@@ -2815,7 +2809,7 @@ function addToCalendar(date, evId) {
       '&text=' + encodeURIComponent(name + ' — POCHA MTL') +
       '&dates=' + startDT + 'Z/' + endDT + 'Z' +
       '&details=' + encodeURIComponent((ev.desc||'').substring(0,500)) +
-      '&location=' + encodeURIComponent('Montréal, Montréal') +
+      '&location=' + encodeURIComponent('Bassin Peel, Griffintown, Montr\u00e9al') +
       '&sf=true&output=xml';
     window.open(gcUrl, '_blank');
     return;
@@ -2830,7 +2824,7 @@ function addToCalendar(date, evId) {
     'DTEND;TZID=America/Montreal:' + endDT,
     'SUMMARY:' + name + ' — POCHA MTL',
     'DESCRIPTION:' + desc,
-    'LOCATION:Bassin Peel\\, Montréal\\, Montréal',
+    'LOCATION:Bassin Peel\\, Griffintown\\, Montréal',
     'BEGIN:VALARM',
     'TRIGGER:-PT15M',
     'ACTION:DISPLAY',
@@ -2873,7 +2867,7 @@ renderMiniCountdown();
 setInterval(renderMiniCountdown, 60000);
 
 function formatDesc(desc) {
-  if (!desc) return 'Description à venir.';
+  if (!desc) return lang==='en' ? 'Description coming soon.' : 'Description à venir.';
   // Split into intro text and lineup items
   var parts = desc.split('\n\n');
   var intro = parts[0];
@@ -2889,7 +2883,7 @@ function formatDesc(desc) {
         if (m) {
           var time = m[1];
           var rest = m[2];
-          var songMatch = rest.match(/^(.+?)\s*[:：]\s*(.+)/);
+          var songMatch = rest.match(/^(.+?)\s*[:：]\s+(.+)/);
           if (songMatch) {
             html += '<div class="lineup-item"><span class="lineup-time">' + time + '</span><div><span class="lineup-name">' + songMatch[1].trim() + '</span><br><span class="lineup-song">' + songMatch[2].trim() + '</span></div></div>';
           } else {
@@ -2906,9 +2900,17 @@ function formatDesc(desc) {
 }
 
 function openDrawer(date, evId){
-  let ev = null;
-  for (const d of getDays()) { const found = (getEvents(d.date)||[]).find(e=>e.id===evId); if(found){ev=found;break;} }
+  let ev = null, evDate = date;
+  for (const d of getDays()) { const found = (getEvents(d.date)||[]).find(e=>e.id===evId); if(found){ev=found;evDate=d.date;break;} }
   if(!ev) return;
+  const DAY_NAMES_FR = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  const DAY_NAMES_EN = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTH_FR = ['','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  const MONTH_EN = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dp = evDate.split('-'), dd = new Date(+dp[0], +dp[1]-1, +dp[2]);
+  const dateFmt = lang==='en'
+    ? DAY_NAMES_EN[dd.getDay()] + ' ' + MONTH_EN[+dp[1]] + ' ' + +dp[2]
+    : DAY_NAMES_FR[dd.getDay()] + ' ' + +dp[2] + ' ' + MONTH_FR[+dp[1]];
   currentDrawerEvId = evId;
   const lieu=getLieux().find(l=>l.key===ev.lieu), st=evStatus(ev);
   const bc={scene:"b-scene",atelier:"b-atelier",eaton:"b-eaton",cafe:"b-cafe",evenement:"b-evenement"}[ev.lieu]||"";
@@ -2922,7 +2924,7 @@ function openDrawer(date, evId){
     <div class="drawer-header-top">
       <div class="drawer-header-left">
         <span class="drawer-lieu-badge ${bc}">${lieuData?lieuData.full:ev.lieu}</span>
-        <div class="drawer-time">${ev.start} – ${ev.end}</div>
+        <div class="drawer-time"><span style="text-transform:capitalize">${dateFmt}</span> · ${ev.start} – ${ev.end}</div>
         <div class="drawer-title">${ev.name}</div>
         ${ev.note?`<div class="drawer-artist">${ev.note}</div>`:""}
         ${lieuData&&lieuData.addr?`<div style="font-size:12px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:5px;"><span>📍</span><span>${lieuData.addr}</span></div>`:""}
@@ -2957,7 +2959,7 @@ function openDrawer(date, evId){
     ? `<button onclick="closeDrawer();navTo('map');setTimeout(function(){highlightSpot('${mapSpotId}');},800);" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:16px;margin-bottom:10px;padding:14px;background:transparent;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:800;color:var(--muted);cursor:pointer;font-family:inherit;letter-spacing:.04em;text-transform:uppercase;-webkit-tap-highlight-color:transparent;">${mapLinkLabel}</button>`
     : '';
   document.getElementById("drawerBody").innerHTML=`
-    <div class="drawer-desc">${formatDesc(ev.desc||"Description à venir.")}</div>
+    <div class="drawer-desc">${formatDesc(ev.desc||(lang==="en"?"Description coming soon.":"Description à venir."))}</div>
     ${tags?`<div class="drawer-tags">${tags}</div>`:""}
     <button onclick="addToCalendar('${date}','${ev.id}')" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:16px;margin-bottom:8px;padding:14px;background:rgba(254,156,195,0.08);border:1px solid rgba(254,156,195,0.3);border-radius:10px;font-size:13px;font-weight:700;color:#d4608a;cursor:pointer;font-family:inherit;letter-spacing:.03em;-webkit-tap-highlight-color:transparent;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4608a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg> ${lang==='en'?'Add to my calendar':'Ajouter à mon calendrier'}</button>
     ${mapLinkBtn}
@@ -3031,7 +3033,7 @@ const T = {
     drawer_close: 'Fermer',
     now_playing: 'En ce moment',
     page_title: 'Programmation',
-    page_sub: '4 – 7 juin 2026 · Montréal · Montréal',
+    page_sub: '11 – 14 juin 2026 · Bassin Peel · Griffintown · Montréal',
     live_text: 'Live',
     now_banner_text: 'Happening now',
     today_label: 'Today',
@@ -3055,7 +3057,7 @@ const T = {
     drawer_close: 'Close',
     now_playing: 'Happening now',
     page_title: 'Program',
-    page_sub: 'June 11–14, 2026 · Montréal · Montréal',
+    page_sub: 'June 11–14, 2026 · Bassin Peel · Griffintown · Montréal',
     live_text: 'Live',
     now_banner_text: 'Happening now',
     today_label: 'Today',
@@ -3068,21 +3070,16 @@ const T = {
 const EVENTS_EN = {
   "2026-06-11":[
     {id:"j01",name:"Open Space Rehearsal",desc:"Open rehearsal on stage for participating groups.",tags:["Free","All ages","Dance","Rehearsal"]},
-    {id:"j02",name:"K-pop Playlist",desc:"K-pop music selection to set the mood.",tags:["Free","All ages","Music","K-pop"]},
     {id:"j03",name:"Opening Ceremony",desc:"Official launch of POCHA MTL 2026! Welcome to Montreal's biggest K-pop festival.",tags:["Free","All ages","Ceremony"]},
     {id:"j04",name:"Open Stage — Dance Performances",note:"Dance Quest · GLOW · JELL3S · INFINIT-E-UNIT · KSTEEZ · KSWAN · ONE PULSE · VALKYRIE · BALTERZ · EMØRIA",desc:"Dance performances by K-pop community groups.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
     {id:"j05",name:"K-Pop Random Play Dance",desc:"K-pop random play dance — do you know the choreos? Get on stage and prove it!",tags:["Free","All ages","K-pop","Dance","Participatory"]},
-    {id:"j06",name:"Open Stage / Playlist",desc:"Open stage and K-pop playlist to end the evening.",tags:["Free","All ages","Music","K-pop"]},
   ],
   "2026-06-12":[
     {id:"v01",name:"Open Space Rehearsal",desc:"Open rehearsal and competition runthrough.",tags:["Free","All ages","Dance","Rehearsal"]},
-    {id:"v02",name:"K-pop Playlist",desc:"K-pop ambient music selection.",tags:["Free","All ages","Music","K-pop"]},
     {id:"v03",name:"Open Stage — Performances",note:"ZAMERA · ASTERIA · CK3 · K-FLOW · QUEENPIN · REWIND · SYNK · TR8CE · VIxN · STELLARIS · GL!TCH · IntenCITY · 0'CLOCK · NAVYA · TIMELAPSE",desc:"Dance and vocal performances by community artists.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
     {id:"v04",name:"K-Pop Random Play Dance",desc:"K-pop random play dance — do you know the choreos? Get on stage!",tags:["Free","All ages","K-pop","Dance","Participatory"]},
-    {id:"v05",name:"K-pop Playlist",desc:"K-pop playlist to end the evening.",tags:["Free","All ages","Music","K-pop"]},
   ],
   "2026-06-13":[
-    {id:"s01",name:"K-pop Playlist",desc:"K-pop ambient music for Saturday opening.",tags:["Free","All ages","Music","K-pop"]},
     {id:"s02",name:"Open Stage — Dance & Vocal",desc:"K-pop dance and vocal performances.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
     {id:"s03",name:"\u{1F3C6} K-pop Dance Competition",note:"13 groups competing",desc:"Official POCHA MTL 2026 K-pop dance competition!",tags:["Free","All ages","Competition","Dance","K-pop"]},
     {id:"s03b",name:"Rhythms of Korea — Live Samulnori",desc:"Live Samulnori performance — traditional Korean percussion music.",tags:["Free","All ages","Music","Korean Culture","Traditional"]},
@@ -3092,22 +3089,20 @@ const EVENTS_EN = {
     {id:"s07",name:"Open Stage — Dance & Karaoke",desc:"Open stage — K-pop dance and karaoke to end Saturday night!",tags:["Free","All ages","Dance","Karaoke","K-pop","Open stage"]},
   ],
   "2026-06-14":[
-    {id:"d01",name:"K-pop Playlist",desc:"K-pop ambient music for Sunday opening.",tags:["Free","All ages","Music","K-pop"]},
-    {id:"d02",name:"Open Stage — Dance & Vocal",desc:"K-pop dance and vocal performances.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
-    {id:"d03",name:"K-Pop Random Play Dance",desc:"Random Play Dance session — do you know the choreos? Get on stage!",tags:["Free","All ages","K-pop","Dance","Participatory"]},
-    {id:"d04",name:"K-Pop Freestyle Battle",desc:"K-pop freestyle battle! Show your improvised moves.",tags:["Free","All ages","K-pop","Dance","Competition"]},
-    {id:"d05",name:"Dance Workshop",desc:"K-pop dance workshop — learn a full choreography!",tags:["Free","All ages","K-pop","Dance","Workshop"]},
-    {id:"d06",name:"East2West Performances",desc:"East2West group performances.",tags:["Free","All ages","Dance","K-pop"]},
-    {id:"d07",name:"Momentum Performances + RPD",note:"TBC",desc:"Momentum performances followed by Random Play Dance.",tags:["Free","All ages","Dance","K-pop"]},
-    {id:"d08",name:"Closing Playlist",desc:"Final K-pop playlist to close POCHA MTL 2026. Thank you and see you next year!",tags:["Free","All ages","Music","K-pop"]},
+    {id:"d01",name:"Open Stage — Dance & Vocal",desc:"K-pop dance and vocal performances.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
+    {id:"d02",name:"K-Pop Random Play Dance",desc:"Random Play Dance session — do you know the choreos? Get on stage!",tags:["Free","All ages","K-pop","Dance","Participatory"]},
+    {id:"d02b",name:"K-Pop Freestyle Battle",desc:"K-pop freestyle battle! Show your improvised moves.",tags:["Free","All ages","K-pop","Dance","Competition"]},
+    {id:"d03",name:"Dance Workshop",desc:"K-pop dance workshop — learn a full choreography!",tags:["Free","All ages","K-pop","Dance","Workshop"]},
+    {id:"d04",name:"East2West Performances",desc:"East2West group performances.",tags:["Free","All ages","Dance","K-pop"]},
+    {id:"d05",name:"Momentum Performances + RPD",note:"TBC",desc:"Momentum performances followed by Random Play Dance.",tags:["Free","All ages","Dance","K-pop"]},
   ],
 };
 
 const DAYS_EN = [
-  {label:"Thu 4", date:"2026-06-04"},
-  {label:"Fri 5", date:"2026-06-05"},
-  {label:"Sat 6", date:"2026-06-06"},
-  {label:"Sun 7", date:"2026-06-07"}
+  {label:"Thu 11", date:"2026-06-11"},
+  {label:"Fri 12", date:"2026-06-12"},
+  {label:"Sat 13", date:"2026-06-13"},
+  {label:"Sun 14", date:"2026-06-14"}
 ];
 
 const LIEUX_EN = [
