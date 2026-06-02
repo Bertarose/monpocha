@@ -2026,6 +2026,7 @@ function locateMe() {
             <span style="font-size:15px;color:var(--muted);">12h – 20h</span>
           </div>
         </div>
+          <div style="font-size:12px;color:var(--muted);font-style:italic;margin-top:6px;" data-fr="*Les portes ouvrent 30 minutes avant le début de l'événement." data-en="*Doors open 30 minutes before the event starts.">*Les portes ouvrent 30 minutes avant le début de l'événement.</div>
       </div>
       <!-- Lieu -->
       <div style="padding:14px 18px;display:flex;align-items:center;gap:12px;">
@@ -2484,7 +2485,6 @@ const EVENTS={
   "2026-06-13":[
     {id:"s02",start:"12:30",end:"13:30",lieu:"scene",name:"Open Stage — Danse & Chant",desc:"Performances de danse et de chant K-pop.",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
     {id:"s03",start:"14:00",end:"16:00",lieu:"scene",name:"\u{1F3C6} Compétition de danse K-pop",note:"13 groupes en compétition",desc:"Compétition officielle de danse K-pop POCHA MTL 2026 !\n\n1. AllPodiumCrew — r u ok (ifeye)\n2. New Dawn Fever — Mamma Mia (izna)\n3. Felynz — BANG! (After School)\n4. ECHO — Red Sun (xikers)\n5. BalterZ — FOCUS (Hearts2Hearts)\n6. B-WARE — Road Not Taken (&TEAM)\n7. ATC — Talk Saxy (RIIZE)\n8. IntenCITY — Up (Kep1er)\n9. FourYou — 404 (KiiKii)\n10. XTRADOSE — EXO Mashup\n11. Salja Dance — Go In Blind (&TEAM)\n12. NOVA Dance — RUDE! (Hearts2Hearts)\n13. MOMENTUM — MAVERICK (The Boyz)",tags:["Gratuit","Tout public","Compétition","Danse","K-pop"]},
-    {id:"s03b",start:"17:00",end:"17:15",lieu:"scene",name:"Rhythms of Korea — Live Samulnori",desc:"Performance de Samulnori en direct — musique traditionnelle coréenne avec instruments de percussion.",tags:["Gratuit","Tout public","Musique","Culture coréenne","Traditionnel"]},
     {id:"s04",start:"18:00",end:"19:00",lieu:"scene",name:"East2West Performances + RPD",desc:"Performances du groupe East2West suivies d'une session Random Play Dance.",tags:["Gratuit","Tout public","Danse","K-pop"]},
     {id:"s05",start:"19:00",end:"20:00",lieu:"scene",name:"BTS 13th Anniversary Workshop",desc:"Atelier spécial pour célébrer le 13e anniversaire de BTS ! Apprenez des chorégraphies iconiques.",tags:["Gratuit","Tout public","BTS","K-pop","Danse","Atelier"]},
     {id:"s06",start:"20:00",end:"21:00",lieu:"scene",name:"K-Pop Dance Roulette & RPD",desc:"Roulette de danse K-pop — tirage au sort des chansons ! Suivi d'une Random Play Dance.",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
@@ -2923,7 +2923,7 @@ function openDrawer(date, evId){
   const lieuData=getLieux().find(l=>l.key===ev.lieu);
   const faved = isFav(ev.id);
 
-  const evImg = {"j02":null,"j03":null,"j04":null,"v01":null,"v02":null,"v03":null,"s01":null,"s02":null,"s03":null,"s03b":null,"s04":null,"s05":null,"s06":null,"s07":null,"d01":null,"d02":null,"d03":null,"d04":null,"d05":null};
+  const evImg = {"j02":null,"j03":null,"j04":null,"v01":null,"v02":null,"v03":null,"s01":null,"s02":null,"s03":null,"s04":null,"s05":null,"s06":null,"s07":null,"d01":null,"d02":null,"d03":null,"d04":null,"d05":null};
   const imgFile = evImg[ev.id] || null;
   document.getElementById("drawerHeader").innerHTML=`
     ${imgFile ? `<div class="event-img-wrap"><img class="event-img" src="/images/${imgFile}.jpg" alt="${ev.name}" loading="lazy" width="1080" height="1350" onerror="this.parentElement.style.display='none'"></div>` : ''}
@@ -3086,7 +3086,6 @@ const EVENTS_EN = {
   "2026-06-13":[
     {id:"s02",name:"Open Stage — Dance & Vocal",desc:"K-pop dance and vocal performances.",tags:["Free","All ages","Dance","K-pop","Open stage"]},
     {id:"s03",name:"\u{1F3C6} K-pop Dance Competition",note:"13 groups competing",desc:"Official POCHA MTL 2026 K-pop dance competition!",tags:["Free","All ages","Competition","Dance","K-pop"]},
-    {id:"s03b",name:"Rhythms of Korea — Live Samulnori",desc:"Live Samulnori performance — traditional Korean percussion music.",tags:["Free","All ages","Music","Korean Culture","Traditional"]},
     {id:"s04",name:"East2West Performances + RPD",desc:"East2West group performances followed by Random Play Dance.",tags:["Free","All ages","Dance","K-pop"]},
     {id:"s05",name:"BTS 13th Anniversary Workshop",desc:"Special workshop celebrating BTS's 13th anniversary! Learn iconic Bangtan choreos.",tags:["Free","All ages","BTS","K-pop","Dance","Workshop"]},
     {id:"s06",name:"K-Pop Dance Roulette & RPD",desc:"K-pop dance roulette — random song draw! Followed by Random Play Dance.",tags:["Free","All ages","K-pop","Dance","Participatory"]},
