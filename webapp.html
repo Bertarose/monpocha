@@ -1962,12 +1962,12 @@ function showMapSheet(spot) {
 
   document.getElementById('mapSheetContent').innerHTML =
     '<div class="sheet-icon-row">' +
-      '<div class="sheet-icon-bubble" style="background:' + (spot.color||'#f46857') + ';display:flex;align-items:center;justify-content:center;">' +
-        (window.ICON_SVGS && window.ICON_SVGS[spot.icon]
-          ? window.ICON_SVGS[spot.icon]
-          : '<span style="font-size:22px;">' + (spot.icon||'📍') + '</span>'
-        ) +
-      '</div>' +
+      (function(){
+        var catColor = (CAT_LABELS[spot.cat]||{}).color || spot.color || "#90A4AE";
+        var svg = (window.SPOT_ICONS && window.SPOT_ICONS[spot.id]) || (window.CAT_ICONS && window.CAT_ICONS[spot.cat]) || "";
+        var coloredSvg = svg.replace(/stroke="#fff"/g, 'stroke="'+catColor+'"').replace(/fill="#fff"/g, 'fill="'+catColor+'"');
+        return '<div class="sheet-icon-bubble" style="background:#FFFAF5;border:2px solid '+catColor+';display:flex;align-items:center;justify-content:center;">'+coloredSvg+'</div>';
+      })() +
       '<div class="sheet-info">' +
         '<div class="sheet-name">' + spotName + '</div>' +
         '<div class="sheet-desc">' + spotDesc + '</div>' +
