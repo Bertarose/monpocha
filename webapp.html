@@ -2866,7 +2866,7 @@ function renderMiniCountdown() {
   if (now >= FESTIVAL_START) { el.innerHTML = ''; return; }
   var diff = Math.ceil((FESTIVAL_START - now) / 86400000);
   var label = lang === 'en' ? (diff + (diff === 1 ? ' day' : ' days')) : ('J-' + diff);
-  el.innerHTML = '<div style="display:inline-flex;align-items:center;gap:5px;background:#FE9CC3;color:#1B2A5C;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.03em;white-space:nowrap;">' +
+  el.innerHTML = '<div style="display:inline-flex;align-items:center;gap:5px;background:#FF8C00;color:#fff;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.03em;white-space:nowrap;">' +
     '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1B2A5C" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ' +
     label + '</div>';
 }
