@@ -127,7 +127,7 @@ function updateAmbientMode() {
   } else if (h >= 6 && h < 12) {
     document.documentElement.style.setProperty('--ambient-overlay', 'rgba(255,220,150,0.03)');
   } else {
-    document.documentElement.style.setProperty('--ambient-overlay', 'rgba(232,149,109,0.02)');
+    document.documentElement.style.setProperty('--ambient-overlay', 'rgba(10,143,255,0.02)');
   }
   } catch(e) {}
 }
@@ -193,8 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
     --ticker-h: 36px;
     --top-h: calc(var(--header-h) + var(--ticker-h));
     --beige:  #fdf0e8;
-    --orange: #f46857;
-    --pink: #FE9CC3;
+    --orange: #0A8FFF;
+    --pink: #FF4D00;
     --brown:  #FF3B30;
     --marine: #0A1929;
     --blue:   #f5c5b8;
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   body { background: var(--cream); color: var(--text); font-family: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif; min-height: 100vh; -webkit-text-size-adjust: 100%; overscroll-behavior: none; padding-top: var(--top-h); }
 
   /* TICKER — fixed at very top */
-  .ticker { background: rgba(27,58,107,0.95); color: #fff; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 0; white-space: nowrap; overflow: hidden; position: fixed; top: 0; left: 0; right: 0; z-index: 112; }
+  .ticker { background: #0A8FFF; color: #fff; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 0; white-space: nowrap; overflow: hidden; position: fixed; top: 0; left: 0; right: 0; z-index: 112; }
   .ticker-inner { display: inline-block; animation: scroll 24s linear infinite; }
   .ticker-inner span { margin: 0 24px; }
   @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
@@ -308,9 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
   .legend::-webkit-scrollbar { display: none; }
   .legend-btn { padding: 7px 16px; border-radius: 20px; border: none; background: rgba(26,18,8,0.06); color: var(--muted); font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.18s; white-space: nowrap; -webkit-tap-highlight-color: transparent; touch-action: manipulation; font-family: inherit; }
   .legend-btn.a-all     { background: var(--text); color: var(--cream); }
-  .legend-btn.a-scene   { background: rgba(224,122,95,0.15); border: none; color: #E07A5F; }
+  .legend-btn.a-scene   { background: rgba(10,143,255,0.1); border: none; color: #1a1a1a; }
   .legend-btn.a-atelier { background: rgba(140,110,74,0.15); border: none; color: #8c6e4a; }
-  .legend-btn.a-eaton   { background: rgba(143,163,176,0.1); border-color: #8FA3B0; color: #5A4D42; }
+  .legend-btn.a-eaton   { background: rgba(143,163,176,0.1); border-color: #8FA3B0; color: #1565C0; }
   .pip { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
   /* FAVS EMPTY */
@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* EVENT */
   .event { display: flex; align-items: flex-start; gap: 14px; padding: 16px 16px 16px 18px; border: 1px solid #D4C8BA; border-radius: 12px; background: #fff; margin-bottom: 12px; position: relative; overflow: hidden; cursor: pointer; transition: background 0.1s, transform 0.1s, opacity 0.15s; -webkit-tap-highlight-color: transparent; user-select: none; box-shadow: 0 1px 3px rgba(44,33,24,0.04); }
   .event:active { transform: scale(0.985); background: #e2dcc8; }
-  .event:hover { background: #ede8da; }
+  .event:hover { background: #E8F4FF; }
   .event.is-live { background: var(--orange); border-color: var(--orange); color: #fff; }
   .event.is-live .event-time, .event.is-live .event-sub, .event.is-live .event-arrow { color: rgba(255,255,255,0.75); }
   .event.is-live .lieu-badge { background: rgba(255,255,255,0.2); color: #fff; border-color: rgba(255,255,255,0.5); }
@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
   @keyframes heartpop { 0%{transform:scale(1)} 20%{transform:scale(1.55)} 50%{transform:scale(0.88)} 75%{transform:scale(1.12)} 100%{transform:scale(1)} }
 
   .lieu-badge { font-size: 11px; font-weight: 800; letter-spacing: 0.03em; padding: 5px 11px; border-radius: 10px; border: 1.5px solid; white-space: nowrap; }
-  .b-scene { background: rgba(240,97,24,0.1); color: var(--orange); border-color: var(--orange); }
+  .b-scene { background: rgba(10,143,255,0.1); color: #1a1a1a; border-color: #0A8FFF; }
   .b-atelier { background: rgba(140,110,42,0.1); color: var(--brown); border-color: var(--brown); }
   .b-barvin { background: rgba(120,40,70,0.1); color: #782846; border-color: #782846; }
   .s-barvin { background: #782846; }
@@ -402,13 +402,13 @@ document.addEventListener('DOMContentLoaded', () => {
     border-radius: 50%;
     background: var(--orange);
     flex-shrink: 0;
-    box-shadow: 0 0 0 3px rgba(232,149,109,0.25);
+    box-shadow: 0 0 0 3px rgba(10,143,255,0.25);
     animation: needlePulse 2s ease-in-out infinite;
     margin-right: 6px;
   }
   @keyframes needlePulse {
-    0%,100% { box-shadow: 0 0 0 3px rgba(232,149,109,0.25); }
-    50%      { box-shadow: 0 0 0 7px rgba(232,149,109,0.08); }
+    0%,100% { box-shadow: 0 0 0 3px rgba(10,143,255,0.25); }
+    50%      { box-shadow: 0 0 0 7px rgba(10,143,255,0.08); }
   }
   .needle-label {
     background: var(--orange);
@@ -420,12 +420,12 @@ document.addEventListener('DOMContentLoaded', () => {
     border-radius: 20px;
     white-space: nowrap;
     flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(232,149,109,0.35);
+    box-shadow: 0 2px 8px rgba(10,143,255,0.35);
   }
   .needle-line {
     flex: 1;
     height: 1.5px;
-    background: linear-gradient(90deg, rgba(232,149,109,0.8), rgba(232,149,109,0.1));
+    background: linear-gradient(90deg, rgba(10,143,255,0.8), rgba(10,143,255,0.1));
     margin-left: 8px;
   }
 
@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
     transition: background 0.12s;
   }
   .nav-item:last-child { border-right: none; }
-  .nav-item:active { background: #ede8da; }
+  .nav-item:active { background: #E8F4FF; }
   .nav-item.nav-on { background: #f8f6f1; }
   .nav-item svg { width: 22px; height: 22px; stroke: #7A8BA8; transition: stroke 0.18s; display: block; fill: none; }
   .nav-item.nav-on svg { stroke: var(--marine); }
@@ -545,17 +545,17 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── INFO PANEL ── */
   #infoPanel { display:none; position:fixed; top:var(--top-h); left:0; right:0; bottom:60px; background:var(--cream); z-index:80; overflow-y:auto; flex-direction:column; }
   .info-section { margin:0 16px 14px; background:#fff; border:1.5px solid var(--border); border-radius:14px; overflow:hidden; }
-  .info-section-header { background:#f5f0ea; padding:12px 16px; font-size:12px; font-weight:900; color:#aa804a; letter-spacing:.08em; text-transform:uppercase; border-left:3px solid #aa804a; }
+  .info-section-header { background:#E8F4FF; padding:12px 16px; font-size:12px; font-weight:900; color:#0A8FFF; letter-spacing:.08em; text-transform:uppercase; border-left:3px solid #0A8FFF; }
   .info-section-body { padding:16px; display:flex; flex-direction:column; gap:10px; }
   .info-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:0.5px solid var(--border); font-size:16px; }
   .info-row:last-child { border-bottom:none; }
   .info-row-label { color:var(--text); font-weight:600; }
   .info-row-value { color:var(--muted); font-size:15px; text-align:right; }
   .price-badge { font-size:13px; font-weight:800; background:rgba(240,97,24,0.1); color:var(--orange); border-radius:20px; padding:5px 13px; }
-  .free-badge { font-size:13px; font-weight:800; background:#eaf3de; color:#3b6d11; border-radius:20px; padding:5px 13px; }
+  .free-badge { font-size:13px; font-weight:800; background:#E8F4FF; color:#0066CC; border-radius:20px; padding:5px 13px; }
   .info-note { font-size:13px; color:var(--muted); font-style:italic; padding:6px 0 0; }
   .social-btns { display:flex; gap:10px; margin-top:4px; }
-  .social-btn { flex:1; padding:16px; border-radius:20px; border:1.5px solid #8fc48f; font-size:14px; font-weight:800; text-align:center; color:#1a3d1a; background:#d4edd4; cursor:pointer; letter-spacing:.04em; text-transform:uppercase; font-family:inherit; -webkit-tap-highlight-color:transparent; }
+  .social-btn { flex:1; padding:16px; border-radius:20px; border:1.5px solid #8fc48f; font-size:14px; font-weight:800; text-align:center; color:#fff; background:#0A8FFF; cursor:pointer; letter-spacing:.04em; text-transform:uppercase; font-family:inherit; -webkit-tap-highlight-color:transparent; }
 
   /* FAQ ACCORDION */
   .faq-cat { background:#fff; border:1.5px solid var(--border); border-radius:14px; overflow:hidden; }
@@ -642,7 +642,7 @@ document.addEventListener('DOMContentLoaded', () => {
     -webkit-tap-highlight-color: transparent; touch-action: manipulation;
     transition: background 0.12s, color 0.12s, border-color 0.12s;
   }
-  .map-filter-btn:active { background: #ede8da; }
+  .map-filter-btn:active { background: #E8F4FF; }
   .map-filter-btn.active {
     background: var(--orange); color: #fff; border-color: var(--orange);
   }
@@ -780,7 +780,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Search bar focus glow */
   .search-bar:focus {
     background: rgba(26,18,8,0.08);
-    box-shadow: 0 0 0 3px rgba(232,149,109,0.15);
+    box-shadow: 0 0 0 3px rgba(10,143,255,0.15);
     transition: box-shadow 0.2s ease, background 0.2s ease;
   }
 
@@ -870,7 +870,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Variables de temps — injectées par JS */
   :root {
     --ambient-bg: #fdf6f0;
-    --ambient-overlay: rgba(232,149,109,0);
+    --ambient-overlay: rgba(10,143,255,0);
     --ambient-intensity: 0;
   }
 
@@ -899,7 +899,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Événement en cours: glow + highlight */
   .event.is-live {
-    box-shadow: 0 4px 24px rgba(232,149,109,0.3), 0 2px 8px rgba(26,18,8,0.08) !important;
+    box-shadow: 0 4px 24px rgba(10,143,255,0.3), 0 2px 8px rgba(26,18,8,0.08) !important;
     background: rgba(255,250,245,1) !important;
   }
 
@@ -945,12 +945,12 @@ document.addEventListener('DOMContentLoaded', () => {
     border-radius: 50%;
     background: var(--orange);
     flex-shrink: 0;
-    box-shadow: 0 0 0 3px rgba(232,149,109,0.25);
+    box-shadow: 0 0 0 3px rgba(10,143,255,0.25);
     animation: nowPulse 2s ease-in-out infinite;
   }
   @keyframes nowPulse {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(232,149,109,0.25); }
-    50%       { box-shadow: 0 0 0 6px rgba(232,149,109,0.1); }
+    0%, 100% { box-shadow: 0 0 0 3px rgba(10,143,255,0.25); }
+    50%       { box-shadow: 0 0 0 6px rgba(10,143,255,0.1); }
   }
   .now-indicator-line {
     flex: 1;
@@ -1001,7 +1001,7 @@ document.addEventListener('touchmove', function(e){
 
 <div id="update-bar">
   <span style="font-size:16px;">🌿</span>
-  <div id="updateText" style="flex:1;font-size:13px;font-weight:600;color:#1a3d1a;">Mise à jour disponible</div>
+  <div id="updateText" style="flex:1;font-size:13px;font-weight:600;color:#fff;">Mise à jour disponible</div>
   <button id="updateBtn" onclick="doUpdate()" style="background:#2d7a2d;color:#fff;border:none;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:800;letter-spacing:.05em;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex-shrink:0;">Mettre à jour</button>
   <button onclick="document.getElementById('update-bar').classList.remove('visible')" style="background:none;border:none;font-size:20px;color:#4a7a4a;cursor:pointer;padding:0 0 0 4px;line-height:1;flex-shrink:0;" aria-label="Fermer">×</button>
 </div>
@@ -1134,7 +1134,7 @@ document.addEventListener('touchmove', function(e){
     padding: 7px 13px;
     border-radius: 20px;
     border: 1.5px solid rgba(42,26,14,0.25);
-    background: #fdf6f0;
+    background: #f0f6ff;
     color: #2a1a0e;
     font-size: 11px;
     font-weight: 800;
@@ -1148,7 +1148,7 @@ document.addEventListener('touchmove', function(e){
     touch-action: manipulation;
     transition: background .12s, color .12s, border-color .12s;
   }
-  .map-filter-btn:active { background: rgba(232,149,109,0.15); }
+  .map-filter-btn:active { background: rgba(10,143,255,0.15); }
   .map-filter-btn.active {
     background: #f46857;
     color: #fff;
@@ -1175,7 +1175,7 @@ document.addEventListener('touchmove', function(e){
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    background: #fdf6f0;
+    background: #f0f6ff;
     border: 1.5px solid #f46857;
     font-size: 20px;
     cursor: pointer;
@@ -1195,7 +1195,7 @@ document.addEventListener('touchmove', function(e){
     bottom: -320px;
     left: 0; right: 0;
     z-index: 600;
-    background: #fdf6f0;
+    background: #f0f6ff;
     border-radius: 20px 20px 0 0;
     border-top: 2px solid #2a1a0e;
     transition: bottom .32s cubic-bezier(0.32,0.72,0,1);
@@ -1250,7 +1250,7 @@ document.addEventListener('touchmove', function(e){
   }
   .sheet-desc {
     font-size: 13px;
-    color: #7a5c3a;
+    color: #0066CC;
     margin-top: 3px;
     font-weight: 500;
     line-height: 1.4;
@@ -1404,20 +1404,20 @@ document.addEventListener('touchmove', function(e){
     <button class="mfb-btn active" onclick="filterMap('all',this)" data-filter="all">
       <span id="mfTous">Tous</span>
     </button>
-    <button class="mfb-btn" onclick="filterMap('stage',this)" data-filter="stage" data-color="#E8A090">
-      <div class="mfb-dot" style="background:#E8A090;"></div>
+    <button class="mfb-btn" onclick="filterMap('stage',this)" data-filter="stage" data-color="#64B5F6">
+      <div class="mfb-dot" style="background:#64B5F6;"></div>
       <span id="mfScenes">Scènes</span>
     </button>
-    <button class="mfb-btn" onclick="filterMap('food',this)" data-filter="food" data-color="#C4A882">
-      <div class="mfb-dot" style="background:#C4A882;"></div>
+    <button class="mfb-btn" onclick="filterMap('food',this)" data-filter="food" data-color="#42A5F5">
+      <div class="mfb-dot" style="background:#42A5F5;"></div>
       <span id="mfFood">Zone culinaire</span>
     </button>
     <button class="mfb-btn" onclick="filterMap('atelier',this)" data-filter="atelier" data-color="#9BB09A">
       <div class="mfb-dot" style="background:#9BB09A;"></div>
       <span id="mfAteliers">HALECO</span>
     </button>
-    <button class="mfb-btn" onclick="filterMap('vendor',this)" data-filter="vendor" data-color="#D4B896">
-      <div class="mfb-dot" style="background:#D4B896;"></div>
+    <button class="mfb-btn" onclick="filterMap('vendor',this)" data-filter="vendor" data-color="#90CAF9">
+      <div class="mfb-dot" style="background:#90CAF9;"></div>
       <span id="mfMarchands">Zone marchande</span>
     </button>
     <button class="mfb-btn" onclick="filterMap('service',this)" data-filter="service" data-color="#8FA3B0">
@@ -1467,7 +1467,7 @@ var POCHA_ZONES = [
     cat: 'food',
     name: 'Section A — Zone culinaire', name_en: 'Section A — Food Zone',
     desc: 'Bouffe · Bar · Entrée/Sortie', desc_en: 'Food · Bar · Entrance/Exit',
-    color: '#C4A882',
+    color: '#42A5F5',
     // GeoJSON mis à jour — mai 2026
     coords: [
       [45.4929703, -73.555153],
@@ -1483,7 +1483,7 @@ var POCHA_ZONES = [
     cat: 'vendor',
     name: 'Section B — Zone marchande', name_en: 'Section B — Vendor Zone',
     desc: 'Tentes commerçants · Marchands', desc_en: 'Vendor tents · Merchants',
-    color: '#D4B896',
+    color: '#90CAF9',
     coords: [
       [45.4930165, -73.5542501],
       [45.49236, -73.5543691],
@@ -1497,7 +1497,7 @@ var POCHA_ZONES = [
     cat: 'stage',
     name: 'Section C — Scène & Zone marchande', name_en: 'Section C — Stage & Vendor Zone',
     desc: 'Scène 30\'×24\' · Marchands C1–C31 · Bar · Régie', desc_en: '30\'×24\' stage · Vendors C1–C31 · Bar · Production',
-    color: '#E8A090',
+    color: '#64B5F6',
     coords: [
       [45.4930745, -73.5535969],
       [45.4928455, -73.5534826],
@@ -1511,7 +1511,7 @@ var POCHA_ZONES = [
     cat: 'food',
     name: 'Section D — Zone culinaire & Bar', name_en: 'Section D — Food Zone & Bar',
     desc: 'Cuisson · Bar · Desserts · Tri · Zone plonge · Toilettes', desc_en: 'Cooking · Bar · Desserts · Sorting · Dishwash zone · Washrooms',
-    color: '#C4A882',
+    color: '#42A5F5',
     coords: [
       [45.4930703, -73.553087],
       [45.4932065, -73.5532848],
@@ -1540,7 +1540,7 @@ var POCHA_ZONES = [
 // ⚠️  À affiner avec les vraies coords GPS une fois sur place
 var POCHA_SPOTS = [
   // ─ ENTRÉES / SORTIES
-  { id:'e1', cat:'service', lat:45.494547, lng:-73.552889,
+  { id:'e1', cat:'service', lat:45.4943644, lng:-73.552913,
     icon:'🟢', name:'Entrée publique', name_en:'Public Entrance',
     desc:'Accès principal · Filtration', desc_en:'Main access · Security check',
     color:'#7CB08A', textColor:'#fff',
@@ -1562,7 +1562,7 @@ var POCHA_SPOTS = [
   { id:'s1', cat:'stage', lat:45.492566, lng:-73.554195,
     icon:'🎤', name:'Scène principale', name_en:'Main Stage',
     desc:'Concerts · Cérémonies · Performances', desc_en:'Concerts · Ceremonies · Performances',
-    color:'#E8A090', textColor:'#fff',
+    color:'#64B5F6', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ ATELIERS (Haleco)
@@ -1572,7 +1572,7 @@ var POCHA_SPOTS = [
     color:'#9BB09A', textColor:'#fff',
     addr:'Entrée Haleco, Bassin Peel' },
   // ─ HALECO — Toilettes
-  { id:'hw1', cat:'service', lat:45.4939093, lng:-73.5533855,
+  { id:'hw1', cat:'service', lat:45.4941953, lng:-73.5533574,
     icon:'🚻', name:'Toilettes — Haleco', name_en:'Washrooms — Haleco',
     desc:'Toilettes intérieures · Accessibles', desc_en:'Indoor washrooms · Accessible',
     color:'#5A7FA0', textColor:'#fff',
@@ -1591,33 +1591,33 @@ var POCHA_SPOTS = [
   { id:'v1', cat:'vendor', lat:45.492891, lng:-73.554017,
     icon:'🛍️', name:'Zone marchande', name_en:'Vendor Zone',
     desc:'Manga · Anime · Vêtements · Céramique · Artisanat', desc_en:'Manga · Anime · Clothing · Ceramics · Crafts',
-    color:'#D4B896', textColor:'#fff',
+    color:'#90CAF9', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ BOUFFE
   { id:'f1', cat:'food', lat:45.492544, lng:-73.555015,
     icon:'🍜', name:'Zone culinaire', name_en:'Food Zone',
     desc:'Ramen · Sushi · Desserts · Cuisine asiatique', desc_en:'Ramen · Sushi · Desserts · Asian cuisine',
-    color:'#C4A882', textColor:'#fff',
+    color:'#42A5F5', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ BARS
   { id:'b1', cat:'food', lat:45.492521, lng:-73.554801,
     icon:'🍺', name:'Bar', name_en:'Bar',
     desc:'Bar principal', desc_en:'Main bar',
-    color:'#C4A882', textColor:'#fff',
+    color:'#42A5F5', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'b2', cat:'food', lat:45.491897, lng:-73.555131,
     icon:'🍺', name:'Bar / Terrasse', name_en:'Bar / Patio',
     desc:'Bar · Terrasse', desc_en:'Bar · Patio',
-    color:'#C4A882', textColor:'#fff',
+    color:'#42A5F5', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'b3', cat:'food', lat:45.49275600194729, lng:-73.55401234555944,
     icon:'🍺', name:'Zone Terrasse', name_en:'Patio Area',
     desc:'Terrasse · Bar', desc_en:'Patio · Bar',
-    color:'#C4A882', textColor:'#fff',
+    color:'#42A5F5', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   // ─ STATION D'EAU
@@ -1667,7 +1667,7 @@ var POCHA_SPOTS = [
     addr:'Bassin Peel, Griffintown' },
 
   // ─ BIXI
-  { id:'vip1', cat:'service', lat:45.4942194, lng:-73.552986,
+  { id:'vip1', cat:'service', lat:45.4942601, lng:-73.5529424,
     icon:'🎫', name:'Entrée invités, médias, artistes', name_en:'Guest, Media & Artist Entrance',
     desc:'Accès réservé aux invités, médias et artistes.', desc_en:'Reserved access for guests, media and artists.',
     color:'#9575CD', textColor:'#fff',
@@ -1687,10 +1687,10 @@ var POCHA_SPOTS = [
 ];
 
 var CAT_LABELS = {
-  stage:   { label:'Scène', label_en:'Stage', color:'#E8A090', bg:'rgba(232,160,144,0.12)' },
-  food:    { label:'Zone culinaire & Bar', label_en:'Food Zone & Bar', color:'#C4A882', bg:'rgba(196,168,130,0.12)'  },
+  stage:   { label:'Scène', label_en:'Stage', color:'#64B5F6', bg:'rgba(232,160,144,0.12)' },
+  food:    { label:'Zone culinaire & Bar', label_en:'Food Zone & Bar', color:'#42A5F5', bg:'rgba(196,168,130,0.12)'  },
   atelier: { label:'HALECO', label_en:'HALECO', color:'#9BB09A', bg:'rgba(155,176,154,0.12)' },
-  vendor:  { label:'Zone marchande', label_en:'Vendor Zone', color:'#D4B896', bg:'rgba(212,184,150,0.12)' },
+  vendor:  { label:'Zone marchande', label_en:'Vendor Zone', color:'#90CAF9', bg:'rgba(212,184,150,0.12)' },
   service: { label:'Essentiels', label_en:'Essentials', color:'#8FA3B0', bg:'rgba(143,163,176,0.12)'  },
   bar:     { label:'Bar', label_en:'Bar', color:'#7A4A6A', bg:'rgba(122,74,106,0.12)'   },
 };
@@ -1885,7 +1885,7 @@ function filterMap(cat, btn) {
 
 // ── BOTTOM SHEET ─────────────────────────────────────────
 function showMapSheet(spot) {
-  var catInfo = CAT_LABELS[spot.cat] || { label: spot.cat, label_en: spot.cat, color:'#7a5c3a', bg:'rgba(122,92,58,0.1)' };
+  var catInfo = CAT_LABELS[spot.cat] || { label: spot.cat, label_en: spot.cat, color:'#0066CC', bg:'rgba(122,92,58,0.1)' };
   var spotName = lang==='en' ? (spot.name_en||spot.name) : spot.name;
   var spotDesc = lang==='en' ? (spot.desc_en||spot.desc) : spot.desc;
   var catLabel = lang==='en' ? (catInfo.label_en||catInfo.label) : catInfo.label;
@@ -1982,7 +1982,7 @@ function locateMe() {
 }
 </script>
 
-<div id="infoPanel" style="display:none; position:fixed; top:var(--top-h); left:0; right:0; bottom:60px; background:#fdf6f0; z-index:90; overflow-y:auto; -webkit-overflow-scrolling:touch;">
+<div id="infoPanel" style="display:none; position:fixed; top:var(--top-h); left:0; right:0; bottom:60px; background:#f0f6ff; z-index:90; overflow-y:auto; -webkit-overflow-scrolling:touch;">
 
   <!-- HEADER -->
   <div style="padding:24px 20px 8px;">
@@ -2004,7 +2004,7 @@ function locateMe() {
       <div style="padding:16px 18px;border-bottom:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div style="width:36px;height:36px;border-radius:10px;background:rgba(224,122,95,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
           <div style="font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--text);" data-fr="Dates & Horaires" data-en="Dates & Hours">Dates & Horaires</div>
         </div>
@@ -2031,7 +2031,7 @@ function locateMe() {
       <!-- Lieu -->
       <div style="padding:14px 18px;display:flex;align-items:center;gap:12px;">
         <div style="width:36px;height:36px;border-radius:10px;background:rgba(224,122,95,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div>
           <div style="font-size:15px;font-weight:700;color:var(--text);">Bassin Peel, Griffintown</div>
@@ -2043,14 +2043,14 @@ function locateMe() {
     <!-- Billets -->
     <div onclick="window.open('https://www.zeffy.com/fr-CA/ticketing/pocha-mtl-11-14-juin-2026-bassin-peel-griffintown','_blank')" style="background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:10px;padding:16px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;">
       <div style="width:36px;height:36px;border-radius:10px;background:rgba(224,122,95,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><path d="M12 6v12"/><path d="M2 12h20"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><path d="M12 6v12"/><path d="M2 12h20"/></svg>
       </div>
       <div style="flex:1;">
         <div style="font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--text);margin-bottom:6px;" data-fr="Billets" data-en="Tickets">Billets</div>
         <div style="display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:8px;margin-bottom:8px;">
           <div style="text-align:center;">
             <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);" data-fr="Prévente" data-en="Presale">Prévente</div>
-            <div style="font-size:20px;font-weight:900;color:#E07A5F;line-height:1.1;">4$</div>
+            <div style="font-size:20px;font-weight:900;color:#0A8FFF;line-height:1.1;">4$</div>
           </div>
           <div style="background:var(--border);"></div>
           <div style="text-align:center;">
@@ -2082,34 +2082,34 @@ function locateMe() {
     <div style="background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:10px;overflow:hidden;">
       <div style="padding:14px 18px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;">
         <div style="width:36px;height:36px;border-radius:10px;background:rgba(224,122,95,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/><path d="M5 8h14"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/><path d="M5 8h14"/></svg>
         </div>
         <div style="font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--text);" data-fr="Transport & Accès" data-en="Transport & Access">Transport & Accès</div>
       </div>
       <div style="padding:10px 18px;display:flex;flex-direction:column;gap:0;">
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><line x1="6" y1="17" x2="4" y2="21"/><line x1="18" y1="17" x2="20" y2="21"/><circle cx="9" cy="7" r="1.5" fill="#E07A5F"/><circle cx="15" cy="7" r="1.5" fill="#E07A5F"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><line x1="6" y1="17" x2="4" y2="21"/><line x1="18" y1="17" x2="20" y2="21"/><circle cx="9" cy="7" r="1.5" fill="#0A8FFF"/><circle cx="15" cy="7" r="1.5" fill="#0A8FFF"/></svg>
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:700;color:var(--text);" data-fr="Métro" data-en="Metro">Métro</div>
             <div style="font-size:13px;color:var(--muted);" data-fr="Bonaventure (ligne orange)" data-en="Bonaventure (Orange Line)">Bonaventure (ligne orange)</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="15" rx="3"/><path d="M3 10h18"/><circle cx="7.5" cy="15.5" r="1.5" fill="#E07A5F"/><circle cx="16.5" cy="15.5" r="1.5" fill="#E07A5F"/><line x1="6" y1="18" x2="6" y2="21"/><line x1="18" y1="18" x2="18" y2="21"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="15" rx="3"/><path d="M3 10h18"/><circle cx="7.5" cy="15.5" r="1.5" fill="#0A8FFF"/><circle cx="16.5" cy="15.5" r="1.5" fill="#0A8FFF"/><line x1="6" y1="18" x2="6" y2="21"/><line x1="18" y1="18" x2="18" y2="21"/></svg>
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:700;color:var(--text);" data-fr="Bus" data-en="Bus">Bus</div>
             <div style="font-size:13px;color:var(--muted);" data-fr="Ligne 36" data-en="Line 36">Ligne 36</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l1.5-5a2 2 0 011.9-1.4h7.2A2 2 0 0117.5 6L19 11"/><rect x="3" y="11" width="18" height="7" rx="2"/><circle cx="7" cy="15" r="1" fill="#E07A5F"/><circle cx="17" cy="15" r="1" fill="#E07A5F"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l1.5-5a2 2 0 011.9-1.4h7.2A2 2 0 0117.5 6L19 11"/><rect x="3" y="11" width="18" height="7" rx="2"/><circle cx="7" cy="15" r="1" fill="#0A8FFF"/><circle cx="17" cy="15" r="1" fill="#0A8FFF"/></svg>
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:700;color:var(--text);" data-fr="Voiture" data-en="Car">Voiture</div>
             <div style="font-size:13px;color:var(--muted);" data-fr="Sortie A-10, Rue Peel" data-en="Exit A-10, Peel Street">Sortie A-10, Rue Peel</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:10px 0;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5l3-8h5l3 8"/><path d="M8.5 9.5L12 5"/><circle cx="12" cy="4" r="1.5" fill="#E07A5F"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5l3-8h5l3 8"/><path d="M8.5 9.5L12 5"/><circle cx="12" cy="4" r="1.5" fill="#0A8FFF"/></svg>
           <div style="flex:1;">
             <div style="font-size:14px;font-weight:700;color:var(--text);">BIXI</div>
             <div style="font-size:13px;color:var(--muted);" data-fr="2 stations à l'entrée" data-en="2 stations at the entrance">2 stations à l'entrée</div>
@@ -2122,7 +2122,7 @@ function locateMe() {
 
   <!-- VOIR LE PLAN -->
   <div style="padding:0 20px 16px;">
-    <a href="https://maps.google.com/?q=Bassin+Peel+Griffintown+Montreal" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:#E07A5F;border-radius:14px;padding:18px;text-decoration:none;">
+    <a href="https://maps.google.com/?q=Bassin+Peel+Griffintown+Montreal" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;background:#0A8FFF;border-radius:14px;padding:18px;text-decoration:none;">
       <div style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
       </div>
@@ -2149,7 +2149,7 @@ function locateMe() {
 
       <div class="faq-cat" data-keywords="chiens pluie réentrée objets perdus animaux météo nourriture alcool">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><line x1="9" y1="21" x2="9" y2="14"/><line x1="15" y1="21" x2="15" y2="14"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><line x1="9" y1="21" x2="9" y2="14"/><line x1="15" y1="21" x2="15" y2="14"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);">Festival</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Chiens, pluie, réentrée, objets perdus…" data-en="Dogs, rain, re-entry, lost & found…">Chiens, pluie, réentrée, objets perdus…</div></div>
           <span class="faq-plus">+</span>
         </button>
@@ -2167,7 +2167,7 @@ function locateMe() {
 
       <div class="faq-cat" data-keywords="billets prix paiement argent comptant carte gratuit prévente remboursement">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Billetterie & Paiement" data-en="Tickets & Payment">Billetterie & Paiement</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Prix, modes de paiement, billets perdus…" data-en="Prices, payment methods, lost tickets…">Prix, modes de paiement, billets perdus…</div></div>
           <span class="faq-plus">+</span>
         </button>
@@ -2181,7 +2181,7 @@ function locateMe() {
 
       <div class="faq-cat" data-keywords="métro bus bixi voiture stationnement vélo transport accès auto">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><line x1="6" y1="17" x2="4" y2="21"/><line x1="18" y1="17" x2="20" y2="21"/><circle cx="9" cy="7" r="1.5" fill="#E07A5F"/><circle cx="15" cy="7" r="1.5" fill="#E07A5F"/></svg></div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16"/><line x1="6" y1="17" x2="4" y2="21"/><line x1="18" y1="17" x2="20" y2="21"/><circle cx="9" cy="7" r="1.5" fill="#0A8FFF"/><circle cx="15" cy="7" r="1.5" fill="#0A8FFF"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Transport & Accès" data-en="Transport & Access">Transport & Accès</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Métro, bus, BIXI, comment se rendre…" data-en="Metro, bus, BIXI, how to get there…">Métro, bus, BIXI, comment se rendre…</div></div>
           <span class="faq-plus">+</span>
         </button>
@@ -2195,7 +2195,7 @@ function locateMe() {
 
       <div class="faq-cat" data-keywords="accessibilité fauteuil roulant poussette mobilité réduite handicap">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 7v5"/><path d="M8 22l4-10 4 10"/><path d="M7 12h10"/></svg></div>
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 7v5"/><path d="M8 22l4-10 4 10"/><path d="M7 12h10"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Accessibilité" data-en="Accessibility">Accessibilité</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Poussettes, personnes à mobilité réduite…" data-en="Strollers, reduced mobility…">Poussettes, personnes à mobilité réduite…</div></div>
           <span class="faq-plus">+</span>
         </button>
@@ -2866,7 +2866,7 @@ function renderMiniCountdown() {
   if (now >= FESTIVAL_START) { el.innerHTML = ''; return; }
   var diff = Math.ceil((FESTIVAL_START - now) / 86400000);
   var label = lang === 'en' ? (diff + (diff === 1 ? ' day' : ' days')) : ('J-' + diff);
-  el.innerHTML = '<div style="display:inline-flex;align-items:center;gap:5px;background:#FF8C00;color:#fff;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.03em;white-space:nowrap;">' +
+  el.innerHTML = '<div style="display:inline-flex;align-items:center;gap:5px;background:#0A8FFF;color:#fff;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.03em;white-space:nowrap;">' +
     '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1B2A5C" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ' +
     label + '</div>';
 }
