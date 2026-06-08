@@ -1039,6 +1039,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <img class="splash-food sf6" src="/img/food-skewer.png" alt="">
   </div>
   <div class="splash-rings"><div class="splash-ring"></div><div class="splash-ring"></div><div class="splash-ring"></div></div>
+  <img id="splash-cat" src="/icon-512.png" alt="POCHA MTL" width="160" height="160">
   <div id="splash-title">POCHA MTL<br>2026</div>
   <div id="splash-sub">11 — 14 juin · Bassin Peel · Griffintown</div>
 </div>
@@ -1597,16 +1598,10 @@ var POCHA_ZONES = [
 // ⚠️  À affiner avec les vraies coords GPS une fois sur place
 var POCHA_SPOTS = [
   // ─ ENTRÉES / SORTIES
-  { id:'e1', cat:'service', lat:45.4931099, lng:-73.5532479,
+  { id:'e1', cat:'service', lat:45.4943644, lng:-73.552913,
     icon:'🟢', name:'Entrée publique', name_en:'Public Entrance',
     desc:'Accès principal · Filtration', desc_en:'Main access · Security check',
     color:'#7CB08A', textColor:'#fff',
-    addr:'Bassin Peel, Griffintown' },
-
-  { id:'tente1', cat:'service', lat:45.4930705, lng:-73.5531873,
-    icon:'🎨', name:'Tente des artistes', name_en:'Artist Tent',
-    desc:'Espace réservé aux artistes et présentateurs du festival.', desc_en:'Reserved space for festival artists and presenters.',
-    color:'#9BB09A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
   { id:'e2', cat:'service', lat:45.492974, lng:-73.555599,
@@ -1615,7 +1610,7 @@ var POCHA_SPOTS = [
     color:'#6A9BB0', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
-  { id:'e3', cat:'service', lat:45.4931099, lng:-73.5532479,
+  { id:'e3', cat:'service', lat:45.493905, lng:-73.553054,
     icon:'🔴', name:'Sortie publique', name_en:'Public Exit',
     desc:'Sortie publique (non adaptée)', desc_en:'Public exit (not accessible)',
     color:'#D4908A', textColor:'#fff',
@@ -1730,6 +1725,12 @@ var POCHA_SPOTS = [
     addr:'Bassin Peel, Griffintown' },
 
   // ─ BIXI
+  { id:'vip1', cat:'service', lat:45.4942601, lng:-73.5529424,
+    icon:'🎫', name:'Entrée invités, médias, artistes', name_en:'Guest, Media & Artist Entrance',
+    desc:'Accès réservé aux invités, médias et artistes.', desc_en:'Reserved access for guests, media and artists.',
+    color:'#9575CD', textColor:'#fff',
+    addr:'Bassin Peel, Griffintown' },
+
   { id:'bx1', cat:'service', lat:45.493548, lng:-73.553360,
     icon:'🚲', name:'Bixi', name_en:'Bixi',
     desc:'Station Bixi', desc_en:'Bixi Station',
