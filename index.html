@@ -1291,6 +1291,27 @@ document.addEventListener('touchmove', function(e){
 
   #mapGpsBtn:active { transform: scale(0.92); box-shadow: 0 1px 6px rgba(0,0,0,0.15); }
 
+  /* ── Onigiri burst overlay ── */
+  #onigiriBurst { position:absolute; inset:0; z-index:601; pointer-events:none; opacity:0; transition:none; }
+  #onigiriBurst.show { opacity:1; animation:onigiriBg 2.6s ease-out forwards; }
+  #confettiCanvas { position:absolute; inset:0; width:100%; height:100%; }
+  #onigiriBurst .oni-mascot { position:absolute; width:clamp(180px,55vw,380px); height:auto;
+    top:50%; left:50%; transform:translate(-50%,-60%) scale(0); opacity:0; transition:none;
+    filter:drop-shadow(0 6px 24px rgba(0,0,0,0.25)); }
+  #onigiriBurst.show .oni-mascot { animation:oniMascot 2.6s ease-out forwards; }
+  @keyframes onigiriBg { 0%{opacity:0} 8%{opacity:1} 65%{opacity:1} 100%{opacity:0} }
+  @keyframes oniMascot {
+    0%   { opacity:0; transform:translate(-50%,-60%) scale(0) rotate(-8deg); }
+    12%  { opacity:1; transform:translate(-50%,-60%) scale(1.3) rotate(6deg); }
+    20%  { transform:translate(-50%,-60%) scale(0.85) rotate(-4deg); }
+    28%  { transform:translate(-50%,-60%) scale(1.15) rotate(3deg); }
+    36%  { transform:translate(-50%,-60%) scale(0.95) rotate(-2deg); }
+    44%  { transform:translate(-50%,-60%) scale(1.05) rotate(1deg); }
+    55%  { transform:translate(-50%,-60%) scale(1) rotate(0deg); opacity:1; }
+    80%  { transform:translate(-50%,-60%) scale(1) rotate(0deg); opacity:1; }
+    100% { transform:translate(-50%,-60%) scale(1.08) rotate(4deg); opacity:0; }
+  }
+
   /* Bottom sheet */
   #mapSheet {
     position: absolute;
@@ -1550,6 +1571,7 @@ document.addEventListener('touchmove', function(e){
   <!-- Carte Leaflet -->
   <div id="pochaMap"></div>
   <div id="pochaBurst"><img class="kw-mascot" src="/img/mascot-pocha.png" alt=""><span class="kw-text">POCHA!</span></div>
+  <div id="onigiriBurst"><canvas id="confettiCanvas"></canvas><img class="oni-mascot" src="/img/mascot-yatai.png" alt=""></div>
 
   <!-- Barre filtre + légende — pill sombre en bas à gauche -->
   <div id="mapFilterBar">
@@ -2076,6 +2098,40 @@ function initpochaMap() {
     className: 'mascot-marker'
   });
   var yataiMascotMarker = L.marker([45.4940572, -73.5533921], { icon: yataiMascotIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
+
+  // ── Onigiri marker (point d'intérêt) ──
+  var onigiriPointIcon = L.icon({
+    iconUrl: '/img/mascot-yatai.png',
+    iconSize: [70, 70],
+    iconAnchor: [35, 35],
+    className: 'mascot-marker'
+  });
+  var onigiriPointMarker = L.marker([45.4929233, -73.5537246], { icon: onigiriPointIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
+  onigiriPointMarker.on('click', function(e){
+    L.DomEvent.stopPropagation(e);
+    var burst = document.getElementById('onigiriBurst');
+    var canvas = document.getElementById('confettiCanvas');
+    if (!burst || !canvas) return;
+    burst.classList.remove('show');
+    void burst.offsetWidth;
+    burst.classList.add('show');
+    launchConfetti(canvas);
+    setTimeout(function(){ burst.classList.remove('show'); }, 2600);
+  });
+
+  // ── Chat maneki-neko — zone des marchands ──
+  var manekoIcon = L.icon({
+    iconUrl: '/img/mascot-pocha.png',
+    iconSize: [70, 70],
+    iconAnchor: [35, 35],
+    className: 'mascot-marker'
+  });
+  var manekoMarker = L.marker([45.4926876, -73.5537246], { icon: manekoIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
+  manekoMarker.on('click', function(e){
+    L.DomEvent.stopPropagation(e);
+    var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
+    var k = document.getElementById('pochaBurst'); if(k){ k.classList.remove('show'); void k.offsetWidth; k.classList.add('show'); setTimeout(function(){ k.classList.remove('show'); }, 2900); }
+  });
   yataiMascotMarker.on('click', function(e){
     L.DomEvent.stopPropagation(e);
     var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
@@ -2103,6 +2159,56 @@ function initpochaMap() {
   setTimeout(function(){
     pochaLeafletMap.invalidateSize({ animate: false });
   }, 700);
+}
+
+// ── CONFETTI onigiri ─────────────────────────────────────
+function launchConfetti(canvas) {
+  var ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth || window.innerWidth;
+  canvas.height = canvas.offsetHeight || window.innerHeight;
+  var W = canvas.width, H = canvas.height;
+  var colors = ['#FF6B6B','#FFD93D','#6BCB77','#4D96FF','#FF6FC8','#FFAA33','#fff','#c0f'];
+  var pieces = [];
+  for (var i = 0; i < 140; i++) {
+    pieces.push({
+      x: W * (0.2 + Math.random() * 0.6),
+      y: H * 0.35 + Math.random() * 40,
+      r: 4 + Math.random() * 6,
+      d: Math.random() * 140,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      tilt: Math.random() * 10 - 10,
+      tiltAngle: 0,
+      tiltSpeed: 0.1 + Math.random() * 0.15,
+      vx: (Math.random() - 0.5) * 8,
+      vy: -(4 + Math.random() * 7),
+      gravity: 0.18 + Math.random() * 0.12,
+      alpha: 1
+    });
+  }
+  var start = null;
+  var duration = 2400;
+  function draw(ts) {
+    if (!start) start = ts;
+    var elapsed = ts - start;
+    ctx.clearRect(0, 0, W, H);
+    pieces.forEach(function(p) {
+      p.tiltAngle += p.tiltSpeed;
+      p.x += p.vx;
+      p.vy += p.gravity;
+      p.y += p.vy;
+      p.tilt = Math.sin(p.tiltAngle) * 12;
+      p.alpha = Math.max(0, 1 - elapsed / duration);
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.ellipse(p.x + p.tilt, p.y, p.r, p.r * 0.5, p.tiltAngle, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    if (elapsed < duration) requestAnimationFrame(draw);
+    else ctx.clearRect(0, 0, W, H);
+  }
+  requestAnimationFrame(draw);
 }
 
 // ── FILTRE ───────────────────────────────────────────────
@@ -2510,7 +2616,7 @@ function locateMe() {
           <div class="faq-q" data-fr="Est-ce que les chiens sont acceptés ?" data-en="Are dogs allowed?">Est-ce que les chiens sont acceptés ?</div>
           <div class="faq-a" data-fr="Oui ! Les chiens tenus en laisse sont les bienvenus sur le site. Prévoyez des sacs pour les déchets." data-en="Yes! Dogs on leashes are welcome on-site. Please bring waste bags.">Oui ! Les chiens tenus en laisse sont les bienvenus sur le site. Prévoyez des sacs pour les déchets.</div>
           <div class="faq-q" style="margin-top:14px;" data-fr="🐾 Bien-être animal — message important" data-en="🐾 Animal welfare — important message">🐾 Bien-être animal — message important</div>
-          <div class="faq-a" style="background:rgba(90,154,106,0.08);border-left:3px solid #5a9a6a;border-radius:0 8px 8px 0;padding:10px 12px;margin-top:6px;" data-fr="Par temps chaud, gardez votre chien à l'ombre, vérifiez la température de l'asphalte avec votre main et offrez-lui de l'eau souvent. Des bols d'eau sont disponibles sur le site. Au moindre signe d'inconfort, mettez-le au frais immédiatement." data-en="In hot weather, keep your dog in the shade, check the pavement temperature with your hand, and offer water often. Water bowls are available on-site. At the first sign of discomfort, move them somewhere cool immediately.">Par temps chaud, gardez votre chien à l'ombre, vérifiez la température de l'asphalte avec votre main et offrez-lui de l'eau souvent. Des bols d'eau sont disponibles sur le site. Au moindre signe d'inconfort, mettez-le au frais immédiatement.</div>
+          <div class="faq-a" style="background:rgba(90,154,106,0.08);border-left:3px solid #5a9a6a;border-radius:0 8px 8px 0;padding:10px 12px;margin-top:6px;" data-fr="POCHA MTL, c'est plus de 25 000 visiteurs, de la musique forte, de l'animation non-stop et de la chaleur estivale. Un environnement intense pour un animal. Si vous amenez votre chien, assurez-vous qu'il est à l'aise dans les foules et le bruit. Par temps chaud, vérifiez la température de l'asphalte avec votre paume — si c'est trop chaud pour vous, c'est trop chaud pour ses pattes. Offrez-lui de l'eau régulièrement, gardez-le à l'ombre, et au moindre signe de stress ou d'inconfort, quittez le site immédiatement. Des bols d'eau sont disponibles sur place." data-en="POCHA MTL welcomes over 25,000 visitors, with loud music, non-stop activity, and summer heat — an intense environment for any animal. If you bring your dog, make sure they are comfortable with crowds and noise. In hot weather, test the pavement with your palm — if it's too hot for you, it's too hot for their paws. Offer water often, keep them in the shade, and at the first sign of stress or discomfort, leave the site right away. Water bowls are available on-site.">POCHA MTL, c'est plus de 25 000 visiteurs, de la musique forte, de l'animation non-stop et de la chaleur estivale. Un environnement intense pour un animal. Si vous amenez votre chien, assurez-vous qu'il est à l'aise dans les foules et le bruit. Par temps chaud, vérifiez la température de l'asphalte avec votre paume — si c'est trop chaud pour vous, c'est trop chaud pour ses pattes. Offrez-lui de l'eau régulièrement, gardez-le à l'ombre, et au moindre signe de stress ou d'inconfort, quittez le site immédiatement. Des bols d'eau sont disponibles sur place.</div>
           <div class="faq-q" data-fr="Que se passe-t-il en cas de pluie ?" data-en="What happens if it rains?">Que se passe-t-il en cas de pluie ?</div>
           <div class="faq-a" data-fr="Le festival a lieu beau temps, mauvais temps. Certaines zones sont couvertes. Apportez un imperméable !" data-en="The festival takes place rain or shine. Some areas are covered. Bring a rain jacket!">Le festival a lieu beau temps, mauvais temps. Certaines zones sont couvertes. Apportez un imperméable !</div>
           <div class="faq-q" data-fr="Est-ce que je peux sortir et revenir ?" data-en="Can I leave and come back?">Est-ce que je peux sortir et revenir ?</div>
