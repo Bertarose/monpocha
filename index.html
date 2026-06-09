@@ -1254,6 +1254,8 @@ document.addEventListener('touchmove', function(e){
   
   .mascot-marker { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); opacity:0.9; cursor:pointer; background:transparent !important; border:none !important; box-shadow:none !important; }
   .mascot-marker:active { transform:scale(0.9); }
+  .food-img-marker { filter: drop-shadow(0 2px 5px rgba(0,0,0,0.22)); cursor:pointer; background:transparent !important; border:none !important; box-shadow:none !important; transition:transform .12s; }
+  .food-img-marker:active { transform:scale(0.9); }
   #pochaBurst { position:absolute; inset:0; z-index:600; display:flex; align-items:center; justify-content:center;
     background:radial-gradient(circle, rgba(232,59,12,0.6) 0%, rgba(232,59,12,0.35) 50%, transparent 70%);
     opacity:0; pointer-events:none; transition:none; }
@@ -1307,6 +1309,55 @@ document.addEventListener('touchmove', function(e){
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   #mapSheet.open { bottom: 0; }
+
+  /* ── Lecteur Radio POCHA ── */
+  #radioPlayer {
+    position: absolute;
+    bottom: -420px;
+    left: 0; right: 0;
+    z-index: 620;
+    background: #f0f6ff;
+    border-radius: 20px 20px 0 0;
+    border-top: 2px solid #2a1a0e;
+    transition: bottom .34s cubic-bezier(0.32,0.72,0,1);
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.4);
+    padding: 0 18px calc(18px + env(safe-area-inset-bottom, 0px));
+  }
+  #radioPlayer.open { bottom: 0; }
+  .radio-head { display:flex; align-items:center; justify-content:space-between; margin-top:2px; }
+  .radio-title { font-size:14px; font-weight:900; color:#1B3A6B; text-transform:uppercase; letter-spacing:.04em; display:flex; align-items:center; gap:7px; }
+  .radio-title .radio-ic { font-size:18px; }
+  .radio-close { background:none; border:none; font-size:26px; line-height:1; color:#2a1a0e; cursor:pointer; padding:0 4px; -webkit-tap-highlight-color:transparent; }
+  .radio-now { font-size:15px; font-weight:700; color:#2a1a0e; margin:10px 0 12px; min-height:20px; }
+  .radio-progress { height:6px; border-radius:3px; background:rgba(27,58,107,0.15); cursor:pointer; overflow:hidden; }
+  .radio-progress-fill { height:100%; width:0%; background:#1B3A6B; border-radius:3px; transition:width .15s linear; }
+  .radio-times { display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:rgba(42,26,14,0.55); margin-top:5px; }
+  .radio-controls { display:flex; align-items:center; justify-content:center; gap:26px; margin:8px 0 14px; }
+  .radio-skip { background:none; border:none; color:#1B3A6B; cursor:pointer; padding:6px; display:flex; -webkit-tap-highlight-color:transparent; transition:transform .12s; }
+  .radio-skip:active { transform:scale(0.85); }
+  .radio-play {
+    width:60px; height:60px; border-radius:50%; border:none; cursor:pointer;
+    background:#1B3A6B; color:#fff; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 14px rgba(27,58,107,0.4); -webkit-tap-highlight-color:transparent;
+    transition:transform .12s;
+  }
+  .radio-play:active { transform:scale(0.92); }
+  .radio-play svg { margin-left:2px; }
+  .radio-tracks { display:flex; flex-direction:column; gap:8px; }
+  .radio-track-btn {
+    display:flex; align-items:center; gap:10px; width:100%; text-align:left;
+    background:#fff; border:1.5px solid rgba(27,58,107,0.18); border-radius:12px;
+    padding:11px 13px; font-size:14px; font-weight:600; color:#2a1a0e; cursor:pointer;
+    -webkit-tap-highlight-color:transparent; transition:border-color .15s, background .15s;
+  }
+  .radio-track-btn.active { border-color:#1B3A6B; background:#e8f0fb; color:#1B3A6B; font-weight:800; }
+  .radio-track-num { width:22px; height:22px; flex:none; border-radius:50%; background:rgba(27,58,107,0.12); color:#1B3A6B; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; }
+  .radio-track-btn.active .radio-track-num { background:#1B3A6B; color:#fff; }
+  .radio-eq { margin-left:auto; display:none; align-items:flex-end; gap:2px; height:14px; }
+  .radio-track-btn.active.playing .radio-eq { display:flex; }
+  .radio-eq span { width:3px; background:#1B3A6B; border-radius:1px; animation:radioEq 0.9s ease-in-out infinite; }
+  .radio-eq span:nth-child(1){ animation-delay:0s; } .radio-eq span:nth-child(2){ animation-delay:.25s; } .radio-eq span:nth-child(3){ animation-delay:.5s; }
+  @keyframes radioEq { 0%,100%{ height:4px; } 50%{ height:14px; } }
 
   .sheet-handle-wrap {
     display: flex;
@@ -1539,6 +1590,34 @@ document.addEventListener('touchmove', function(e){
       <div class="sheet-handle"></div>
     </div>
     <div id="mapSheetContent"></div>
+  </div>
+
+  <!-- Lecteur Radio POCHA -->
+  <div id="radioPlayer">
+    <div class="sheet-handle-wrap" onclick="closeRadioPlayer()">
+      <div class="sheet-handle"></div>
+    </div>
+    <div class="radio-head">
+      <div class="radio-title"><span class="radio-ic">📻</span> <span id="radioStationName">Radio POCHA</span></div>
+      <button class="radio-close" onclick="closeRadioPlayer()" aria-label="Fermer">×</button>
+    </div>
+    <div class="radio-now" id="radioNowPlaying">—</div>
+    <div class="radio-progress" id="radioProgress" onclick="radioSeek(event)">
+      <div class="radio-progress-fill" id="radioProgressFill"></div>
+    </div>
+    <div class="radio-times"><span id="radioCur">0:00</span><span id="radioDur">0:00</span></div>
+    <div class="radio-controls">
+      <button class="radio-skip" onclick="radioPrev()" aria-label="Précédent">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 6h2v12H6zM20 6l-9 6 9 6z"/></svg>
+      </button>
+      <button class="radio-play" id="radioPlayBtn" onclick="radioToggle()" aria-label="Lecture">
+        <svg id="radioPlayIcon" viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <button class="radio-skip" onclick="radioNext()" aria-label="Suivant">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16 6h2v12h-2zM4 6l9 6-9 6z"/></svg>
+      </button>
+    </div>
+    <div class="radio-tracks" id="radioTrackList"></div>
   </div>
 </div>
 </div>
@@ -1781,6 +1860,28 @@ var POCHA_SPOTS = [
     desc:'Station Bixi', desc_en:'Bixi Station',
     color:'#8FA3B0', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
+
+  // ─ AIRE DE REPOS / TERRASSE
+  { id:'rest1', cat:'service', lat:45.4928233, lng:-73.5536089,
+    icon:'⛱️', name:'Aire de repos', name_en:'Rest Area',
+    desc:'Terrasse · Coin détente · Assis-toi', desc_en:'Patio · Chill spot · Take a seat',
+    color:'#8FA3B0', textColor:'#fff',
+    addr:'Bassin Peel, Griffintown' },
+
+  // ─ RADIO POCHA (interactive — ouvre le lecteur audio)
+  { id:'radio1', cat:'service', lat:45.4922815, lng:-73.5540968,
+    icon:'📻', name:'Radio POCHA', name_en:'POCHA Radio',
+    desc:'Touche pour écouter', desc_en:'Tap to listen',
+    color:'#8FA3B0', textColor:'#fff',
+    addr:'Bassin Peel, Griffintown' },
+
+  // ─ SO-TTEOK SO-TTEOK (marker image)
+  { id:'sotteok1', cat:'food', lat:45.4923971, lng:-73.5550391,
+    img:'/img/sotteok.png',
+    icon:'🌭', name:'So-tteok so-tteok', name_en:'So-tteok So-tteok',
+    desc:'Saucisse & tteok sur bâton · Ketchup-moutarde', desc_en:'Sausage & rice cake skewer · Ketchup-mustard',
+    color:'#F57C42', textColor:'#fff',
+    addr:'Bassin Peel, Griffintown' },
 ];
 
 var CAT_LABELS = {
@@ -1893,6 +1994,10 @@ function initpochaMap() {
     'b3': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="#fff"><path d="M3 2l8 9.5V18H7v2h10v-2h-4v-6.5L21 2H3zm3.47 2h11.06l-3.25 3.86c-.09.1-.19.2-.28.3L12 10.6l-2-2.44c-.09-.1-.19-.2-.28-.3L6.47 4z"/></svg>',
     'bx1': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5l3-8h5l3 8"/><path d="M8.5 9.5L12 5"/><circle cx="12" cy="4" r="1.5" fill="#fff"/></svg>',
     'bx2': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M5.5 17.5l3-8h5l3 8"/><path d="M8.5 9.5L12 5"/><circle cx="12" cy="4" r="1.5" fill="#fff"/></svg>',
+    // Aire de repos — parasol de terrasse
+    'rest1': '<svg viewBox="0 0 24 24" width="62%" height="62%" fill="#fff"><path d="M12 2.5c-4.7 0-8.6 3-9.4 7 .2-.6.9-1 1.6-1 .8 0 1.5.6 1.7 1.4.2-.8.9-1.4 1.7-1.4.8 0 1.5.6 1.7 1.4.2-.8.9-1.4 1.7-1.4h.5c.8 0 1.5.6 1.7 1.4.2-.8.9-1.4 1.7-1.4.8 0 1.5.6 1.7 1.4.2-.8.9-1.4 1.7-1.4.7 0 1.4.4 1.6 1-.8-4-4.7-7-9.4-7z"/><rect x="11.3" y="9.5" width="1.4" height="10" rx="0.7"/><path d="M9.4 19.6h5.2" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>',
+    // Radio POCHA — petit poste avec antenne
+    'radio1': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="#fff"><path d="M18.5 3.5l-9 3.4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><rect x="3" y="6.8" width="18" height="11.4" rx="2.2"/><circle cx="16" cy="12.5" r="2.6" fill="rgba(0,0,0,0.28)"/><circle cx="16" cy="12.5" r="0.9" fill="#fff"/><rect x="5.6" y="9.6" width="6" height="2" rx="1" fill="rgba(0,0,0,0.28)"/><rect x="5.6" y="13.4" width="4.4" height="1.5" rx="0.75" fill="rgba(0,0,0,0.22)"/></svg>',
   };
 
   POCHA_SPOTS.forEach(function(spot) {
@@ -1916,16 +2021,35 @@ function initpochaMap() {
         'overflow:hidden;' +
       '">' + coloredSvg + '</div>';
 
-    var icon = L.divIcon({
-      className: '',
-      html: iconHtml,
-      iconSize:   [size, size],
-      iconAnchor: [size / 2, size / 2],
-    });
+    var icon;
+    if (spot.img) {
+      // Marqueur image (PNG transparent) — ex. so-tteok
+      var imgSize = 62;
+      icon = L.icon({
+        iconUrl: spot.img,
+        iconSize:   [imgSize, imgSize],
+        iconAnchor: [imgSize / 2, imgSize / 2],
+        className:  'food-img-marker',
+      });
+    } else {
+      icon = L.divIcon({
+        className: '',
+        html: iconHtml,
+        iconSize:   [size, size],
+        iconAnchor: [size / 2, size / 2],
+      });
+    }
 
     var marker = L.marker([spot.lat, spot.lng], { icon: icon, zIndexOffset: 100 })
       .addTo(pochaLeafletMap)
-      .on('click', function() { showMapSheet(spot); });
+      .on('click', function() {
+        if (spot.id === 'radio1') { openRadioPlayer(); }
+        else if (spot.id === 'sotteok1') {
+          var a = document.getElementById('miamSound');
+          if (a) { a.currentTime = 0; a.play().catch(function(){}); }
+        }
+        else { showMapSheet(spot); }
+      });
 
     marker.spotData = spot;
     pochaMarkers.push(marker);
@@ -2017,6 +2141,9 @@ function showMapSheet(spot) {
     '<div class="sheet-icon-row">' +
       (function(){
         var catColor = (CAT_LABELS[spot.cat]||{}).color || spot.color || "#90A4AE";
+        if (spot.img) {
+          return '<div class="sheet-icon-bubble" style="background:#FFFAF5;border:2px solid '+catColor+';overflow:hidden;display:flex;align-items:center;justify-content:center;"><img src="'+spot.img+'" alt="" style="width:100%;height:100%;object-fit:contain;"></div>';
+        }
         var svg = (window.SPOT_ICONS && window.SPOT_ICONS[spot.id]) || (window.CAT_ICONS && window.CAT_ICONS[spot.cat]) || "";
         var coloredSvg = svg.replace(/stroke="#fff"/g, 'stroke="'+catColor+'"').replace(/fill="#fff"/g, 'fill="'+catColor+'"');
         return '<div class="sheet-icon-bubble" style="background:#FFFAF5;border:2px solid '+catColor+';display:flex;align-items:center;justify-content:center;">'+coloredSvg+'</div>';
@@ -2374,7 +2501,7 @@ function locateMe() {
           <div class="faq-q" data-fr="Est-ce que les chiens sont acceptés ?" data-en="Are dogs allowed?">Est-ce que les chiens sont acceptés ?</div>
           <div class="faq-a" data-fr="Oui ! Les chiens tenus en laisse sont les bienvenus sur le site. Prévoyez des sacs pour les déchets." data-en="Yes! Dogs on leashes are welcome on-site. Please bring waste bags.">Oui ! Les chiens tenus en laisse sont les bienvenus sur le site. Prévoyez des sacs pour les déchets.</div>
           <div class="faq-q" style="margin-top:14px;" data-fr="🐾 Bien-être animal — message important" data-en="🐾 Animal welfare — important message">🐾 Bien-être animal — message important</div>
-          <div class="faq-a" style="background:rgba(90,154,106,0.08);border-left:3px solid #5a9a6a;border-radius:0 8px 8px 0;padding:10px 12px;margin-top:6px;" data-fr="Le bien-être des animaux est une priorité pour nous. La foule, le bruit et la chaleur peuvent stresser votre animal. Par temps chaud, assurez-vous que votre chien a accès à de l'eau fraîche, évitez les surfaces brûlantes, et limitez son exposition prolongée au soleil. Si votre animal montre des signes d'inconfort, n'hésitez pas à le ramener dans un endroit plus calme et frais. Merci de veiller à son bien-être !" data-en="Animal welfare is a priority for us. Crowds, noise and heat can stress your pet. In hot weather, make sure your dog has access to fresh water, avoid hot surfaces, and limit prolonged sun exposure. If your animal shows signs of discomfort, don't hesitate to bring them to a quieter, cooler spot. Thank you for looking after their well-being!">Le bien-être des animaux est une priorité pour nous. La foule, le bruit et la chaleur peuvent stresser votre animal. Par temps chaud, assurez-vous que votre chien a accès à de l'eau fraîche, évitez les surfaces brûlantes, et limitez son exposition prolongée au soleil. Si votre animal montre des signes d'inconfort, n'hésitez pas à le ramener dans un endroit plus calme et frais. Merci de veiller à son bien-être !</div>
+          <div class="faq-a" style="background:rgba(90,154,106,0.08);border-left:3px solid #5a9a6a;border-radius:0 8px 8px 0;padding:10px 12px;margin-top:6px;" data-fr="Le bien-être des animaux nous tient profondément à cœur. Soyons honnêtes : un chien laissé au plein soleil, sur l'asphalte chaud et sans eau, peut souffrir d'un coup de chaleur en très peu de temps — c'est grave. Avant de venir, demandez-vous si la journée convient vraiment à votre compagnon, car la foule, le bruit et la chaleur peuvent être éprouvants pour lui. Si vous venez avec votre chien : gardez-le à l'ombre autant que possible, vérifiez la température de l'asphalte avec votre main avant de le faire marcher, faites des pauses au frais et offrez-lui de l'eau souvent. Des petits bols d'eau sont disponibles un peu partout sur le site — n'hésitez pas à demander à l'équipe ou aux bénévoles si un bol est vide, on le remplit avec plaisir. Au moindre signe d'inconfort (halètement excessif, fatigue, refus d'avancer), mettez-le tout de suite à l'ombre, au frais, et donnez-lui de l'eau. Merci de veiller sur lui : sa sécurité passe avant tout." data-en="Animal welfare matters deeply to us. Let's be honest: a dog left in full sun, on hot pavement and without water can suffer heatstroke in a very short time — it's serious. Before coming, ask yourself whether the day is truly right for your companion, as the crowds, noise and heat can be hard on them. If you do bring your dog: keep them in the shade as much as possible, check the pavement temperature with your hand before letting them walk, take breaks in cool spots, and offer water often. Small water bowls are available throughout the site — don't hesitate to ask our team or volunteers if a bowl is empty, we'll gladly refill it. At the first sign of discomfort (heavy panting, fatigue, refusing to walk), move them into the shade and cool air right away and give them water. Thank you for looking out for them: their safety comes first.">Le bien-être des animaux nous tient profondément à cœur. Soyons honnêtes : un chien laissé au plein soleil, sur l'asphalte chaud et sans eau, peut souffrir d'un coup de chaleur en très peu de temps — c'est grave. Avant de venir, demandez-vous si la journée convient vraiment à votre compagnon, car la foule, le bruit et la chaleur peuvent être éprouvants pour lui. Si vous venez avec votre chien : gardez-le à l'ombre autant que possible, vérifiez la température de l'asphalte avec votre main avant de le faire marcher, faites des pauses au frais et offrez-lui de l'eau souvent. Des petits bols d'eau sont disponibles un peu partout sur le site — n'hésitez pas à demander à l'équipe ou aux bénévoles si un bol est vide, on le remplit avec plaisir. Au moindre signe d'inconfort (halètement excessif, fatigue, refus d'avancer), mettez-le tout de suite à l'ombre, au frais, et donnez-lui de l'eau. Merci de veiller sur lui : sa sécurité passe avant tout.</div>
           <div class="faq-q" data-fr="Que se passe-t-il en cas de pluie ?" data-en="What happens if it rains?">Que se passe-t-il en cas de pluie ?</div>
           <div class="faq-a" data-fr="Le festival a lieu beau temps, mauvais temps. Certaines zones sont couvertes. Apportez un imperméable !" data-en="The festival takes place rain or shine. Some areas are covered. Bring a rain jacket!">Le festival a lieu beau temps, mauvais temps. Certaines zones sont couvertes. Apportez un imperméable !</div>
           <div class="faq-q" data-fr="Est-ce que je peux sortir et revenir ?" data-en="Can I leave and come back?">Est-ce que je peux sortir et revenir ?</div>
@@ -3694,5 +3821,142 @@ const origToggleLang = toggleLang;
 </script>
 
 <audio id="pochaSound" src="/audio/pocha.mp3" preload="auto"></audio>
+<audio id="radioAudio" preload="none"></audio>
+<audio id="miamSound" src="/audio/korea.mp3" preload="auto"></audio>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  RADIO POCHA — mini-lecteur (2 pistes)
+//  ⚠️  REMPLACE les noms de fichiers ci-dessous par tes vrais
+//      MP3 placés dans le dossier /audio
+// ══════════════════════════════════════════════════════════
+var RADIO_TRACKS = [
+  { src: '/audio/radio-1.mp3', title: 'Piste 1', title_en: 'Track 1' },
+  { src: '/audio/radio-2.mp3', title: 'Piste 2', title_en: 'Track 2' },
+];
+
+var radioIndex   = 0;
+var radioBuilt   = false;
+var _radioEl     = function(){ return document.getElementById('radioAudio'); };
+function _rlang(){ return (typeof lang !== 'undefined' && lang === 'en'); }
+
+function radioBuildList() {
+  var list = document.getElementById('radioTrackList');
+  if (!list) return;
+  list.innerHTML = RADIO_TRACKS.map(function(t, i){
+    var name = _rlang() ? (t.title_en || t.title) : t.title;
+    return '<button class="radio-track-btn" data-i="' + i + '" onclick="radioSelect(' + i + ', true)">' +
+             '<span class="radio-track-num">' + (i+1) + '</span>' +
+             '<span>' + name + '</span>' +
+             '<span class="radio-eq"><span></span><span></span><span></span></span>' +
+           '</button>';
+  }).join('');
+  radioBuilt = true;
+}
+
+function radioUpdateUI() {
+  var a = _radioEl();
+  var t = RADIO_TRACKS[radioIndex] || {};
+  var name = _rlang() ? (t.title_en || t.title) : t.title;
+  var now = document.getElementById('radioNowPlaying');
+  if (now) now.textContent = name || '—';
+  // Icône play / pause
+  var ic = document.getElementById('radioPlayIcon');
+  if (ic) {
+    ic.innerHTML = (a && !a.paused)
+      ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'      // pause
+      : '<path d="M8 5v14l11-7z"/>';                  // play
+  }
+  // Pistes : actif / en lecture
+  document.querySelectorAll('.radio-track-btn').forEach(function(btn){
+    var i = parseInt(btn.getAttribute('data-i'), 10);
+    btn.classList.toggle('active', i === radioIndex);
+    btn.classList.toggle('playing', i === radioIndex && a && !a.paused);
+  });
+}
+
+function _fmtTime(s) {
+  if (!isFinite(s) || s < 0) s = 0;
+  var m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function radioSelect(i, autoplay) {
+  var a = _radioEl();
+  if (!a) return;
+  radioIndex = (i + RADIO_TRACKS.length) % RADIO_TRACKS.length;
+  var t = RADIO_TRACKS[radioIndex];
+  if (a.getAttribute('src') !== t.src) { a.src = t.src; a.load(); }
+  if (autoplay !== false) {
+    // Couper la mascotte si elle joue
+    var ps = document.getElementById('pochaSound'); if (ps) { try { ps.pause(); } catch(e){} }
+    a.play().catch(function(){ /* lecture bloquée tant qu'aucune interaction */ });
+  }
+  radioUpdateUI();
+}
+
+function radioToggle() {
+  var a = _radioEl();
+  if (!a) return;
+  if (!a.getAttribute('src')) { radioSelect(radioIndex, true); return; }
+  if (a.paused) {
+    var ps = document.getElementById('pochaSound'); if (ps) { try { ps.pause(); } catch(e){} }
+    a.play().catch(function(){});
+  } else {
+    a.pause();
+  }
+  radioUpdateUI();
+}
+
+function radioNext() { radioSelect(radioIndex + 1, true); }
+function radioPrev() { radioSelect(radioIndex - 1, true); }
+
+function radioSeek(ev) {
+  var a = _radioEl();
+  var bar = document.getElementById('radioProgress');
+  if (!a || !bar || !isFinite(a.duration)) return;
+  var rect = bar.getBoundingClientRect();
+  var x = (ev.clientX || (ev.touches && ev.touches[0] && ev.touches[0].clientX) || 0) - rect.left;
+  var pct = Math.max(0, Math.min(1, x / rect.width));
+  a.currentTime = pct * a.duration;
+}
+
+function openRadioPlayer() {
+  if (!radioBuilt) radioBuildList();
+  // Ferme le bottom sheet d'info s'il est ouvert
+  if (typeof closeMapSheet === 'function') closeMapSheet();
+  var a = _radioEl();
+  if (a && !a.getAttribute('src')) { a.src = RADIO_TRACKS[radioIndex].src; }
+  document.getElementById('radioPlayer').classList.add('open');
+  radioUpdateUI();
+}
+
+function closeRadioPlayer() {
+  var p = document.getElementById('radioPlayer');
+  if (p) p.classList.remove('open');
+  var a = _radioEl();
+  if (a) { try { a.pause(); } catch(e){} }
+  radioUpdateUI();
+}
+
+// Écouteurs sur l'élément audio (une seule fois)
+(function(){
+  var a = _radioEl();
+  if (!a) return;
+  a.addEventListener('timeupdate', function(){
+    var fill = document.getElementById('radioProgressFill');
+    var cur  = document.getElementById('radioCur');
+    var dur  = document.getElementById('radioDur');
+    if (fill && isFinite(a.duration) && a.duration > 0) {
+      fill.style.width = ((a.currentTime / a.duration) * 100) + '%';
+    }
+    if (cur) cur.textContent = _fmtTime(a.currentTime);
+    if (dur) dur.textContent = _fmtTime(a.duration);
+  });
+  a.addEventListener('play',  radioUpdateUI);
+  a.addEventListener('pause', radioUpdateUI);
+  a.addEventListener('ended', function(){ radioNext(); }); // enchaîne sur la piste suivante
+})();
+</script>
 </body>
 </html>
