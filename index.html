@@ -1380,6 +1380,28 @@ document.addEventListener('touchmove', function(e){
   .radio-eq span:nth-child(1){ animation-delay:0s; } .radio-eq span:nth-child(2){ animation-delay:.25s; } .radio-eq span:nth-child(3){ animation-delay:.5s; }
   @keyframes radioEq { 0%,100%{ height:4px; } 50%{ height:14px; } }
 
+  /* ── Radio play pulse ring ── */
+  .radio-play-wrap { position:relative; display:flex; align-items:center; justify-content:center; }
+  .radio-pulse { position:absolute; width:60px; height:60px; border-radius:50%;
+    border:3px solid #1B3A6B; opacity:0; pointer-events:none; }
+  .radio-playing .radio-pulse:nth-child(1) { animation:radioPulse 1.8s ease-out infinite; }
+  .radio-playing .radio-pulse:nth-child(2) { animation:radioPulse 1.8s ease-out infinite 0.6s; }
+  .radio-playing .radio-pulse:nth-child(3) { animation:radioPulse 1.8s ease-out infinite 1.2s; }
+  @keyframes radioPulse {
+    0%   { transform:scale(1);   opacity:0.7; }
+    100% { transform:scale(2.2); opacity:0; }
+  }
+
+  /* ── Notes flottantes ── */
+  #radioNotes { position:absolute; inset:0; pointer-events:none; overflow:hidden; border-radius:20px 20px 0 0; }
+  .rnote { position:absolute; font-size:20px; opacity:0; animation:floatNote 2.2s ease-out forwards; }
+  @keyframes floatNote {
+    0%   { opacity:0;   transform:translateY(0)   rotate(0deg)   scale(0.7); }
+    15%  { opacity:1; }
+    80%  { opacity:0.8; transform:translateY(-90px) rotate(20deg) scale(1.1); }
+    100% { opacity:0;   transform:translateY(-120px) rotate(30deg) scale(0.9); }
+  }
+
   .sheet-handle-wrap {
     display: flex;
     justify-content: center;
@@ -1632,13 +1654,19 @@ document.addEventListener('touchmove', function(e){
       <button class="radio-skip" onclick="radioPrev()" aria-label="Précédent">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6 6h2v12H6zM20 6l-9 6 9 6z"/></svg>
       </button>
-      <button class="radio-play" id="radioPlayBtn" onclick="radioToggle()" aria-label="Lecture">
-        <svg id="radioPlayIcon" viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      </button>
+      <div class="radio-play-wrap" id="radioPlayWrap">
+        <div class="radio-pulse"></div>
+        <div class="radio-pulse"></div>
+        <div class="radio-pulse"></div>
+        <button class="radio-play" id="radioPlayBtn" onclick="radioToggle()" aria-label="Lecture">
+          <svg id="radioPlayIcon" viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
       <button class="radio-skip" onclick="radioNext()" aria-label="Suivant">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16 6h2v12h-2zM4 6l9 6-9 6z"/></svg>
       </button>
     </div>
+    <div id="radioNotes"></div>
     <div class="radio-tracks" id="radioTrackList"></div>
   </div>
 </div>
@@ -2124,8 +2152,13 @@ function initpochaMap() {
   var chatMarker = L.marker([45.4929287, -73.5537276], { icon: chatIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
   chatMarker.on('click', function(e){
     L.DomEvent.stopPropagation(e);
-    var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
-    var k = document.getElementById('pochaBurst'); if(k){ k.classList.remove('show'); void k.offsetWidth; k.classList.add('show'); setTimeout(function(){ k.classList.remove('show'); }, 2900); }
+    var el = chatMarker.getElement();
+    if (!el) return;
+    el.style.transition = 'transform 0.15s ease';
+    el.style.transform = 'scale(1.6)';
+    setTimeout(function(){ el.style.transform = 'scale(0.85)'; }, 150);
+    setTimeout(function(){ el.style.transform = 'scale(1.2)'; }, 280);
+    setTimeout(function(){ el.style.transform = 'scale(1)'; }, 400);
   });
 
   setTimeout(function(){
@@ -3979,6 +4012,47 @@ function radioUpdateUI() {
     btn.classList.toggle('active', i === radioIndex);
     btn.classList.toggle('playing', i === radioIndex && a && !a.paused);
   });
+  // Pulse ring + notes
+  var wrap = document.getElementById('radioPlayWrap');
+  if (wrap) {
+    if (a && !a.paused) {
+      wrap.classList.add('radio-playing');
+      radioStartNotes();
+    } else {
+      wrap.classList.remove('radio-playing');
+      radioStopNotes();
+    }
+  }
+}
+
+var _radioNotesTimer = null;
+var _radioNotesActive = false;
+function radioStartNotes() {
+  if (_radioNotesActive) return;
+  _radioNotesActive = true;
+  function spawnNote() {
+    if (!_radioNotesActive) return;
+    var container = document.getElementById('radioNotes');
+    if (!container) return;
+    var notes = ['♪','♫','♩','♬','🎵','🎶'];
+    var n = document.createElement('span');
+    n.className = 'rnote';
+    n.textContent = notes[Math.floor(Math.random() * notes.length)];
+    n.style.left = (15 + Math.random() * 70) + '%';
+    n.style.bottom = (20 + Math.random() * 30) + 'px';
+    n.style.color = ['#1B3A6B','#0A8FFF','#FF6FC8','#FFD93D'][Math.floor(Math.random()*4)];
+    n.style.animationDuration = (1.8 + Math.random() * 1.2) + 's';
+    container.appendChild(n);
+    setTimeout(function(){ if (n.parentNode) n.parentNode.removeChild(n); }, 3000);
+    _radioNotesTimer = setTimeout(spawnNote, 400 + Math.random() * 500);
+  }
+  spawnNote();
+}
+function radioStopNotes() {
+  _radioNotesActive = false;
+  clearTimeout(_radioNotesTimer);
+  var container = document.getElementById('radioNotes');
+  if (container) container.innerHTML = '';
 }
 
 function _fmtTime(s) {
