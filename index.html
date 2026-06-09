@@ -2154,12 +2154,13 @@ function initpochaMap() {
     L.DomEvent.stopPropagation(e);
     var el = chatMarker.getElement();
     if (!el) return;
-    el.style.transition = 'transform 0.15s ease';
-    el.style.transform = 'scale(1.6)';
-    setTimeout(function(){ el.style.transform = 'scale(0.85)'; }, 150);
-    setTimeout(function(){ el.style.transform = 'scale(1.2)'; }, 280);
-    setTimeout(function(){ el.style.transform = 'scale(1) translate(-50%, -50%)'; }, 400);
-    setTimeout(function(){ el.style.transition = ''; el.style.transform = ''; }, 550);
+    var img = el.querySelector('img') || el;
+    img.style.transition = 'transform 0.15s ease';
+    img.style.transform = 'scale(1.6)';
+    setTimeout(function(){ img.style.transform = 'scale(0.85)'; }, 150);
+    setTimeout(function(){ img.style.transform = 'scale(1.2)'; }, 280);
+    setTimeout(function(){ img.style.transform = 'scale(1)'; }, 400);
+    setTimeout(function(){ img.style.transition = ''; img.style.transform = ''; }, 550);
   });
 
   setTimeout(function(){
