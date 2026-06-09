@@ -2,7 +2,7 @@
   "name": "Festival POCHA MTL 2026",
   "short_name": "MONPOCHA",
   "description": "Programmation officielle du POCHA MTL 2026 — Montréal",
-  "start_url": "/webapp.html",
+  "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
   "background_color": "#1976D2",
