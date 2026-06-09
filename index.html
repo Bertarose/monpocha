@@ -1720,14 +1720,14 @@ var POCHA_ZONES = [
 // ⚠️  À affiner avec les vraies coords GPS une fois sur place
 var POCHA_SPOTS = [
   // ─ ENTRÉES / SORTIES
-  { id:'e1', cat:'service', lat:45.4931829, lng:-73.5531221,
+  { id:'e1', cat:'service', lat:45.494352, lng:-73.5529103,
     icon:'🟢', name:'Entrée publique', name_en:'Public Entrance',
     desc:'Accès principal · Filtration', desc_en:'Main access · Security check',
     color:'#7CB08A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
-  { id:'tente1', cat:'service', lat:45.4932193, lng:-73.5532317,
-    icon:'🎪', name:'Tente des artistes', name_en:'Artist Tent',
-    desc:'Zone réservée aux artistes', desc_en:'Reserved area for artists',
+  { id:'tente1', cat:'service', lat:45.494280, lng:-73.5530500,
+    icon:'🎪', name:'Tente des artistes & médias', name_en:'Artist & Media Tent',
+    desc:'Zone réservée aux artistes et médias', desc_en:'Reserved area for artists and media',
     color:'#9575CD', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
@@ -2391,15 +2391,10 @@ function locateMe() {
       </div>
       <div style="flex:1;">
         <div style="font-size:14px;font-weight:700;letter-spacing:.02em;color:var(--text);margin-bottom:6px;" data-fr="Billets" data-en="Tickets">Billets</div>
-        <div style="display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:8px;margin-bottom:8px;">
-          <div style="text-align:center;">
-            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);" data-fr="Prévente" data-en="Presale">Prévente</div>
-            <div style="font-size:20px;font-weight:900;color:#0A8FFF;line-height:1.1;">4$</div>
-          </div>
-          <div style="background:var(--border);"></div>
+        <div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:8px;margin-bottom:8px;">
           <div style="text-align:center;">
             <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);" data-fr="Sur place" data-en="On-site">Sur place</div>
-            <div style="font-size:20px;font-weight:900;color:var(--text);line-height:1.1;">5$</div>
+            <div style="font-size:20px;font-weight:900;color:#0A8FFF;line-height:1.1;">5$</div>
           </div>
           <div style="background:var(--border);"></div>
           <div style="text-align:center;">
@@ -2509,7 +2504,7 @@ function locateMe() {
         </div>
       </div>
 
-      <div class="faq-cat" data-keywords="billets prix paiement argent comptant carte gratuit prévente remboursement">
+      <div class="faq-cat" data-keywords="billets prix paiement argent comptant carte gratuit remboursement attente file kiosque restauration">
         <button class="faq-cat-btn" onclick="toggleFaq(this)">
           <div style="width:40px;height:40px;border-radius:10px;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A8FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 013-3h14a3 3 0 013 3"/><path d="M2 9v6a3 3 0 003 3h14a3 3 0 003-3V9"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
           <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Billetterie & Paiement" data-en="Tickets & Payment">Billetterie & Paiement</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="Prix, modes de paiement, billets perdus…" data-en="Prices, payment methods, lost tickets…">Prix, modes de paiement, billets perdus…</div></div>
@@ -2517,9 +2512,11 @@ function locateMe() {
         </button>
         <div class="faq-content">
           <div class="faq-q" data-fr="Combien coûte l'entrée ?" data-en="How much is admission?">Combien coûte l'entrée ?</div>
-          <div class="faq-a" data-fr="Prévente : 4$ · Sur place : 5$ · Enfants 12 ans et moins : gratuit · Personnes de 65 ans et plus : gratuit." data-en="Presale: $4 · On-site: $5 · Children 12 and under: free · Seniors 65 and over: free.">Prévente : 4$ · Sur place : 5$ · Enfants 12 ans et moins : gratuit · Personnes de 65 ans et plus : gratuit.</div>
+          <div class="faq-a" data-fr="Sur place : 5$ · Enfants 12 ans et moins : gratuit · Personnes de 65 ans et plus : gratuit." data-en="On-site: $5 · Children 12 and under: free · Seniors 65 and over: free.">Sur place : 5$ · Enfants 12 ans et moins : gratuit · Personnes de 65 ans et plus : gratuit.</div>
           <div class="faq-q" data-fr="Quels modes de paiement sont acceptés ?" data-en="What payment methods are accepted?">Quels modes de paiement sont acceptés ?</div>
           <div class="faq-a" data-fr="La carte (débit ou crédit) est le seul mode de paiement accepté sur l'ensemble du festival. Seuls les kiosques culinaires acceptent aussi le comptant." data-en="Card (debit or credit) is the only accepted payment method across the entire festival. Only food vendors also accept cash.">La carte (débit ou crédit) est le seul mode de paiement accepté sur l'ensemble du festival. Seuls les kiosques culinaires acceptent aussi le comptant.</div>
+          <div class="faq-q" data-fr="Pourquoi y a-t-il parfois de l'attente ?" data-en="Why are there sometimes lineups?">Pourquoi y a-t-il parfois de l'attente ?</div>
+          <div class="faq-a" data-fr="Parce que vous êtes nombreux à vouloir profiter du festival ! Certaines périodes de la journée peuvent être très achalandées, autant à l'entrée qu'aux kiosques alimentaires. Nos restaurateurs préparent les plats sur place et font leur maximum pour servir tout le monde rapidement. Le festival est conçu pour être une expérience à savourer tranquillement : prenez le temps de découvrir les lieux, de partager un verre entre amis et de profiter de l'ambiance. Merci de votre patience et de votre compréhension lors des périodes plus occupées." data-en="Because so many of you want to enjoy the festival! Some times of day can be very busy, both at the entrance and at the food kiosks. Our vendors prepare dishes on-site and do their best to serve everyone as quickly as possible. The festival is designed to be an experience to savour at a leisurely pace — take the time to explore, share a drink with friends, and soak in the atmosphere. Thank you for your patience and understanding during busier periods.">Parce que vous êtes nombreux à vouloir profiter du festival ! Certaines périodes de la journée peuvent être très achalandées, autant à l'entrée qu'aux kiosques alimentaires. Nos restaurateurs préparent les plats sur place et font leur maximum pour servir tout le monde rapidement. Le festival est conçu pour être une expérience à savourer tranquillement : prenez le temps de découvrir les lieux, de partager un verre entre amis et de profiter de l'ambiance. Merci de votre patience et de votre compréhension lors des périodes plus occupées.</div>
         </div>
       </div>
 
