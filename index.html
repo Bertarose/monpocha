@@ -1251,6 +1251,42 @@ document.addEventListener('touchmove', function(e){
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
   }
+  
+  .mascot-marker { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); opacity:0.9; cursor:pointer; background:transparent !important; border:none !important; box-shadow:none !important; }
+  .mascot-marker:active { transform:scale(0.9); }
+  #pochaBurst { position:absolute; inset:0; z-index:600; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(circle, rgba(232,59,12,0.6) 0%, rgba(232,59,12,0.35) 50%, transparent 70%);
+    opacity:0; pointer-events:none; transition:none; }
+  #pochaBurst .kw-mascot { position:absolute; width:clamp(250px,70vw,500px); height:auto; top:50%; left:50%;
+    transform:translate(-50%,-60%) scale(0); opacity:0; transition:none; filter:drop-shadow(0 8px 30px rgba(0,0,0,0.3)); }
+  #pochaBurst .kw-text { position:relative; font-family:'Figtree',sans-serif; font-size:clamp(60px,20vw,160px); font-weight:900;
+    letter-spacing:0.06em; color:#fff; margin-top:clamp(120px,35vw,250px);
+    text-shadow: 4px 4px 0 #E83B0C, -3px -3px 0 #FF6B35, 8px 8px 0 rgba(232,59,12,0.3), 0 0 60px rgba(232,59,12,0.8), 0 0 120px rgba(232,59,12,0.4);
+    transform:scale(0.3) rotate(-10deg); transition:none;
+    -webkit-text-stroke: 3px #E83B0C; paint-order:stroke fill; }
+  #pochaBurst.show { opacity:1; animation:pochaBg 2.8s ease-out forwards; }
+  #pochaBurst.show .kw-mascot { animation:pochaMascot 2.8s ease-out forwards; }
+  #pochaBurst.show .kw-text { animation:pochaText 2.8s ease-out forwards; }
+  @keyframes pochaBg { 0%{opacity:0} 8%{opacity:1} 60%{opacity:1} 100%{opacity:0} }
+  @keyframes pochaMascot {
+    0% { opacity:0; transform:translate(-50%,-60%) scale(0) rotate(10deg); }
+    10% { opacity:1; transform:translate(-50%,-60%) scale(1.15) rotate(-5deg); }
+    18% { transform:translate(-50%,-60%) scale(0.92) rotate(3deg); }
+    25% { transform:translate(-50%,-60%) scale(1.05) rotate(-2deg); }
+    32% { transform:translate(-50%,-60%) scale(1) rotate(0deg); }
+    65% { opacity:1; transform:translate(-50%,-60%) scale(1) rotate(0deg); }
+    100% { opacity:0; transform:translate(-50%,-60%) scale(1.1) rotate(5deg); }
+  }
+  @keyframes pochaText {
+    0% { transform:scale(0.2) rotate(-15deg); opacity:0; }
+    8% { transform:scale(1.3) rotate(4deg); opacity:1; }
+    15% { transform:scale(0.9) rotate(-6deg); }
+    22% { transform:scale(1.1) rotate(2deg); }
+    30% { transform:scale(1) rotate(-3deg); }
+    60% { transform:scale(1) rotate(-3deg); opacity:1; }
+    100% { transform:scale(1.2) rotate(0deg); opacity:0; }
+  }
+
   #mapGpsBtn:active { transform: scale(0.92); box-shadow: 0 1px 6px rgba(0,0,0,0.15); }
 
   /* Bottom sheet */
@@ -1462,6 +1498,7 @@ document.addEventListener('touchmove', function(e){
 
   <!-- Carte Leaflet -->
   <div id="pochaMap"></div>
+  <div id="pochaBurst"><img class="kw-mascot" src="/img/mascot-pocha.png" alt=""><span class="kw-text">POCHA!</span></div>
 
   <!-- Barre filtre + légende — pill sombre en bas à gauche -->
   <div id="mapFilterBar">
@@ -1649,11 +1686,6 @@ var POCHA_SPOTS = [
     addr:'Édifice Haleco, Bassin Peel' },
 
   // ─ HALECO — Bar
-  { id:'hb1', cat:'bar', lat:45.4938427, lng:-73.5533334,
-    icon:'🍶', name:'Bar — Haleco', name_en:'Bar — Haleco',
-    desc:'Bar intérieur · Bières · Sakés · Cocktails', desc_en:'Indoor bar · Beer · Sake · Cocktails',
-    color:'#7A4A6A', textColor:'#fff',
-    addr:'Édifice Haleco, Bassin Peel' },
 
 
 
@@ -1856,7 +1888,6 @@ function initpochaMap() {
     'h1': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="#fff"><path d="M12 2c-5 6.5-8 10.5-8 14a8 8 0 0 0 16 0c0-3.5-3-7.5-8-14z"/></svg>',
     'a1': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>',
     'hw1': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="#fff"><circle cx="8" cy="4" r="2.5"/><rect x="5.5" y="8" width="5" height="7" rx="1"/><path d="M6 15l-1 6h2l1-3 1 3h2l-1-6"/><circle cx="16" cy="4" r="2.5"/><path d="M13 8h6l-.8 7h-4.4L13 8z"/><path d="M14.5 15l-.5 6h2l.5-3 .5 3h2l-.5-6"/></svg>',
-    'hb1': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="#fff"><path d="M3 2l8 9.5V18H7v2h10v-2h-4v-6.5L21 2H3zm3.47 2h11.06l-3.25 3.86c-.09.1-.19.2-.28.3L12 10.6l-2-2.44c-.09-.1-.19-.2-.28-.3L6.47 4z"/></svg>',
     'b1': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="#fff"><path d="M3 2l8 9.5V18H7v2h10v-2h-4v-6.5L21 2H3zm3.47 2h11.06l-3.25 3.86c-.09.1-.19.2-.28.3L12 10.6l-2-2.44c-.09-.1-.19-.2-.28-.3L6.47 4z"/></svg>',
     'b2': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="#fff"><path d="M3 2l8 9.5V18H7v2h10v-2h-4v-6.5L21 2H3zm3.47 2h11.06l-3.25 3.86c-.09.1-.19.2-.28.3L12 10.6l-2-2.44c-.09-.1-.19-.2-.28-.3L6.47 4z"/></svg>',
     'b3': '<svg viewBox="0 0 24 24" width="60%" height="60%" fill="#fff"><path d="M3 2l8 9.5V18H7v2h10v-2h-4v-6.5L21 2H3zm3.47 2h11.06l-3.25 3.86c-.09.1-.19.2-.28.3L12 10.6l-2-2.44c-.09-.1-.19-.2-.28-.3L6.47 4z"/></svg>',
@@ -1899,6 +1930,20 @@ function initpochaMap() {
     marker.spotData = spot;
     pochaMarkers.push(marker);
   });
+  // ── Mascotte POCHA (décorative + interactive) ──
+  var mascotIcon = L.icon({
+    iconUrl: '/img/mascot-pocha.png',
+    iconSize: [70, 70],
+    iconAnchor: [35, 35],
+    className: 'mascot-marker'
+  });
+  var mascotMarker = L.marker([45.4926876, -73.5545864], { icon: mascotIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
+  mascotMarker.on('click', function(e){
+    L.DomEvent.stopPropagation(e);
+    var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
+    var k = document.getElementById('pochaBurst'); if(k){ k.classList.remove('show'); void k.offsetWidth; k.classList.add('show'); setTimeout(function(){ k.classList.remove('show'); }, 2900); }
+  });
+
 
   setTimeout(function(){
     pochaLeafletMap.invalidateSize({ animate: false });
@@ -2013,8 +2058,29 @@ function openInMaps(lat, lng, name) {
   window.open(url, '_blank');
 }
 
+
+// Toast message on map
+function showMapToast(msg, isError) {
+  var host = document.getElementById('mapPanel');
+  if (!host) return;
+  var t = document.getElementById('mapToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'mapToast';
+    t.style.cssText = 'position:absolute;left:50%;bottom:74px;transform:translateX(-50%);max-width:84%;padding:10px 16px;border-radius:12px;font-size:13px;font-weight:600;line-height:1.35;text-align:center;z-index:600;pointer-events:none;opacity:0;transition:opacity .25s;box-shadow:0 4px 14px rgba(0,0,0,0.18);';
+    host.appendChild(t);
+  }
+  t.style.background = isError ? '#fdecea' : '#eef6ee';
+  t.style.color = isError ? '#a5342b' : '#2f6b34';
+  t.style.border = '1px solid ' + (isError ? '#f0b7b1' : '#bcdcc0');
+  t.textContent = msg;
+  void t.offsetWidth;
+  t.style.opacity = '1';
+  clearTimeout(window._mapToastTimer);
+  window._mapToastTimer = setTimeout(function(){ t.style.opacity = '0'; }, 4200);
+}
 function locateMe() {
-  if (!yataiLeafletMap) return;
+  if (!pochaLeafletMap) return;
   var btn = document.getElementById('mapGpsBtn');
   var en = (typeof lang !== 'undefined' && lang === 'en');
 
@@ -2034,37 +2100,37 @@ function locateMe() {
   showMapToast(en ? 'Locating you\u2026' : 'Localisation en cours\u2026', false);
 
   // Clean old markers
-  if (window._userMarker)   { yataiLeafletMap.removeLayer(window._userMarker); window._userMarker = null; }
-  if (window._userAccuracy) { yataiLeafletMap.removeLayer(window._userAccuracy); window._userAccuracy = null; }
+  if (window._userMarker)   { pochaLeafletMap.removeLayer(window._userMarker); window._userMarker = null; }
+  if (window._userAccuracy) { pochaLeafletMap.removeLayer(window._userAccuracy); window._userAccuracy = null; }
   if (window._gpsWatch) { navigator.geolocation.clearWatch(window._gpsWatch); window._gpsWatch = null; }
 
   var bestAcc = Infinity;
   var settled = false;
 
   function updatePosition(lat, lng, acc) {
-    if (window._userMarker)   { yataiLeafletMap.removeLayer(window._userMarker); }
-    if (window._userAccuracy) { yataiLeafletMap.removeLayer(window._userAccuracy); }
+    if (window._userMarker)   { pochaLeafletMap.removeLayer(window._userMarker); }
+    if (window._userAccuracy) { pochaLeafletMap.removeLayer(window._userAccuracy); }
 
     // Blue dot (like Google Maps)
     window._userMarker = L.circleMarker([lat, lng], {
       radius: 8, color: '#fff', fillColor: '#4285F4', fillOpacity: 1, weight: 3,
-    }).addTo(yataiLeafletMap);
+    }).addTo(pochaLeafletMap);
 
     // Accuracy circle
     if (acc && acc < 2000) {
       window._userAccuracy = L.circle([lat, lng], {
         radius: acc, color: '#4285F4', fillColor: '#4285F4', fillOpacity: 0.08, weight: 1, dashArray: '4,4',
-      }).addTo(yataiLeafletMap);
+      }).addTo(pochaLeafletMap);
     }
 
     // Only auto-center on first fix, then just move the dot
     if (!settled) {
       if (acc < 100) {
-        yataiLeafletMap.setView([lat, lng], 18, { animate: true });
+        pochaLeafletMap.setView([lat, lng], 18, { animate: true });
       } else if (acc < 500) {
-        yataiLeafletMap.setView([lat, lng], 17, { animate: true });
+        pochaLeafletMap.setView([lat, lng], 17, { animate: true });
       } else {
-        yataiLeafletMap.setView([lat, lng], 16, { animate: true });
+        pochaLeafletMap.setView([lat, lng], 16, { animate: true });
       }
     } else {
       // Smoothly move marker without re-centering the map
@@ -2352,7 +2418,7 @@ function locateMe() {
         </button>
         <div class="faq-content">
           <div class="faq-q" data-fr="Le site est-il accessible en fauteuil roulant ?" data-en="Is the site wheelchair accessible?">Le site est-il accessible en fauteuil roulant ?</div>
-          <div class="faq-a" data-fr="Oui, le site est accessible. Les allées principales sont adaptées. L'entrée est au niveau de la rue." data-en="Yes, the site is accessible. Main paths are adapted. The entrance is street-level.">Oui, le site est accessible. Les allées principales sont adaptées. L'entrée est au niveau de la rue.</div>
+          <div class="faq-a" data-fr="Le site est partiellement accessible. Les allées principales et l'entrée sont au niveau de la rue. Cependant, le devant des kiosques dans la zone culinaire peut être difficilement accessible en fauteuil roulant. N'hésitez pas à demander l'aide de nos bénévoles sur place." data-en="The site is partially accessible. Main paths and the entrance are street-level. However, the front of food kiosks in the culinary zone may be difficult to access by wheelchair. Don't hesitate to ask our on-site volunteers for help.">Le site est partiellement accessible. Les allées principales et l'entrée sont au niveau de la rue. Cependant, le devant des kiosques dans la zone culinaire peut être difficilement accessible en fauteuil roulant. N'hésitez pas à demander l'aide de nos bénévoles sur place.</div>
           <div class="faq-q" data-fr="Les poussettes sont-elles acceptées ?" data-en="Are strollers allowed?">Les poussettes sont-elles acceptées ?</div>
           <div class="faq-a" data-fr="Oui, les poussettes sont les bienvenues." data-en="Yes, strollers are welcome.">Oui, les poussettes sont les bienvenues.</div>
         </div>
@@ -3627,5 +3693,6 @@ const origToggleLang = toggleLang;
 
 </script>
 
+<audio id="pochaSound" src="/audio/pocha.mp3" preload="auto"></audio>
 </body>
 </html>
