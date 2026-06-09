@@ -2077,37 +2077,15 @@ function initpochaMap() {
     pochaMarkers.push(marker);
   });
   // ── Mascotte POCHA (décorative + interactive) ──
-  var mascotIcon = L.icon({
-    iconUrl: '/img/mascot-pocha.png',
-    iconSize: [70, 70],
-    iconAnchor: [35, 35],
-    className: 'mascot-marker'
-  });
-  var mascotMarker = L.marker([45.4926876, -73.5545864], { icon: mascotIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
-  mascotMarker.on('click', function(e){
-    L.DomEvent.stopPropagation(e);
-    var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
-    var k = document.getElementById('pochaBurst'); if(k){ k.classList.remove('show'); void k.offsetWidth; k.classList.add('show'); setTimeout(function(){ k.classList.remove('show'); }, 2900); }
-  });
-
-  // ── Mascotte YATAI ──
+  // ── Mascotte YATAI (onigiri) — confetti au clic ──
   var yataiMascotIcon = L.icon({
     iconUrl: '/img/mascot-yatai.png',
     iconSize: [70, 70],
     iconAnchor: [35, 35],
     className: 'mascot-marker'
   });
-  var yataiMascotMarker = L.marker([45.4940572, -73.5533921], { icon: yataiMascotIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
-
-  // ── Onigiri marker (point d'intérêt) ──
-  var onigiriPointIcon = L.icon({
-    iconUrl: '/img/mascot-yatai.png',
-    iconSize: [70, 70],
-    iconAnchor: [35, 35],
-    className: 'mascot-marker'
-  });
-  var onigiriPointMarker = L.marker([45.4929233, -73.5537246], { icon: onigiriPointIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
-  onigiriPointMarker.on('click', function(e){
+  var yataiMascotMarker = L.marker([45.4927531, -73.5545856], { icon: yataiMascotIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
+  yataiMascotMarker.on('click', function(e){
     L.DomEvent.stopPropagation(e);
     var burst = document.getElementById('onigiriBurst');
     var canvas = document.getElementById('confettiCanvas');
@@ -2119,24 +2097,23 @@ function initpochaMap() {
     setTimeout(function(){ burst.classList.remove('show'); }, 2600);
   });
 
-  // ── Chat maneki-neko — zone des marchands ──
+  // ── Chat maneki-neko × 2 ──
   var manekoIcon = L.icon({
-    iconUrl: '/img/mascot-pocha.png',
+    iconUrl: '/img/chat_new_transparent.png',
     iconSize: [70, 70],
     iconAnchor: [35, 35],
     className: 'mascot-marker'
   });
-  var manekoMarker = L.marker([45.4926876, -73.5537246], { icon: manekoIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
-  manekoMarker.on('click', function(e){
-    L.DomEvent.stopPropagation(e);
-    var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
-    var k = document.getElementById('pochaBurst'); if(k){ k.classList.remove('show'); void k.offsetWidth; k.classList.add('show'); setTimeout(function(){ k.classList.remove('show'); }, 2900); }
+  var manekoMarker1 = L.marker([45.4930163, -73.5537809], { icon: manekoIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
+  var manekoMarker2 = L.marker([45.4941369, -73.5533410], { icon: manekoIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
+  [manekoMarker1, manekoMarker2].forEach(function(m){
+    m.on('click', function(e){
+      L.DomEvent.stopPropagation(e);
+      var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
+      var k = document.getElementById('pochaBurst'); if(k){ k.classList.remove('show'); void k.offsetWidth; k.classList.add('show'); setTimeout(function(){ k.classList.remove('show'); }, 2900); }
+    });
   });
-  yataiMascotMarker.on('click', function(e){
-    L.DomEvent.stopPropagation(e);
-    var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
-    var k = document.getElementById('pochaBurst'); if(k){ k.classList.remove('show'); void k.offsetWidth; k.classList.add('show'); setTimeout(function(){ k.classList.remove('show'); }, 2900); }
-  });
+
 
 
   setTimeout(function(){
