@@ -2076,43 +2076,7 @@ function initpochaMap() {
     marker.spotData = spot;
     pochaMarkers.push(marker);
   });
-  // ── Mascotte POCHA (décorative + interactive) ──
-  // ── Mascotte YATAI (onigiri) — confetti au clic ──
-  var yataiMascotIcon = L.icon({
-    iconUrl: '/img/mascot-yatai.png',
-    iconSize: [70, 70],
-    iconAnchor: [35, 35],
-    className: 'mascot-marker'
-  });
-  var yataiMascotMarker = L.marker([45.4927531, -73.5545856], { icon: yataiMascotIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
-  yataiMascotMarker.on('click', function(e){
-    L.DomEvent.stopPropagation(e);
-    var burst = document.getElementById('onigiriBurst');
-    var canvas = document.getElementById('confettiCanvas');
-    if (!burst || !canvas) return;
-    burst.classList.remove('show');
-    void burst.offsetWidth;
-    burst.classList.add('show');
-    launchConfetti(canvas);
-    setTimeout(function(){ burst.classList.remove('show'); }, 2600);
-  });
 
-  // ── Chat maneki-neko × 2 ──
-  var manekoIcon = L.icon({
-    iconUrl: '/img/chat_new_transparent.png',
-    iconSize: [70, 70],
-    iconAnchor: [35, 35],
-    className: 'mascot-marker'
-  });
-  var manekoMarker1 = L.marker([45.4930163, -73.5537809], { icon: manekoIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
-  var manekoMarker2 = L.marker([45.4941369, -73.5533410], { icon: manekoIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
-  [manekoMarker1, manekoMarker2].forEach(function(m){
-    m.on('click', function(e){
-      L.DomEvent.stopPropagation(e);
-      var a = document.getElementById('pochaSound'); if(a){ a.currentTime=0; a.play(); }
-      var k = document.getElementById('pochaBurst'); if(k){ k.classList.remove('show'); void k.offsetWidth; k.classList.add('show'); setTimeout(function(){ k.classList.remove('show'); }, 2900); }
-    });
-  });
 
 
 
