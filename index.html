@@ -1254,12 +1254,13 @@ document.addEventListener('touchmove', function(e){
   
   .mascot-marker { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); opacity:0.9; cursor:pointer; background:transparent !important; border:none !important; box-shadow:none !important; }
   .mascot-marker:active { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)) brightness(1.1); }
-  .mascot-marker.bounce { animation: markerBounce 0.45s ease forwards; }
+  .mascot-marker.bounce img { animation: markerBounce 0.45s ease forwards; transform-origin: center bottom; }
   @keyframes markerBounce {
-    0%   { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)) scale(1); }
-    25%  { filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25)) brightness(1.15); }
-    50%  { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
-    100% { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+    0%   { transform: scale(1); }
+    20%  { transform: scale(1.55); }
+    55%  { transform: scale(0.88); }
+    75%  { transform: scale(1.18); }
+    100% { transform: scale(1); }
   }
   .food-img-marker { filter: drop-shadow(0 2px 5px rgba(0,0,0,0.22)); cursor:pointer; background:transparent !important; border:none !important; box-shadow:none !important; transition:transform .12s; }
   .food-img-marker:active { transform:scale(0.9); }
