@@ -1254,13 +1254,14 @@ document.addEventListener('touchmove', function(e){
   
   .mascot-marker { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); opacity:0.9; cursor:pointer; background:transparent !important; border:none !important; box-shadow:none !important; }
   .mascot-marker:active { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)) brightness(1.1); }
-  .mascot-marker.bounce img { animation: markerBounce 0.45s ease forwards; transform-origin: center bottom; }
+  .mascot-marker img { transform-origin: center center; transition: none; }
+  img.bounce { animation: markerBounce 0.5s cubic-bezier(.36,.07,.19,.97) forwards !important; transform-origin: center center !important; }
   @keyframes markerBounce {
-    0%   { transform: scale(1); }
-    20%  { transform: scale(1.55); }
-    55%  { transform: scale(0.88); }
-    75%  { transform: scale(1.18); }
-    100% { transform: scale(1); }
+    0%   { transform: scale(1)    rotate(0deg); }
+    20%  { transform: scale(1.6)  rotate(-6deg); }
+    45%  { transform: scale(0.85) rotate(4deg); }
+    70%  { transform: scale(1.2)  rotate(-2deg); }
+    100% { transform: scale(1)    rotate(0deg); }
   }
   .food-img-marker { filter: drop-shadow(0 2px 5px rgba(0,0,0,0.22)); cursor:pointer; background:transparent !important; border:none !important; box-shadow:none !important; transition:transform .12s; }
   .food-img-marker:active { transform:scale(0.9); }
@@ -1778,12 +1779,12 @@ var POCHA_ZONES = [
 // ⚠️  À affiner avec les vraies coords GPS une fois sur place
 var POCHA_SPOTS = [
   // ─ ENTRÉES / SORTIES
-  { id:'e1', cat:'service', lat:45.494352, lng:-73.5529103,
+  { id:'e1', cat:'service', lat:45.493312242308384, lng:-73.55315592281123,
     icon:'🟢', name:'Entrée publique', name_en:'Public Entrance',
     desc:'Accès principal · Filtration', desc_en:'Main access · Security check',
     color:'#7CB08A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
-  { id:'tente1', cat:'service', lat:45.494280, lng:-73.5530500,
+  { id:'tente1', cat:'service', lat:45.493280866750624, lng:-73.55319782670095,
     icon:'🎪', name:'Tente des artistes & médias', name_en:'Artist & Media Tent',
     desc:'Zone réservée aux artistes et médias', desc_en:'Reserved area for artists and media',
     color:'#9575CD', textColor:'#fff',
@@ -2123,7 +2124,7 @@ function initpochaMap() {
     iconAnchor: [35, 35],
     className: 'mascot-marker'
   });
-  var yataiMascotMarker = L.marker([45.4938125, -73.5534421], { icon: yataiMascotIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
+  var yataiMascotMarker = L.marker([45.49314555218858, -73.55320724129344], { icon: yataiMascotIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
   yataiMascotMarker.on('click', function(e){
     L.DomEvent.stopPropagation(e);
     var burst = document.getElementById('onigiriBurst');
@@ -2162,10 +2163,12 @@ function initpochaMap() {
     L.DomEvent.stopPropagation(e);
     var el = chatMarker.getElement();
     if (!el) return;
-    el.classList.remove('bounce');
-    void el.offsetWidth;
-    el.classList.add('bounce');
-    setTimeout(function(){ el.classList.remove('bounce'); }, 500);
+    var img = el.querySelector('img');
+    if (!img) return;
+    img.classList.remove('bounce');
+    void img.offsetWidth;
+    img.classList.add('bounce');
+    setTimeout(function(){ img.classList.remove('bounce'); }, 500);
   });
 
   setTimeout(function(){
