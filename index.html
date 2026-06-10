@@ -1780,8 +1780,8 @@ var POCHA_ZONES = [
 var POCHA_SPOTS = [
   // ─ ENTRÉES / SORTIES
   { id:'e1', cat:'service', lat:45.493312242308384, lng:-73.55315592281123,
-    icon:'🟢', name:'Entrée publique', name_en:'Public Entrance',
-    desc:'Accès principal · Filtration', desc_en:'Main access · Security check',
+    icon:'🟢', name:'Entrée publique · Objets perdus', name_en:'Public Entrance · Lost & Found',
+    desc:'Accès principal · Filtration · Objets perdus ici', desc_en:'Main access · Security check · Lost & found here',
     color:'#7CB08A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
   { id:'tente1', cat:'service', lat:45.493280866750624, lng:-73.55319782670095,
@@ -1901,8 +1901,8 @@ var POCHA_SPOTS = [
 
   // ─ PREMIERS SOINS / BÉNÉVOLES / OBJETS PERDUS
   { id:'m1', cat:'service', lat:45.49311167733625, lng:-73.55337563243268,
-    icon:'🏥', name:'Premiers soins · Bénévoles · Objets perdus', name_en:'First Aid · Volunteers · Lost & Found',
-    desc:'Infirmière sur place · Bénévoles · Objets trouvés', desc_en:'On-site nurse · Volunteers · Lost & found',
+    icon:'🏥', name:'Premiers soins · Bénévoles', name_en:'First Aid · Volunteers',
+    desc:'Infirmière sur place · Bénévoles', desc_en:'On-site nurse · Volunteers',
     color:'#D4908A', textColor:'#fff',
     addr:'Bassin Peel, Griffintown' },
 
@@ -2968,29 +2968,27 @@ const LIEUX=[{key:"scene",label:'<svg width="14" height="14" viewBox="0 0 24 24"
 const EVENTS={
   "2026-06-11":[
     {id:"j03",start:"18:00",end:"18:15",lieu:"scene",name:"Cérémonie d'ouverture",desc:"Coup d'envoi officiel de POCHA MTL 2026 ! Bienvenue au plus grand festival K-pop de Montréal.",tags:["Gratuit","Tout public","Cérémonie"]},
-    {id:"j04",start:"19:30",end:"20:30",lieu:"scene",name:"Open Stage — Performances de danse",note:"JELL:3S · DanceQUEST · ELYSIUM · GLOW · EMØRIA · K-STEEZ · VALKYRIE · KSWAN · INFINIT-E UNIT · ONE PULSE · BALTERZ",desc:"Performances de danse par les groupes de la communauté K-pop.\n\n• 19h30 — JELL:3S : Catch Catch (YENA)\n• 19h35 — DanceQUEST : Easy (LE SSERAFIM)\n• 19h40 — ELYSIUM : Golden (Kpop Demon Hunters)\n• 19h45 — GLOW : HIP (MAMAMOO)\n• 19h50 — EMØRIA : Whole Different Animal (aespa)\n• 19h55 — K-STEEZ : I CAN'T STOP ME (TWICE)\n• 20h00 — VALKYRIE : Odd Eye (Dreamcatcher) + In Bloom (ZeroBaseOne)\n• 20h05 — KSWAN : I Feel Good (BOYNEXTDOOR)\n• 20h10 — INFINIT-E UNIT : Dalla Dalla (ITZY)\n• 20h15 — ONE PULSE : Red Red (Cortis) + 404 New Era (KiiKii)\n• 20h20 — BALTERZ : Tweak (Girlset)",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
+    {id:"j04",start:"19:30",end:"20:30",lieu:"scene",name:"Performances de danse",note:"JELL:3S · DanceQUEST · ELYSIUM · GLOW · EMØRIA · K-STEEZ · VALKYRIE · KSWAN · INFINIT-E UNIT · ONE PULSE · BALTERZ",desc:"Performances de danse par les groupes de la communauté K-pop.\n\n• 19h30 — JELL:3S : Catch Catch (YENA)\n• 19h35 — DanceQUEST : Easy (LE SSERAFIM)\n• 19h40 — ELYSIUM : Golden (Kpop Demon Hunters)\n• 19h45 — GLOW : HIP (MAMAMOO)\n• 19h50 — EMØRIA : Whole Different Animal (aespa)\n• 19h55 — K-STEEZ : I CAN'T STOP ME (TWICE)\n• 20h00 — VALKYRIE : Odd Eye (Dreamcatcher) + In Bloom (ZeroBaseOne)\n• 20h05 — KSWAN : I Feel Good (BOYNEXTDOOR)\n• 20h10 — INFINIT-E UNIT : Dalla Dalla (ITZY)\n• 20h15 — ONE PULSE : Red Red (Cortis) + 404 New Era (KiiKii)\n• 20h20 — BALTERZ : Tweak (Girlset)",tags:["Gratuit","Tout public","Danse","K-pop"]},
     {id:"j05",start:"20:30",end:"21:30",lieu:"scene",name:"K-Pop Random Play Dance",desc:"Danse aléatoire K-pop — connais-tu les chorés ? Monte sur scène et prouve-le ! Des classiques de BTS, BLACKPINK, TWICE, Stray Kids et plus.",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
+    {id:"j06",start:"21:30",end:"22:00",lieu:"scene",name:"Open Stage / Karaoke",desc:"Scène ouverte — danse et karaoke K-pop pour finir la soirée !",tags:["Gratuit","Tout public","Danse","Karaoke","K-pop"]},
   ],
   "2026-06-12":[
-    {id:"v03",start:"18:30",end:"20:00",lieu:"scene",name:"Open Stage — Performances",note:"STUDIO ALORS ON DANSE · ASTERIA · TIMELAPSE · OLIVIA ZHANG-XIE · REWIND · VIxN · NAVYA · ZAMERA · IntenCITY · TR8CE · STELLARIS · HIBANA · GL!TCH · SYNK · CK3 · QUEENPIN · 0'CLOCK · K-FLOW",desc:"Performances de danse et de chant par les artistes de la communauté.\n\n• 18h30 — STUDIO ALORS ON DANSE : Zen (Jennie) + Killin' It Girl (j-hope) + Bang Bang (IVE)\n• 18h35 — ASTERIA : Unique (P1Harmony)\n• 18h40 — TIMELAPSE : The Real (ATEEZ)\n• 18h45 — OLIVIA ZHANG-XIE : Debut (Katseye) [Vocal]\n• 18h50 — REWIND : Focus (Hearts2Hearts)\n• 18h55 — VIxN : Icons (Hot Issue)\n• 19h00 — NAVYA : Back To Life (&TEAM)\n• 19h05 — ZAMERA : Bambi (Baekhyun) [Vocal]\n• 19h10 — IntenCITY : Tank (NMIXX)\n• 19h15 — TR8CE : Swicy (UNIS)\n• 19h20 — STELLARIS : Eve, Psyche & Bluebird's Wife (LE SSERAFIM)\n• 19h25 — HIBANANA : Eyes, Nose, Lips (TAEYANG) [Vocal]\n• 19h30 — GL!TCH : Oh NaNa (KARD)\n• 19h35 — SYNK : Rollin' (Brave Girls)\n• 19h40 — CK3 : Fearless (LE SSERAFIM)\n• 19h45 — QUEENPIN : We Are (Woo Wonjae) [Vocal]\n• 19h50 — 0'CLOCK : Cheers (Seventeen)\n• 19h55 — K-FLOW : Focus (Hearts2Hearts) + Killin' It Girl (j-hope) + Save Me (BTS)",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
-
+    {id:"v03",start:"18:30",end:"20:00",lieu:"scene",name:"Performances de danse",note:"STUDIO ALORS ON DANSE · ASTERIA · TIMELAPSE · OLIVIA ZHANG-XIE · REWIND · VIxN · NAVYA · ZAMERA · IntenCITY · TR8CE · STELLARIS · HIBANA · GL!TCH · SYNK · CK3 · QUEENPIN · 0'CLOCK · K-FLOW",desc:"Performances de danse et de chant par les artistes de la communauté.\n\n• 18h30 — STUDIO ALORS ON DANSE : Zen (Jennie) + Killin' It Girl (j-hope) + Bang Bang (IVE)\n• 18h35 — ASTERIA : Unique (P1Harmony)\n• 18h40 — TIMELAPSE : The Real (ATEEZ)\n• 18h45 — OLIVIA ZHANG-XIE : Debut (Katseye)\n• 18h50 — REWIND : Focus (Hearts2Hearts)\n• 18h55 — VIxN : Icons (Hot Issue)\n• 19h00 — NAVYA : Back To Life (&TEAM)\n• 19h05 — ZAMERA : Bambi (Baekhyun) [Vocal]\n• 19h10 — IntenCITY : Tank (NMIXX)\n• 19h15 — TR8CE : Swicy (UNIS)\n• 19h20 — STELLARIS : Eve, Psyche & Bluebird's Wife (LE SSERAFIM)\n• 19h25 — HIBANA : Eyes, Nose, Lips (TAEYANG) [Vocal]\n• 19h30 — GL!TCH : Oh NaNa (KARD)\n• 19h35 — SYNK : Rollin' (Brave Girls)\n• 19h40 — CK3 : Fearless (LE SSERAFIM)\n• 19h45 — QUEENPIN : We Are (Woo Wonjae) [Vocal]\n• 19h50 — 0'CLOCK : Cheers (Seventeen)\n• 19h55 — K-FLOW : Focus (Hearts2Hearts) + Killin' It Girl (j-hope) + Save Me (BTS)",tags:["Gratuit","Tout public","Danse","K-pop"]},
     {id:"v04",start:"20:00",end:"21:00",lieu:"scene",name:"K-Pop Random Play Dance",desc:"Danse aléatoire K-pop — connais-tu les chorés ? Monte sur scène !",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
   ],
   "2026-06-13":[
-    {id:"s02",start:"12:30",end:"13:30",lieu:"scene",name:"Open Stage — Danse & Chant",desc:"Performances de danse et de chant K-pop.",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
-    {id:"s03",start:"14:00",end:"16:00",lieu:"scene",name:"\u{1F3C6} Compétition de danse K-pop",note:"13 groupes en compétition",desc:"Compétition officielle de danse K-pop POCHA MTL 2026 !\n\n1. AllPodiumCrew — r u ok (ifeye)\n2. New Dawn Fever — Mamma Mia (izna)\n3. Felynz — BANG! (After School)\n4. ECHO — Red Sun (xikers)\n5. BalterZ — FOCUS (Hearts2Hearts)\n6. B-WARE — Road Not Taken (&TEAM)\n7. ATC — Talk Saxy (RIIZE)\n8. IntenCITY — Up (Kep1er)\n9. FourYou — 404 (KiiKii)\n10. XTRADOSE — EXO Mashup\n11. Salja Dance — Go In Blind (&TEAM)\n12. NOVA Dance — RUDE! (Hearts2Hearts)\n13. MOMENTUM — MAVERICK (The Boyz)",tags:["Gratuit","Tout public","Compétition","Danse","K-pop"]},
-    {id:"s04",start:"18:00",end:"19:00",lieu:"scene",name:"East2West Performances + RPD",desc:"Performances du groupe East2West suivies d'une session Random Play Dance.",tags:["Gratuit","Tout public","Danse","K-pop"]},
-    {id:"s05",start:"19:00",end:"20:00",lieu:"scene",name:"BTS 13th Anniversary Workshop",desc:"Atelier spécial pour célébrer le 13e anniversaire de BTS ! Apprenez des chorégraphies iconiques.",tags:["Gratuit","Tout public","BTS","K-pop","Danse","Atelier"]},
-    {id:"s06",start:"20:00",end:"21:00",lieu:"scene",name:"K-Pop Dance Roulette & RPD",desc:"Roulette de danse K-pop — tirage au sort des chansons ! Suivi d'une Random Play Dance.",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
-    {id:"s07",start:"21:00",end:"22:00",lieu:"scene",name:"Open Stage — Danse & Karaoke",desc:"Scène ouverte — danse et karaoke K-pop pour finir la soirée !",tags:["Gratuit","Tout public","Danse","Karaoke","K-pop","Scène ouverte"]},
+    {id:"s03",start:"14:00",end:"16:00",lieu:"scene",name:"\u{1F3C6} Compétition de danse K-Pop 2026 — 2e édition",note:"13 groupes en compétition",desc:"Compétition officielle de danse K-pop POCHA MTL 2026 !\n\n1. AllPodiumCrew — r u ok (ifeye)\n2. New Dawn Fever — Mamma Mia (izna)\n3. Felynz — BANG! (After School)\n4. ECHO — Red Sun (xikers)\n5. BalterZ — FOCUS (Hearts2Hearts)\n6. B-WARE — Road Not Taken (&TEAM)\n7. ATC — Talk Saxy (RIIZE)\n8. IntenCITY — Up (Kep1er)\n9. FourYou — 404 (KiiKii)\n10. XTRADOSE — EXO Mashup\n11. Salja Dance — Go In Blind (&TEAM)\n12. NOVA Dance — RUDE! (Hearts2Hearts)\n13. MOMENTUM — MAVERICK (The Boyz)",tags:["Gratuit","Tout public","Compétition","Danse","K-pop"]},
+    {id:"s04",start:"18:00",end:"19:00",lieu:"scene",name:"East2West Performances + Random Play Dance",desc:"Performances du groupe East2West suivies d'une session Random Play Dance.",tags:["Gratuit","Tout public","Danse","K-pop"]},
+    {id:"s05",start:"19:00",end:"20:00",lieu:"scene",name:"BTS — Hooligan Dance Workshop",desc:"Atelier de danse spécial BTS — apprenez la chorégraphie de Hooligan !",tags:["Gratuit","Tout public","BTS","K-pop","Danse","Atelier"]},
+    {id:"s06",start:"20:00",end:"21:00",lieu:"scene",name:"K-Pop Dance Roulette & Random Play Dance",desc:"Roulette de danse K-pop — tirage au sort des chansons ! Suivi d'une Random Play Dance.",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
+    {id:"s07",start:"21:00",end:"22:00",lieu:"scene",name:"Open Stage / Karaoke",desc:"Scène ouverte — danse et karaoke K-pop pour finir la soirée !",tags:["Gratuit","Tout public","Danse","Karaoke","K-pop"]},
   ],
   "2026-06-14":[
-    {id:"d01",start:"12:30",end:"13:30",lieu:"scene",name:"Open Stage — Danse & Chant",desc:"Performances de danse et de chant K-pop.",tags:["Gratuit","Tout public","Danse","K-pop","Scène ouverte"]},
+    {id:"d01",start:"12:30",end:"13:30",lieu:"scene",name:"Open Stage / Karaoke",desc:"Scène ouverte — danse et karaoke K-pop pour bien commencer la journée !",tags:["Gratuit","Tout public","Danse","Karaoke","K-pop"]},
     {id:"d02",start:"14:00",end:"15:00",lieu:"scene",name:"K-Pop Random Play Dance",desc:"Session de Random Play Dance — connais-tu les chorés ? Monte sur scène !",tags:["Gratuit","Tout public","K-pop","Danse","Participatif"]},
     {id:"d02b",start:"15:00",end:"16:00",lieu:"scene",name:"K-Pop Freestyle Battle",desc:"Bataille de freestyle K-pop ! Montrez vos moves improvisés.",tags:["Gratuit","Tout public","K-pop","Danse","Compétition"]},
-    {id:"d03",start:"16:30",end:"17:30",lieu:"scene",name:"Dance Workshop",desc:"Atelier de danse K-pop — apprenez une chorégraphie complète !",tags:["Gratuit","Tout public","K-pop","Danse","Atelier"]},
-    {id:"d04",start:"17:15",end:"18:00",lieu:"scene",name:"East2West Performances",desc:"Performances du groupe East2West.",tags:["Gratuit","Tout public","Danse","K-pop"]},
-    {id:"d05",start:"18:00",end:"19:00",lieu:"scene",name:"Momentum Performances + RPD",desc:"Performances de Momentum suivies d'une Random Play Dance.",tags:["Gratuit","Tout public","Danse","K-pop"]},
+    {id:"d03",start:"16:30",end:"17:30",lieu:"scene",name:"Aespa — Lemonade Dance Workshop",desc:"Atelier de danse — apprenez la chorégraphie de Lemonade d'Aespa !",tags:["Gratuit","Tout public","K-pop","Danse","Atelier","Aespa"]},
+    {id:"d05",start:"18:00",end:"19:00",lieu:"scene",name:"Momentum Performances + Random Play Dance",desc:"Performances de Momentum suivies d'une Random Play Dance.",tags:["Gratuit","Tout public","Danse","K-pop"]},
   ],
 };
 
