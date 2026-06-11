@@ -2533,19 +2533,19 @@ function locateMe() {
         <div style="display:flex;flex-direction:column;gap:8px;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Jeudi 11 juin" data-en="Thursday June 11">Jeudi 11 juin</span>
-            <span style="font-size:15px;color:var(--muted);">17h – 22h</span>
+            <span style="font-size:15px;color:var(--muted);" data-fr="17h – 22h" data-en="5PM – 10PM">17h – 22h</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Vendredi 12 juin" data-en="Friday June 12">Vendredi 12 juin</span>
-            <span style="font-size:15px;color:var(--muted);">17h – 22h</span>
+            <span style="font-size:15px;color:var(--muted);" data-fr="17h – 22h" data-en="5PM – 10PM">17h – 22h</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Samedi 13 juin" data-en="Saturday June 13">Samedi 13 juin</span>
-            <span style="font-size:15px;color:var(--muted);">12h – 22h</span>
+            <span style="font-size:15px;color:var(--muted);" data-fr="12h – 22h" data-en="12PM – 10PM">12h – 22h</span>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <span style="font-size:15px;font-weight:700;color:var(--text);" data-fr="Dimanche 14 juin" data-en="Sunday June 14">Dimanche 14 juin</span>
-            <span style="font-size:15px;color:var(--muted);">12h – 20h</span>
+            <span style="font-size:15px;color:var(--muted);" data-fr="12h – 20h" data-en="12PM – 8PM">12h – 20h</span>
           </div>
         </div>
           <div style="font-size:12px;color:var(--muted);font-style:italic;margin-top:6px;" data-fr="*Les portes ouvrent 30 minutes avant le début de l'événement." data-en="*Doors open 30 minutes before the event starts.">*Les portes ouvrent 30 minutes avant le début de l'événement.</div>
@@ -2645,7 +2645,7 @@ function locateMe() {
       </div>
       <div style="flex:1;">
         <div style="font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;" data-fr="Voir sur Google Maps" data-en="Open in Google Maps">Voir sur Google Maps</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:2px;">Montréal</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:2px;" data-fr="Montréal" data-en="Montréal">Montréal</div>
       </div>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
     </a>
@@ -2653,7 +2653,7 @@ function locateMe() {
 
   <!-- FAQ -->
   <div style="padding:0 20px;">
-    <h3 style="font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;color:var(--text);margin-bottom:12px;">FAQ</h3>
+    <h3 style="font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;color:var(--text);margin-bottom:12px;" data-fr="FAQ" data-en="FAQ">FAQ</h3>
 
     <!-- FAQ Search -->
     <div style="position:relative;margin-bottom:14px;">
@@ -3777,7 +3777,6 @@ function toggleLang() {
   const iosCloseBtn = document.getElementById('iosCloseBtn');
   if(iosCloseBtn) iosCloseBtn.textContent = lang === 'en' ? 'Got it!' : 'Compris !';
   // Map legend labels  // Re-render everything with new language
-  render(); // render() calls renderLegend, renderNowBanner, renderTimeline, renderDayTabs
   renderMiniCountdown();
   renderCountdown();
   // Update update bar text
@@ -3820,6 +3819,10 @@ function toggleLang() {
   document.querySelectorAll('#infoPanel [data-fr]').forEach(el => {
     el.textContent = lang === 'en' ? el.dataset.en : el.dataset.fr;
   });
+  // Translate all remaining data-fr elements (hero banner, etc.)
+  document.querySelectorAll('[data-fr]').forEach(function(el) {
+    if (el.dataset.en) el.textContent = lang === 'en' ? el.dataset.en : el.dataset.fr;
+  });
 
   // Ticker translation
   var tickerInner = document.getElementById('tickerInner');
@@ -3832,6 +3835,8 @@ function toggleLang() {
       span.textContent = texts[i % texts.length];
     });
   }
+  // Re-render programme with correct language
+  render();
 }
 
 function t(key) { return T[lang][key] || T.fr[key] || key; }
