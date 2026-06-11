@@ -3051,7 +3051,7 @@ if('serviceWorker' in navigator){ setTimeout(()=>{ navigator.serviceWorker.regis
 
 // ── DATA ──
 const FESTIVAL_START = new Date("2026-06-11T17:00:00");
-const FESTIVAL_END   = new Date("2026-06-07T20:00:00");
+const FESTIVAL_END   = new Date("2026-06-14T20:00:00");
 
 // Injecter badge LIVE dans le ticker si festival en cours
 (function updateTickerLive() {
@@ -3060,19 +3060,23 @@ const FESTIVAL_END   = new Date("2026-06-07T20:00:00");
   if (!ticker) return;
   const isLive = now >= FESTIVAL_START && now <= FESTIVAL_END;
   const existingBadge = ticker.querySelector('.ticker-live-badge');
+  const badgeText = (typeof lang !== 'undefined' && lang === 'en') ? '&#9679; LIVE' : '&#9679; EN DIRECT';
   if (isLive && !existingBadge) {
     const badge = document.createElement('span');
     badge.className = 'ticker-live-badge';
-    badge.innerHTML = '&#9679; EN DIRECT';
+    badge.innerHTML = badgeText;
     badge.style.cssText = 'background:#fff;color:#e84040;border-radius:4px;padding:2px 8px;font-weight:900;font-size:11px;letter-spacing:.08em;margin:0 12px;';
     ticker.insertBefore(badge, ticker.firstChild);
-    // Dupliquer pour le scroll infini
     const badge2 = badge.cloneNode(true);
     ticker.appendChild(badge2);
+  } else if (isLive && existingBadge) {
+    existingBadge.innerHTML = badgeText;
+    const badge2 = ticker.querySelectorAll('.ticker-live-badge')[1];
+    if (badge2) badge2.innerHTML = badgeText;
   } else if (!isLive && existingBadge) {
-    existingBadge.remove();
+    ticker.querySelectorAll('.ticker-live-badge').forEach(b => b.remove());
   }
-  setTimeout(updateTickerLive, 30000); // vérifier toutes les 30s
+  setTimeout(updateTickerLive, 30000);
 })();
 let currentNav = 'horaire';
 
