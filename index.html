@@ -2207,11 +2207,11 @@ function initpochaMap() {
         paddingBottomRight: [16, 80],
         animate: false, maxZoom: 18
       });
-      if (pochaLeafletMap.getZoom() < 17) {
-        pochaLeafletMap.setZoom(17, { animate: false });
+      if (pochaLeafletMap.getZoom() < 18) {
+        pochaLeafletMap.setZoom(18, { animate: false });
       }
     } else {
-      pochaLeafletMap.setView(MAP_CENTER, 17);
+      pochaLeafletMap.setView(MAP_CENTER, 18);
     }
   }, 80);
   setTimeout(function(){
@@ -3192,7 +3192,7 @@ function renderLegend(){
       h+=`<button class="legend-btn ${activeLieu===l.key?"a-"+l.key:""}" onclick="setLieu('${l.key}')">${l.label} (${count})</button>`;
     }
   });
-  if(PROG_IMAGES[date] && currentNav === 'horaire'){
+  if(PROG_IMAGES[date] && currentNav === 'horaire' && !document.body.classList.contains('map-active')){
     h+=`<button onclick="openProgModal('${date}')" style="margin-left:auto;background:none;border:1.5px solid var(--border);border-radius:20px;padding:5px 10px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:4px;color:var(--muted);-webkit-tap-highlight-color:transparent;" title="Voir l'affiche">📸</button>`;
   }
   document.getElementById("legend").innerHTML=h;
