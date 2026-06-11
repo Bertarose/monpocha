@@ -3469,12 +3469,23 @@ function renderMiniCountdown() {
   var el = document.getElementById('miniCountdown');
   if (!el) return;
   var now = new Date();
-  if (now >= FESTIVAL_START) { el.innerHTML = ''; return; }
-  var diff = Math.ceil((FESTIVAL_START - now) / 86400000);
-  var label = lang === 'en' ? (diff + (diff === 1 ? ' day' : ' days')) : ('J-' + diff);
-  el.innerHTML = '<div style="display:inline-flex;align-items:center;gap:5px;background:#0A8FFF;color:#fff;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.03em;white-space:nowrap;">' +
-    '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1B2A5C" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ' +
-    label + '</div>';
+  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  var festDays = [new Date(2026,5,11), new Date(2026,5,12), new Date(2026,5,13), new Date(2026,5,14)];
+  var festEnd = new Date(2026,5,15);
+  var label = '', icon = '', bg = '#0A8FFF';
+  if (today >= festEnd) { el.innerHTML = ''; return; }
+  if (today >= festDays[0]) {
+    var dayNum = Math.floor((today - festDays[0]) / 86400000) + 1;
+    if (dayNum > 4) { el.innerHTML = ''; return; }
+    label = lang === 'en' ? 'DAY ' + dayNum : 'JOUR ' + dayNum;
+    icon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="#fff"/><path d="M12 2v4m0 12v4m-10-10h4m12 0h4m-3.5-7.5-2.8 2.8m-7.4 7.4-2.8 2.8m0-13L6.3 9.3m7.4 7.4 2.8 2.8"/></svg>';
+    bg = '#E83B0C';
+  } else {
+    var diff = Math.ceil((festDays[0] - now) / 86400000);
+    label = lang === 'en' ? (diff + (diff === 1 ? ' day' : ' days')) : ('J-' + diff);
+    icon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1B2A5C" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+  }
+  el.innerHTML = '<div style="display:inline-flex;align-items:center;gap:5px;background:' + bg + ';color:#fff;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.03em;white-space:nowrap;">' + icon + ' ' + label + '</div>';
 }
 renderMiniCountdown();
 setInterval(renderMiniCountdown, 60000);
