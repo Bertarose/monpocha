@@ -1143,7 +1143,7 @@ document.addEventListener('touchmove', function(e){
   body.map-active {
     overflow: hidden !important;
   }
-  body.map-active > *:not(#mapPanel):not(nav):not(header):not(.ticker):not(script):not(#shareOverlay):not(#ios-guide):not(#ios-overlay) {
+  body.map-active > *:not(#mapPanel):not(nav):not(header):not(.ticker):not(script):not(#shareOverlay):not(#ios-guide):not(#ios-overlay):not(#progModal):not(#pochaBurst):not(#onigiriBurst):not(#chatBurst) {
     visibility: hidden !important;
     pointer-events: none !important;
   }
@@ -1255,7 +1255,8 @@ document.addEventListener('touchmove', function(e){
   .mascot-marker { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); opacity:0.9; cursor:pointer; background:transparent !important; border:none !important; box-shadow:none !important; }
   .mascot-marker:active { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)) brightness(1.1); }
   .mascot-marker img { transform-origin: center center; transition: none; }
-  img.bounce { animation: markerBounce 0.5s cubic-bezier(.36,.07,.19,.97) forwards !important; transform-origin: center center !important; }
+  #progModal { position:fixed; top:0;left:0;right:0;bottom:0; z-index:800; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.88); padding:20px; box-sizing:border-box; }
+  #progModal.show { display:flex; }
   @keyframes markerBounce {
     0%   { transform: scale(1)    rotate(0deg); }
     20%  { transform: scale(1.6)  rotate(-6deg); }
@@ -1626,9 +1627,9 @@ document.addEventListener('touchmove', function(e){
   <div id="chatBurst"><img class="chat-mascot" src="/img/chat_new_transparent.png" alt=""></div>
 
   <!-- Modal programme photo -->
-  <div id="progModal" onclick="closeProgModal()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.88);align-items:center;justify-content:center;padding:20px;touch-action:none;">
-    <button onclick="event.stopPropagation();closeProgModal()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:40px;height:40px;font-size:22px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">×</button>
-    <img id="progModalImg" src="" alt="" onclick="event.stopPropagation()" style="max-width:100%;max-height:90vh;border-radius:16px;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,0.5);">
+  <div id="progModal" onclick="closeProgModal()">
+    <button onclick="event.stopPropagation();closeProgModal()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;border-radius:50%;width:44px;height:44px;font-size:24px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">×</button>
+    <img id="progModalImg" src="" alt="" onclick="event.stopPropagation()" style="max-width:100%;max-height:88vh;border-radius:16px;object-fit:contain;">
   </div>
 
   <!-- Barre filtre + légende — pill sombre en bas à gauche -->
@@ -3088,14 +3089,11 @@ const PROG_IMAGES = {
 function openProgModal(date) {
   var img = PROG_IMAGES[date];
   if (!img) return;
-  var modal = document.getElementById('progModal');
-  var el = document.getElementById('progModalImg');
-  el.src = img;
-  modal.style.display = 'flex';
+  document.getElementById('progModalImg').src = img;
+  document.getElementById('progModal').classList.add('show');
 }
 function closeProgModal() {
-  var modal = document.getElementById('progModal');
-  modal.style.display = 'none';
+  document.getElementById('progModal').classList.remove('show');
   document.getElementById('progModalImg').src = '';
 }
 const LIEUX=[{key:"scene",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg> Scène',full:"Scène principale — Bassin Peel",addr:"Bassin Peel, Griffintown, Montréal"},{key:"atelier",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> HALECO',full:"HALECO — Bassin Peel",addr:"Bassin Peel, Griffintown, Montréal"},{key:"cafe",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> Café',full:"Café des Éclusiers",addr:"1 Canal de Lachine, Montréal"},{key:"evenement",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg> Événement',full:"Café des Éclusiers",addr:"1 Canal de Lachine, Montréal"}];
