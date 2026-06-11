@@ -563,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
   .faq-plus { font-size:22px; font-weight:300; color:var(--muted); flex-shrink:0; transition:transform .3s; }
   .faq-cat.open .faq-plus { transform:rotate(45deg); }
   .faq-content { max-height:0; overflow:hidden; transition:max-height .35s ease; padding:0 16px; }
-  .faq-cat.open .faq-content { max-height:600px; padding:0 16px 16px; }
+  .faq-cat.open .faq-content { max-height:2000px; padding:0 16px 16px; }
   .faq-q { font-size:14px; font-weight:700; color:var(--text); margin-top:12px; }
   .faq-a { font-size:13px; color:var(--muted); line-height:1.5; margin-top:4px; }
   .faq-cat.faq-hidden { display:none; }
@@ -2165,10 +2165,21 @@ function initpochaMap() {
     if (!el) return;
     var img = el.querySelector('img');
     if (!img) return;
-    img.classList.remove('bounce');
-    void img.offsetWidth;
-    img.classList.add('bounce');
-    setTimeout(function(){ img.classList.remove('bounce'); }, 500);
+    var frames = [
+      {w:70,  h:70,  t:0},
+      {w:108, h:108, t:80},
+      {w:58,  h:58,  t:200},
+      {w:84,  h:84,  t:310},
+      {w:70,  h:70,  t:420}
+    ];
+    frames.forEach(function(f){
+      setTimeout(function(){
+        img.style.width  = f.w + 'px';
+        img.style.height = f.h + 'px';
+        img.style.marginLeft = ((70 - f.w) / 2) + 'px';
+        img.style.marginTop  = ((70 - f.h) / 2) + 'px';
+      }, f.t);
+    });
   });
 
   setTimeout(function(){
@@ -2179,10 +2190,13 @@ function initpochaMap() {
       pochaLeafletMap.fitBounds(L.latLngBounds(allCoords), {
         paddingTopLeft: [16, headerH + 16],
         paddingBottomRight: [16, 80],
-        animate: false, maxZoom: 17
+        animate: false, maxZoom: 18
       });
+      if (pochaLeafletMap.getZoom() < 17) {
+        pochaLeafletMap.setZoom(17, { animate: false });
+      }
     } else {
-      pochaLeafletMap.setView(MAP_CENTER, 16);
+      pochaLeafletMap.setView(MAP_CENTER, 17);
     }
   }, 80);
   setTimeout(function(){
@@ -2699,6 +2713,91 @@ function locateMe() {
           <div class="faq-a" data-fr="Oui, les poussettes sont les bienvenues." data-en="Yes, strollers are welcome.">Oui, les poussettes sont les bienvenues.</div>
         </div>
       </div>
+
+      <!-- RESTAURANTS & MARCHANDS -->
+      <div class="faq-cat" data-keywords="restaurants marchands bouffe nourriture kiosques food vendors boutiques shopping">
+        <button class="faq-cat-btn" onclick="toggleFaq(this)">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(232,59,12,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">🍜</div>
+          <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Restaurants & Bouffe" data-en="Restaurants & Food">Restaurants & Bouffe</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="20 restaurants et kiosques sur place" data-en="20 restaurants and food stalls on-site">20 restaurants et kiosques sur place</div></div>
+          <span class="faq-plus">+</span>
+        </button>
+        <div class="faq-content">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;padding:4px 0 8px;">
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">☕ Café du Triangle D'Or</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍽️ Alice &amp; Theo</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍵 Palgong Tea</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍹 Teddy Fruits et Jus</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🥩 Seoul Grill</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍱 Mukbang</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍧 Kim's Bingsu</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍡 Petit panda tanghulu</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍱 TML Traiteur</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍗 Les crazy chickens</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍴 COMON</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🇰🇷 Restaurant Itaewon</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🥢 BOK</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🌭 Chung Chun</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍜 Dano</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🦑 The Squid Skewer</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍙 Onigiri Yaki</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🍜 Soba Soba Gang</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">🥩 BBQ Bowl</div>
+            <div style="font-size:13px;padding:5px 0;">🥔 Work Hard Be Potato</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-cat" data-keywords="marchands boutiques shopping artisans vendors market kiosques">
+        <button class="faq-cat-btn" onclick="toggleFaq(this)">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(10,143,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">🛍️</div>
+          <div style="flex:1;text-align:left;"><div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text);" data-fr="Marchands & Boutiques" data-en="Vendors & Boutiques">Marchands & Boutiques</div><div style="font-size:12px;color:var(--muted);margin-top:1px;" data-fr="39 artisans et marchands" data-en="39 artisans and vendors">39 artisans et marchands</div></div>
+          <span class="faq-plus">+</span>
+        </button>
+        <div class="faq-content">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;padding:4px 0 8px;">
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Atelier Sakura</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Bao Magic Productions</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Bask Hour</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Catppuccino</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">goldiiluvnails</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">ICHIGO MART</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Imagination Station Mtl</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Kall Mart</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Koissom</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Koodle</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Labijournaling</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">LIGHTUPK</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Mellow Artem</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">MelodicMisa</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Mikuna</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">MilkyMilky Embroidery</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Miumiu Studio</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">miumiuworkshop</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Miya Candles</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">pongdangbinu</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Seoul Tangerines</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Seoulea</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Skincare for Weirdos</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Taki Nails</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">The Colour Polkadot</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Tipsytips Beauty</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">TSUMI</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Velvet KT</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Yomihonei</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">ArtsyTamiie</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">CLAWKLAWS</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">ChibiChic</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">Boutique Pon Pon</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">NatifTV</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">COSTCO</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">kclub.udem</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">ACETASE (UdM)</div>
+            <div style="font-size:13px;padding:5px 0;border-bottom:1px solid var(--border);">KFM</div>
+            <div style="font-size:13px;padding:5px 0;">Ivna Lins</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
