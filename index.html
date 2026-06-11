@@ -1625,6 +1625,12 @@ document.addEventListener('touchmove', function(e){
   <div id="onigiriBurst"><canvas id="confettiCanvas"></canvas><img class="oni-mascot" src="/img/mascot-yatai.png" alt=""></div>
   <div id="chatBurst"><img class="chat-mascot" src="/img/chat_new_transparent.png" alt=""></div>
 
+  <!-- Modal programme photo -->
+  <div id="progModal" onclick="closeProgModal()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.88);align-items:center;justify-content:center;padding:20px;">
+    <button onclick="closeProgModal()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;border-radius:50%;width:40px;height:40px;font-size:22px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);">×</button>
+    <img id="progModalImg" src="" alt="" style="max-width:100%;max-height:90vh;border-radius:16px;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,0.5);">
+  </div>
+
   <!-- Barre filtre + légende — pill sombre en bas à gauche -->
   <div id="mapFilterBar">
     <button class="mfb-btn active" onclick="filterMap('all',this)" data-filter="all">
@@ -3071,6 +3077,27 @@ const FESTIVAL_END   = new Date("2026-06-07T20:00:00");
   setTimeout(updateTickerLive, 30000); // vérifier toutes les 30s
 })();
 const DAYS=[{label:"Jeu 11",date:"2026-06-11"},{label:"Ven 12",date:"2026-06-12"},{label:"Sam 13",date:"2026-06-13"},{label:"Dim 14",date:"2026-06-14"}];
+
+const PROG_IMAGES = {
+  "2026-06-11": "/img/POCHA_PROGRAMME__4_.png",
+  "2026-06-12": "/img/POCHA_PROGRAMME__5_.png",
+  "2026-06-13": "/img/POCHA_PROGRAMME__8_.png",
+  "2026-06-14": "/img/POCHA_PROGRAMME__7_.png"
+};
+
+function openProgModal(date) {
+  var img = PROG_IMAGES[date];
+  if (!img) return;
+  var modal = document.getElementById('progModal');
+  var el = document.getElementById('progModalImg');
+  el.src = img;
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeProgModal() {
+  document.getElementById('progModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
 const LIEUX=[{key:"scene",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg> Scène',full:"Scène principale — Bassin Peel",addr:"Bassin Peel, Griffintown, Montréal"},{key:"atelier",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> HALECO',full:"HALECO — Bassin Peel",addr:"Bassin Peel, Griffintown, Montréal"},{key:"cafe",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> Café',full:"Café des Éclusiers",addr:"1 Canal de Lachine, Montréal"},{key:"evenement",label:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg> Événement',full:"Café des Éclusiers",addr:"1 Canal de Lachine, Montréal"}];
 const EVENTS={
   "2026-06-11":[
@@ -3145,7 +3172,8 @@ function fetchWeather() {
 fetchWeather();
 setInterval(fetchWeather, 1800000);
 function renderDayTabs(){
-  document.getElementById("dayTabs").innerHTML=getDays().map((d,i)=>
+  const days = getDays();
+  document.getElementById("dayTabs").innerHTML = days.map((d,i)=>
     `<button class="day-tab ${i===activeDay?"active":""} d${i}" onclick="selectDay(${i})">${d.label}${isToday(d.date)?"<br>●":""}</button>`
   ).join("");
 }
@@ -3164,6 +3192,9 @@ function renderLegend(){
       h+=`<button class="legend-btn ${activeLieu===l.key?"a-"+l.key:""}" onclick="setLieu('${l.key}')">${l.label} (${count})</button>`;
     }
   });
+  if(PROG_IMAGES[date]){
+    h+=`<button onclick="openProgModal('${date}')" style="margin-left:auto;background:none;border:1.5px solid var(--border);border-radius:20px;padding:5px 10px;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:4px;color:var(--muted);-webkit-tap-highlight-color:transparent;" title="Voir l'affiche">📸</button>`;
+  }
   document.getElementById("legend").innerHTML=h;
 }
 function renderNowBanner(){
