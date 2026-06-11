@@ -3077,6 +3077,8 @@ const FESTIVAL_END   = new Date("2026-06-07T20:00:00");
   }
   setTimeout(updateTickerLive, 30000); // vérifier toutes les 30s
 })();
+let currentNav = 'horaire';
+
 const DAYS=[{label:"Jeu 11",date:"2026-06-11"},{label:"Ven 12",date:"2026-06-12"},{label:"Sam 13",date:"2026-06-13"},{label:"Dim 14",date:"2026-06-14"}];
 
 const PROG_IMAGES = {
@@ -3935,7 +3937,6 @@ setInterval(()=>{
 
 // ── BOTTOM NAV ──
 const NAV_IDS = ['navHoraire','navFavoris','navPartager'];
-let currentNav = 'horaire';
 
 function navTo(section) {
   currentNav = section;
