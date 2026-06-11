@@ -1321,6 +1321,26 @@ document.addEventListener('touchmove', function(e){
     100% { transform:translate(-50%,-60%) scale(1.08) rotate(4deg); opacity:0; }
   }
 
+  /* ── Chat burst ── */
+  #chatBurst { position:absolute; inset:0; z-index:601; pointer-events:none; opacity:0; transition:none;
+    background:radial-gradient(circle, rgba(255,180,220,0.55) 0%, rgba(255,120,180,0.25) 50%, transparent 70%); }
+  #chatBurst.show { opacity:1; animation:chatBg 2.2s ease-out forwards; }
+  #chatBurst .chat-mascot { position:absolute; width:clamp(160px,50vw,340px); height:auto;
+    top:50%; left:50%; transform:translate(-50%,-60%) scale(0); opacity:0; transition:none;
+    filter:drop-shadow(0 6px 24px rgba(0,0,0,0.2)); }
+  #chatBurst.show .chat-mascot { animation:chatMascot 2.2s ease-out forwards; }
+  @keyframes chatBg { 0%{opacity:0} 10%{opacity:1} 65%{opacity:1} 100%{opacity:0} }
+  @keyframes chatMascot {
+    0%   { opacity:0; transform:translate(-50%,-60%) scale(0) rotate(10deg); }
+    15%  { opacity:1; transform:translate(-50%,-60%) scale(1.4) rotate(-6deg); }
+    25%  { transform:translate(-50%,-60%) scale(0.88) rotate(4deg); }
+    35%  { transform:translate(-50%,-60%) scale(1.12) rotate(-2deg); }
+    45%  { transform:translate(-50%,-60%) scale(0.97) rotate(1deg); }
+    55%  { transform:translate(-50%,-60%) scale(1) rotate(0deg); opacity:1; }
+    80%  { transform:translate(-50%,-60%) scale(1) rotate(0deg); opacity:1; }
+    100% { transform:translate(-50%,-60%) scale(1.05) rotate(-3deg); opacity:0; }
+  }
+
   /* Bottom sheet */
   #mapSheet {
     position: absolute;
@@ -1603,6 +1623,7 @@ document.addEventListener('touchmove', function(e){
   <div id="pochaMap"></div>
   <div id="pochaBurst"><img class="kw-mascot" src="/img/mascot-pocha.png" alt=""><span class="kw-text">POCHA!</span></div>
   <div id="onigiriBurst"><canvas id="confettiCanvas"></canvas><img class="oni-mascot" src="/img/mascot-yatai.png" alt=""></div>
+  <div id="chatBurst"><img class="chat-mascot" src="/img/chat_new_transparent.png" alt=""></div>
 
   <!-- Barre filtre + légende — pill sombre en bas à gauche -->
   <div id="mapFilterBar">
@@ -2161,25 +2182,12 @@ function initpochaMap() {
   var chatMarker = L.marker([45.4929287, -73.5537276], { icon: chatIcon, interactive: true, zIndexOffset: 100 }).addTo(pochaLeafletMap);
   chatMarker.on('click', function(e){
     L.DomEvent.stopPropagation(e);
-    var el = chatMarker.getElement();
-    if (!el) return;
-    var img = el.querySelector('img');
-    if (!img) return;
-    var frames = [
-      {w:70,  h:70,  t:0},
-      {w:108, h:108, t:80},
-      {w:58,  h:58,  t:200},
-      {w:84,  h:84,  t:310},
-      {w:70,  h:70,  t:420}
-    ];
-    frames.forEach(function(f){
-      setTimeout(function(){
-        img.style.width  = f.w + 'px';
-        img.style.height = f.h + 'px';
-        img.style.marginLeft = ((70 - f.w) / 2) + 'px';
-        img.style.marginTop  = ((70 - f.h) / 2) + 'px';
-      }, f.t);
-    });
+    var burst = document.getElementById('chatBurst');
+    if (!burst) return;
+    burst.classList.remove('show');
+    void burst.offsetWidth;
+    burst.classList.add('show');
+    setTimeout(function(){ burst.classList.remove('show'); }, 2200);
   });
 
   setTimeout(function(){
