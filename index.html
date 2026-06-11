@@ -1268,7 +1268,7 @@ document.addEventListener('touchmove', function(e){
   #pochaBurst { position:absolute; inset:0; z-index:600; display:flex; align-items:center; justify-content:center;
     background:radial-gradient(circle, rgba(232,59,12,0.6) 0%, rgba(232,59,12,0.35) 50%, transparent 70%);
     opacity:0; pointer-events:none; transition:none; }
-  #pochaBurst .kw-mascot { position:absolute; width:clamp(250px,70vw,500px); height:auto; top:50%; left:50%;
+  #pochaBurst .kw-mascot { position:absolute; width:clamp(160px,45vw,320px); height:auto; top:50%; left:50%;
     transform:translate(-50%,-60%) scale(0); opacity:0; transition:none; filter:drop-shadow(0 8px 30px rgba(0,0,0,0.3)); }
   #pochaBurst .kw-text { position:relative; font-family:'Figtree',sans-serif; font-size:clamp(60px,20vw,160px); font-weight:900;
     letter-spacing:0.06em; color:#fff; margin-top:clamp(120px,35vw,250px);
@@ -2157,6 +2157,7 @@ function initpochaMap() {
     void burst.offsetWidth;
     burst.classList.add('show');
     launchConfetti(canvas);
+    var s = document.getElementById('sound1'); if(s){ s.currentTime=0; s.play(); }
     setTimeout(function(){ burst.classList.remove('show'); }, 2600);
   });
 
@@ -2189,6 +2190,7 @@ function initpochaMap() {
     burst.classList.remove('show');
     void burst.offsetWidth;
     burst.classList.add('show');
+    var s = document.getElementById('cuteSound'); if(s){ s.currentTime=0; s.play(); }
     setTimeout(function(){ burst.classList.remove('show'); }, 2200);
   });
 
@@ -4084,6 +4086,8 @@ const origToggleLang = toggleLang;
 </script>
 
 <audio id="pochaSound" src="/audio/pocha.mp3" preload="auto"></audio>
+<audio id="sound1" src="/audio/sound1.mp3" preload="auto"></audio>
+<audio id="cuteSound" src="/audio/cute.mp3" preload="auto"></audio>
 <audio id="radioAudio" preload="none"></audio>
 <audio id="miamSound" src="/audio/korea.mp3" preload="auto"></audio>
 
