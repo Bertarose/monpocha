@@ -1629,7 +1629,7 @@ document.addEventListener('touchmove', function(e){
   <!-- Modal programme photo -->
   <div id="progModal" onclick="closeProgModal()">
     <button onclick="event.stopPropagation();closeProgModal()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;border-radius:50%;width:44px;height:44px;font-size:24px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">×</button>
-    <img id="progModalImg" src="" alt="" onclick="event.stopPropagation()" style="max-width:100%;max-height:88vh;border-radius:16px;object-fit:contain;">
+    <img id="progModalImg" alt="" onclick="event.stopPropagation()" style="max-width:100%;max-height:88vh;border-radius:16px;object-fit:contain;">
   </div>
 
   <!-- Barre filtre + légende — pill sombre en bas à gauche -->
@@ -3899,14 +3899,18 @@ function filterFaq(query) {
 
 // ── SPLASH SCREEN — K-pop neon rings + floating notes ──
 (function() {
-  // Food stickers are in the HTML — no JS needed
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      var splash = document.getElementById('splash');
-      if (splash) splash.classList.add('hide');
+  function hideSplash() {
+    var splash = document.getElementById('splash');
+    if (splash && !splash.classList.contains('hide')) {
+      splash.classList.add('hide');
       setTimeout(function() { if (splash) splash.remove(); }, 900);
-    }, 2500);
+    }
+  }
+  window.addEventListener('load', function() {
+    setTimeout(hideSplash, 2500);
   });
+  // Fallback — never stay stuck
+  setTimeout(hideSplash, 5000);
 })();
 
 setInterval(()=>{renderClock();},60000);
